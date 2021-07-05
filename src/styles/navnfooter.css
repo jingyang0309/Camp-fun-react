@@ -1,0 +1,96 @@
+@charset "UTF-8";
+* {
+  font-family: arial, 'Microsoft JhengHei', '微軟正黑體', sans-serif !important;
+}
+
+.navbar {
+  padding: 0px 0px 0px 20px;
+}
+
+.nav-bg {
+  background-color: #145041;
+}
+
+.nav-logo {
+  height: 50px;
+  margin: 0px 10px;
+}
+
+.nav-link {
+  padding: 0px;
+  color: #fff;
+}
+
+.navico {
+  fill: #fff;
+}
+
+.nav-link:hover {
+  background-color: #fff;
+}
+
+.nav-link:hover .navico {
+  fill: #145041;
+}
+
+.nav-link:hover .navon {
+  color: #145041;
+}
+
+.nav-cart {
+  height: 80px;
+  width: 80px;
+  background-color: #fff;
+  margin: 0px;
+}
+
+.cartico {
+  fill: #145041;
+  margin: 15px;
+}
+
+.member {
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin: 0px 30px 0px 0px;
+}
+
+.nav-profile-default {
+  height: 50px;
+  margin: 10px;
+}
+
+.foo-social {
+  background-color: #5e994a;
+}
+
+.foo-qu {
+  width: 400px;
+}
+
+.foo-note {
+  color: #fff;
+}
+
+.foo-socialico {
+  fill: #fff;
+}
+
+.foo-bottom {
+  padding: 0 12%;
+}
+
+.foo-sitemap {
+  color: #fff;
+}
+
+.foo-cl {
+  font-size: 14px;
+}
+
+.foo-logo {
+  height: 50px;
+}
+/*# sourceMappingURL=navnfooter.css.map */

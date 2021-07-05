@@ -13,8 +13,8 @@ import Menber from './Pages/Menber/Menber'
 import MenberProfile from './Pages/Menber/Menber-profile'
 
 // Navbar跟Footer
-import MyNavbar from './components/MyNavbar'
-import MyFooter from './components/MyFooter'
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 // import MainContent from './components/MainContent'
 import AdressBookAdd from './Pages/Menber/AdressBookAdd'
 import AdressBook from './Pages/Menber/AdressBook'
@@ -27,7 +27,7 @@ function App() {
     <>
       <Router>
         {/* 上選單 */}
-        <MyNavbar />
+        <NavBar />
         <Switch>
           <Route path="/menber/sesson">
             <Session
@@ -76,7 +76,9 @@ function App() {
           </Route>
         </Switch>
         {/* 頁尾 */}
-        <MyFooter />
+        {/* <h1>這是min版footer</h1>
+        <Footer ver="min" /> */}
+        <Footer ver="full" />
       </Router>
     </>
   )
