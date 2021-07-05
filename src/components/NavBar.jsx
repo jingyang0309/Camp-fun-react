@@ -70,7 +70,9 @@ const NavBar = () => {
                   <span>會員</span>
                 </div>
                 <div>
-                  <span><Link to="/login">登入 / 註冊</Link> </span>
+                  <span>
+                    <Link to="/login">登入 / 註冊</Link>{' '}
+                  </span>
                 </div>
               </div>
             </div>
@@ -82,9 +84,9 @@ const NavBar = () => {
                 <Nav.Link
                   href={li.link}
                   key={li.id}
-                  class="nav-item"
+                  className="nav-item"
                 >
-                  <NavIcon item={li.icon} style="nav" />
+                  <NavIcon item={li.icon} style={'nav'} />
                   <span className="navon">{li.item}</span>
                 </Nav.Link>
               )

@@ -29,12 +29,12 @@ function Login(props) {
 
     console.log('伺服器回傳的json資料', data)
     // 要等驗証過，再設定資料(簡單的直接設定)
-
-    //直接在一段x秒關掉指示器
-    // setTimeout(() => {
-    //   props.history.push('/menber')
-    // }, 500)
   }
+
+  //直接在一段x秒關掉指示器
+  // setTimeout(() => {
+  //   props.history.push('/menber')
+  // }, 500)
 
   return (
     <>
