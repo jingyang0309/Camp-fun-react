@@ -8,7 +8,9 @@ import NavIcon from './NavIcon.jsx' //icon SVG路徑檔案
 import { Link } from 'react-router-dom'
 
 //
-const NavBar = () => {
+const NavBar = (props) => {
+  // 上層傳來的登入狀況
+  const { auth, setAuth } = props
   //設定Navbar-icon
   // 可以在各自的link中修改
   const items = [
@@ -66,7 +68,7 @@ const NavBar = () => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {sessionStorage.getItem('email') ? (
+                {auth ? (
                   <>
                     <Link to="/member">
                       您好，
@@ -77,7 +79,7 @@ const NavBar = () => {
                 ) : (
                   <div>
                     <span>
-                      <Link to="/login">登入 / 註冊</Link>
+                      <Link to="/login">登入/註冊</Link>
                     </span>
                   </div>
                 )}

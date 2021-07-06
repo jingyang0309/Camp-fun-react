@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 function Login(props) {
+  // 上層傳來的登入狀況
+  const { auth, setAuth } = props
+  // 子曾切換登入狀況
+  const [loginAuth, setLoginAuth] = useState(false)
+
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -49,14 +55,14 @@ function Login(props) {
     }
     console.log(userData)
 
-    sendRegisterDataToServer(userData, () =>
+    sendLoginDataToServer(userData, () =>
       // 改成SWEETALTER
-      alert('註冊成功，請重新登入')
+      alert('登入成功')
     )
 
-    async function sendRegisterDataToServer(
-      userData
-      // callback
+    async function sendLoginDataToServer(
+      userData,
+      callback
     ) {
       // 注意資料格式要設定，伺服器才知道是json格式
       const request = new Request(
@@ -84,15 +90,25 @@ function Login(props) {
           JSON.stringify(data.mId)
         )
         sessionStorage.setItem('email', data.email)
+
+        // 子曾的登入狀況切換成true
+        setLoginAuth(true)
       } else {
         // 帳號或密碼錯誤的錯誤處理
         console.log(data.message.text)
       }
-      // callback()
+      callback()
       return data
     }
     setSignmode(true)
   }
+
+  // 生命週期傳到Navbar
+  useEffect(() => {
+    console.log('更新後的值',loginAuth)
+    console.log('更新後的值',auth)
+    setAuth(loginAuth)
+  }, [loginAuth])
 
   //直接在一段x秒關掉指示器
   // setTimeout(() => {

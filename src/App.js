@@ -1,5 +1,5 @@
 //套件
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -10,7 +10,7 @@ import {
 import Login from './pages/member/Login'
 import Register from './pages/member/Register'
 import Member from './pages/member/Member'
-import MemberProfile from './pages/member/member-profile'
+import MemberProfile from './pages/member/MemberProfile'
 
 // Navbar跟Footer
 import NavBar from './components/NavBar'
@@ -23,60 +23,44 @@ import Session from './pages/member/Session'
 import Logout from './pages/member/Logout'
 
 function App() {
-  const [loggin, setLoggin] = useState(false)
+  const [auth, setAuth] = useState(false)
+
+  
   return (
     <>
       <Router>
         {/* 上選單 */}
-        <NavBar />
+        <NavBar auth={auth} setAuth={setAuth}/>
         <Switch>
           <Route path="/member/session">
-            <Session
-              loggin={loggin}
-              setLoggin={setLoggin}
-            />
+            <Session auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/coupon">
-            <AdressBookAdd
-              loggin={loggin}
-              setLoggin={setLoggin}
-            />
+            <AdressBookAdd auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/adressbookadd">
-            <AdressBookAdd
-              loggin={loggin}
-              setLoggin={setLoggin}
-            />
+            <AdressBookAdd auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/adressbook">
-            <AdressBook
-              loggin={loggin}
-              setLoggin={setLoggin}
-            />
+            <AdressBook auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/coupon">
-            <Coupon loggin={loggin} setLoggin={setLoggin} />
+            <Coupon auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/profile">
-            <MemberProfile
-              loggin={loggin}
-              setLoggin={setLoggin}
-            />
+            <MemberProfile auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member">
-            <Member loggin={loggin} setLoggin={setLoggin} />
+            <Member auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/logout">
-            <Logout loggin={loggin} setLoggin={setLoggin} />
+            <Logout auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/login">
-            <Login loggin={loggin} setLoggin={setLoggin} />
+            <Login auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/register">
-            <Register
-              loggin={loggin}
-              setLoggin={setLoggin}
-            />
+            <Register auth={auth} setAuth={setAuth} />
           </Route>
         </Switch>
         {/* 頁尾 */}

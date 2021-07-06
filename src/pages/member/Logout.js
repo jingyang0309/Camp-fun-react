@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 function Logout(props) {
+  // 上層傳來的登入狀況
+  const { auth, setAuth } = props
+  // 子曾切換登入狀況
+  const [loginAuth, setLoginAuth] = useState(false)
+
   async function UserLogout() {
-    if(!sessionStorage.mId){return props.history.push('/')}
+    if (!sessionStorage.mId) {
+      return props.history.push('/')
+    }
     // 連接的伺服器資料網址
     const url = 'http://localhost:4000/member/logout'
 
@@ -18,6 +25,7 @@ function Logout(props) {
     const data = await response.json()
     console.log(data)
     sessionStorage.clear()
+    setAuth(loginAuth)
     props.history.push('/')
   }
   UserLogout()
