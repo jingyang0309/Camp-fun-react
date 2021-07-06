@@ -66,14 +66,19 @@ const NavBar = () => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                <div>
-                  <span>會員</span>
-                </div>
-                <div>
-                  <span>
-                    <Link to="/login">登入 / 註冊</Link>{' '}
-                  </span>
-                </div>
+                {sessionStorage.getItem('email') ? 
+                (<>
+                  <Link to="/menber">您好，
+                  {sessionStorage.getItem('email')}</Link>
+                  <Link to="/logout">登出</Link>
+                  </>
+                ) : (
+                  <div>
+                    <span>
+                      <Link to="/login">登入 / 註冊</Link>
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </Nav>
@@ -86,7 +91,7 @@ const NavBar = () => {
                   key={li.id}
                   className="nav-item"
                 >
-                  <NavIcon item={li.icon} style={'nav'} />
+                  <NavIcon item={li.icon} style="nav" />
                   <span className="navon">{li.item}</span>
                 </Nav.Link>
               )

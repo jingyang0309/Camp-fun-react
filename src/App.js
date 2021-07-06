@@ -20,6 +20,7 @@ import AdressBookAdd from './Pages/Menber/AdressBookAdd'
 import AdressBook from './Pages/Menber/AdressBook'
 import Coupon from './Pages/Menber/Coupon'
 import Session from './Pages/Menber/Session'
+import Logout from './Pages/Menber/Logout'
 
 function App() {
   const [loggin, setLoggin] = useState(false)
@@ -29,7 +30,7 @@ function App() {
         {/* 上選單 */}
         <NavBar />
         <Switch>
-          <Route path="/menber/sesson">
+          <Route path="/menber/session">
             <Session
               loggin={loggin}
               setLoggin={setLoggin}
@@ -64,6 +65,9 @@ function App() {
           </Route>
           <Route path="/menber">
             <Menber loggin={loggin} setLoggin={setLoggin} />
+          </Route>
+          <Route path="/logout">
+            <Logout loggin={loggin} setLoggin={setLoggin} />
           </Route>
           <Route path="/login">
             <Login loggin={loggin} setLoggin={setLoggin} />

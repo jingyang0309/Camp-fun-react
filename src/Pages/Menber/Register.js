@@ -28,6 +28,10 @@ function Register(props) {
       error = true
       errorMessages.push('帳號為必填欄位')
     }
+    if (!password) {
+      error = true
+      errorMessages.push('密碼為必填欄位')
+    }
     // 測試用兩個，正式發表須改為8個字
     if (email.length < 2) {
       error = true

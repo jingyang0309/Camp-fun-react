@@ -5,30 +5,93 @@ function Login(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function memberLogin() {
-    const newData = { email, password }
+  // 切換顯示項目
+  const [signmode, setSignmode] = useState(false)
+  // 下個導向的網站
+  // 改成已登入就導向回首頁
+  // const nextpage = <Redirect to="/signup" />
 
-    // 連接網址
-    const url = 'http://localhost:4000/member/login'
+  // 錯誤警告
+  const [error, setError] = useState(false)
+  const [errorMessages, setErrorMessages] = useState([])
 
-    // fetch上傳資料
-    const request = new Request(url, {
-      method: 'POST',
-      body: JSON.stringify(newData),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }),
-    })
+  function memberLogin() {
+    let error = false
+    let errorMessages = []
 
-    console.log(newData)
-    console.log(JSON.stringify(newData))
+    if (!email) {
+      error = true
+      errorMessages.push('帳號為必填欄位')
+    }
+    if (!password) {
+      error = true
+      errorMessages.push('密碼為必填欄位')
+    }
+    // 測試用兩個，正式發表須改為8個字
+    if (email.length < 2) {
+      error = true
+      errorMessages.push('帳號至少要2個字')
+    }
+    if (password.length < 2) {
+      error = true
+      errorMessages.push('密碼至少要2個字')
+    }
 
-    const response = await fetch(request)
-    const data = await response.json()
+    if (error) {
+      setError(error)
+      setErrorMessages(errorMessages)
+      return
+    }
 
-    console.log('伺服器回傳的json資料', data)
-    // 要等驗証過，再設定資料(簡單的直接設定)
+    const userData = {
+      email,
+      password,
+    }
+    console.log(userData)
+
+    sendRegisterDataToServer(userData, () =>
+      // 改成SWEETALTER
+      alert('註冊成功，請重新登入')
+    )
+
+    async function sendRegisterDataToServer(
+      userData
+      // callback
+    ) {
+      // 注意資料格式要設定，伺服器才知道是json格式
+      const request = new Request(
+        'http://localhost:4000/member/login',
+        {
+          method: 'POST',
+          body: JSON.stringify(userData),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+
+      const response = await fetch(request)
+      // console.log('response :', response)
+      const data = await response.json()
+      console.log(data)
+
+      if (data.success === true) {
+        // 登入成功這裡導向首頁
+        console.log(data.message.text)
+        sessionStorage.setItem(
+          'mId',
+          JSON.stringify(data.mId)
+        )
+        sessionStorage.setItem('email', data.email)
+      } else {
+        // 帳號或密碼錯誤的錯誤處理
+        console.log(data.message.text)
+      }
+      // callback()
+      return data
+    }
+    setSignmode(true)
   }
 
   //直接在一段x秒關掉指示器
@@ -44,6 +107,29 @@ function Login(props) {
           <div className="mb-login-logo">
             <img src="./image/menber-logo.png" alt="logo" />
           </div>
+          {error ? (
+            <>
+              <div
+                className="alert alert-danger"
+                role="alert"
+              >
+                {errorMessages.map((v, i) => (
+                  <p key={i}>{v}</p>
+                ))}
+              </div>
+            </>
+          ) : (
+            ''
+          )}
+          {sessionStorage.getItem('mId')
+            ? 'session存的ID : ' +
+              sessionStorage.getItem('mId')
+            : ''}
+            <br/>
+          {sessionStorage.getItem('email')
+            ?'session存的email : ' +
+              sessionStorage.getItem('email')
+            : ''}
           <form
             action="./"
             method="POST"
