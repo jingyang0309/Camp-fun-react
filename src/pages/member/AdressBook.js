@@ -18,7 +18,7 @@ function AdressBook(props) {
           <li>我的優惠卷</li>
         </ul>
 
-        <div className="menber-imformation">
+        <div className="Member-imformation">
           <h2>我的地址簿</h2>
         </div>
       </div>

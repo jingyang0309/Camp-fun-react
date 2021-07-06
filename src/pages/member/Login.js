@@ -96,7 +96,7 @@ function Login(props) {
 
   //直接在一段x秒關掉指示器
   // setTimeout(() => {
-  //   props.history.push('/menber')
+  //   props.history.push('/Member')
   // }, 500)
 
   return (
@@ -105,7 +105,7 @@ function Login(props) {
         <div className="mb-login-background"></div>
         <div className="mb-login-form">
           <div className="mb-login-logo">
-            <img src="./image/menber-logo.png" alt="logo" />
+            <img src="./image/Member-logo.png" alt="logo" />
           </div>
           {error ? (
             <>
@@ -125,9 +125,9 @@ function Login(props) {
             ? 'session存的ID : ' +
               sessionStorage.getItem('mId')
             : ''}
-            <br/>
+          <br />
           {sessionStorage.getItem('email')
-            ?'session存的email : ' +
+            ? 'session存的email : ' +
               sessionStorage.getItem('email')
             : ''}
           <form

@@ -66,11 +66,13 @@ const NavBar = () => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {sessionStorage.getItem('email') ? 
-                (<>
-                  <Link to="/menber">您好，
-                  {sessionStorage.getItem('email')}</Link>
-                  <Link to="/logout">登出</Link>
+                {sessionStorage.getItem('email') ? (
+                  <>
+                    <Link to="/member">
+                      您好，
+                      {sessionStorage.getItem('email')}
+                    </Link>
+                    <Link to="/logout">登出</Link>
                   </>
                 ) : (
                   <div>

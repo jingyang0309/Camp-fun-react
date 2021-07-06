@@ -92,7 +92,7 @@ function Register(props) {
         <div className="mb-login-background"></div>
         <div className="mb-login-form">
           <div className="mb-login-logo">
-            <img src="./image/menber-logo.png" alt="logo" />
+            <img src="./image/Member-logo.png" alt="logo" />
           </div>
           {error ? (
             <>

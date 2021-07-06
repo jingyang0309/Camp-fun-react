@@ -19,7 +19,7 @@ function AdressBookAdd(props) {
             <li>我的優惠卷</li>
           </ul>
 
-          <div className="menber-imformation">
+          <div className="Member-imformation">
             <h2>新增收件地址</h2>
           </div>
         </div>

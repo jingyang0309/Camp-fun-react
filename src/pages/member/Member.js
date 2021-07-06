@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import MbAside from '../../components/MbAside'
 
-function Menber(props) {
+function Member(props) {
   return (
     <>
       <div className="d-flex mb-content mx-auto">
@@ -26,11 +26,11 @@ function Menber(props) {
           <div className="d-flex mb-imformation-content align-items-center mb-5">
             <div className="mb-card">
               <img
-                src="../image/menber-card.jpg"
+                src="../image/Member-card.jpg"
                 alt="123"
               />
             </div>
-            <div className="menber-level-content">
+            <div className="Member-level-content">
               <p>您的會員卡等級: 銅牌</p>
               <p>會員卡有效期限: 終身永久</p>
               <p>累計消費金額: NT$ 0</p>
@@ -57,4 +57,4 @@ function Menber(props) {
   )
 }
 
-export default withRouter(Menber)
+export default withRouter(Member)

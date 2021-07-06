@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import MbAside from '../../components/MbAside'
 
-function MenberProfile(props) {
+function MemberProfile(props) {
   return (
     <>
       <div className="d-flex mb-content mx-auto ">
@@ -75,4 +75,4 @@ function MenberProfile(props) {
   )
 }
 
-export default withRouter(MenberProfile)
+export default withRouter(MemberProfile)
