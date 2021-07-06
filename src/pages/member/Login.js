@@ -7,12 +7,12 @@ function Login(props) {
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState(false)
 
-
+  // 頁面input紀錄的資料
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // 切換顯示項目
-  const [signmode, setSignmode] = useState(false)
+  // 切換顯示項目(可能不使用)
+  // const [signmode, setSignmode] = useState(false)
   // 下個導向的網站
   // 改成已登入就導向回首頁
   // const nextpage = <Redirect to="/signup" />
@@ -57,7 +57,7 @@ function Login(props) {
 
     sendLoginDataToServer(userData, () =>
       // 改成SWEETALTER
-      alert('登入成功')
+      alert('登入成功，即將回到首頁')
     )
 
     async function sendLoginDataToServer(
@@ -100,20 +100,17 @@ function Login(props) {
       callback()
       return data
     }
-    setSignmode(true)
+    //直接在一段x秒關掉指示器
+    setTimeout(() => {
+      props.history.push('/')
+    }, 500)
   }
 
   // 生命週期傳到Navbar
   useEffect(() => {
-    console.log('更新後的值',loginAuth)
-    console.log('更新後的值',auth)
     setAuth(loginAuth)
   }, [loginAuth])
 
-  //直接在一段x秒關掉指示器
-  // setTimeout(() => {
-  //   props.history.push('/Member')
-  // }, 500)
 
   return (
     <>
@@ -137,7 +134,7 @@ function Login(props) {
           ) : (
             ''
           )}
-          {sessionStorage.getItem('mId')
+          {/* {sessionStorage.getItem('mId')
             ? 'session存的ID : ' +
               sessionStorage.getItem('mId')
             : ''}
@@ -145,7 +142,7 @@ function Login(props) {
           {sessionStorage.getItem('email')
             ? 'session存的email : ' +
               sessionStorage.getItem('email')
-            : ''}
+            : ''} */}
           <form
             action="./"
             method="POST"

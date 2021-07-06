@@ -11,6 +11,11 @@ import { Link } from 'react-router-dom'
 const NavBar = (props) => {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
+
+  if (!!sessionStorage.getItem('mId')) {
+    setAuth(true)
+  }
+
   //設定Navbar-icon
   // 可以在各自的link中修改
   const items = [

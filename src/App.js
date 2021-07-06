@@ -1,21 +1,20 @@
 //套件
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom'
 
+// Navbar跟Footer
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
+
 // 頁面元件
 import Login from './pages/member/Login'
 import Register from './pages/member/Register'
 import Member from './pages/member/Member'
 import MemberProfile from './pages/member/MemberProfile'
-
-// Navbar跟Footer
-import NavBar from './components/NavBar'
-import Footer from './components/Footer'
-// import MainContent from './components/MainContent'
 import AdressBookAdd from './pages/member/AdressBookAdd'
 import AdressBook from './pages/member/AdressBook'
 import Coupon from './pages/member/Coupon'
@@ -25,13 +24,14 @@ import Logout from './pages/member/Logout'
 function App() {
   const [auth, setAuth] = useState(false)
 
-  
+
   return (
     <>
       <Router>
         {/* 上選單 */}
-        <NavBar auth={auth} setAuth={setAuth}/>
+        <NavBar auth={auth} setAuth={setAuth} />
         <Switch>
+          {/* 會員中心 */}
           <Route path="/member/session">
             <Session auth={auth} setAuth={setAuth} />
           </Route>
@@ -62,6 +62,7 @@ function App() {
           <Route path="/register">
             <Register auth={auth} setAuth={setAuth} />
           </Route>
+          {/* 會員中心 */}
         </Switch>
         {/* 頁尾 */}
         {/* <h1>這是min版footer</h1>
