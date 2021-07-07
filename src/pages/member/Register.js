@@ -94,21 +94,6 @@ function Register(props) {
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />
           </div>
-          {error ? (
-            <>
-              <div
-                className="alert alert-danger"
-                role="alert"
-              >
-                {errorMessages.map((v, i) => (
-                  <p key={i}>{v}</p>
-                ))}
-              </div>
-            </>
-          ) : (
-            ''
-          )}
-
           <form
             method="POST"
             onClick={(e) => {
@@ -141,7 +126,7 @@ function Register(props) {
               required
             />
             <br />
-            <label> 確認您的密碼:</label>
+            <label> 確認密碼:</label>
             <input
               type="password"
               placeholder="請再次輸入登入密碼"
@@ -153,6 +138,20 @@ function Register(props) {
               required
             />
             <br />
+            {error ? (
+              <>
+                <div
+                  className="alert alert-danger"
+                  role="alert"
+                >
+                  {errorMessages.map((v, i) => (
+                    <p key={i}>{v}</p>
+                  ))}
+                </div>
+              </>
+            ) : (
+              ''
+            )}
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={() => {

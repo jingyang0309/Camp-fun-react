@@ -148,20 +148,6 @@ function Login(props) {
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />
           </div>
-          {error ? (
-            <>
-              <div
-                className="alert alert-danger"
-                role="alert"
-              >
-                {errorMessages.map((v, i) => (
-                  <p key={i}>{v}</p>
-                ))}
-              </div>
-            </>
-          ) : (
-            ''
-          )}
           {/* {sessionStorage.getItem('mId')
             ? 'session存的ID : ' +
               sessionStorage.getItem('mId')
@@ -204,6 +190,20 @@ function Login(props) {
               required
             />
             <br />
+            {error ? (
+              <>
+                <div
+                  className="alert alert-danger"
+                  role="alert"
+                >
+                  {errorMessages.map((v, i) => (
+                    <p key={i}>{v}</p>
+                  ))}
+                </div>
+              </>
+            ) : (
+              ''
+            )}
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={() => {

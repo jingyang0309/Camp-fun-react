@@ -11,6 +11,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
 // 頁面元件
+// 會員中心
 import Login from './pages/member/Login'
 import Register from './pages/member/Register'
 import Member from './pages/member/Member'
@@ -20,10 +21,12 @@ import AdressBook from './pages/member/AdressBook'
 import Coupon from './pages/member/Coupon'
 import Session from './pages/member/Session'
 import Logout from './pages/member/Logout'
+// 首頁+商品
+import Index from './pages/Index'
+import Product from './pages/Product'
 
 // 測試區之後可刪除
 // import Avatar from './pages/member/Avatar'
-
 
 function App() {
   const [auth, setAuth] = useState(false)
@@ -65,7 +68,14 @@ function App() {
           <Route path="/register">
             <Register auth={auth} setAuth={setAuth} />
           </Route>
-          {/* 會員中心 */}
+          {/* 商品 */}
+          <Route exact path="/product">
+            <Product />
+          </Route>
+          {/* 首頁 */}
+          <Route exact path="/">
+            <Index />
+          </Route>
         </Switch>
         {/* 頁尾 */}
         {/* <h1>這是min版footer</h1>

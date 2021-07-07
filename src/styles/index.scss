@@ -18,46 +18,41 @@
   text-align: center;
   text-shadow: 1px 1px 3px #044412;
 }
-
 .in-search {
   display: flex;
+  // flex-wrap: nowrap;
   flex-direction: column;
   height: 500px;
 }
-
 .in-datepicker {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 .in-form {
   height: 60px;
 }
-
 .in-form input {
   background-color: #ffffff;
   border-radius: 8px;
   border: 0;
   box-sizing: border-box;
-  color: #0e0e0e;
+  color: rgb(14, 14, 14);
   font-size: 18px;
   height: 60px;
   width: 100%;
   outline: 0;
   padding: 0 10px;
   margin: 0 10px;
-  box-shadow: inset 3px 3px 5px 0 rgba(143, 143, 143, 0.096), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 3px 3px 5px 0 rgba(143, 143, 143, 0.096),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 }
-
 .in-search {
   width: 100%;
 }
-
 .in-m6 {
   width: 48%;
 }
-
 .in-actbtn {
   background-color: #ffbb00;
   color: #fff;
@@ -70,12 +65,10 @@
   width: 120px;
   margin: 10px auto;
 }
-
 .in-discover {
   height: 100vh;
-  background-image: url("http://localhost:3000/images/index/2s.jpg");
+  background-image: url('http://localhost:3000/images/index/2s.jpg');
 }
-
 .in-sec-contant {
   width: 100%;
 }
@@ -91,4 +84,3 @@
   background-color: #e3e5e2;
   height: 150vh;
 }
-/*# sourceMappingURL=index.css.map */

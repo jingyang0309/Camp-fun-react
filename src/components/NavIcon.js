@@ -2,12 +2,11 @@ import React from 'react'
 //svg icon切換用
 function NavIcon(props) {
   let icon = ''
-  let style = ''
   let className = ''
-
+  let style = {}
   //1.設定icon大小和形式
   //如果想要自定義一個大小請增加一個case並用css方式製作
-  switch (props.style) {
+  switch (props.iconstyle) {
     case 'nav':
       className = 'navico'
       style = {
@@ -48,10 +47,7 @@ function NavIcon(props) {
       break
     case 'event':
       icon = (
-        <g
-          id="event-outline-alerted_1_"
-          transform="translate(647 23.747)"
-        >
+        <g id="event-outline-alerted_1_" transform="translate(647 23.747)">
           <path
             id="Path_316_1_"
             d="M-630.5-5c0.6,0,1-0.4,1-1v-6c0-0.6-0.4-1-1-1c-0.6,0-1,0.4-1,1v6
@@ -81,22 +77,13 @@ function NavIcon(props) {
       break
     case 'idea':
       icon = (
-        <g
-          id="smile-plus_1_"
-          transform="translate(776.875 2804.124)"
-        >
+        <g id="smile-plus_1_" transform="translate(776.875 2804.124)">
           <path
             id="Path_335_1_"
             d="M-739.5-2791.5v-4.5h-2.3v4.5h-4.5v2.3h4.5v4.5h2.3v-4.5h4.5v-2.3H-739.5z"
           />
-          <path
-            id="Path_336_1_"
-            d="M-762-2779.1h2.8v2.8h-2.8V-2779.1z"
-          />
-          <path
-            id="Path_337_1_"
-            d="M-752.4-2779.1h2.8v2.8h-2.8V-2779.1z"
-          />
+          <path id="Path_336_1_" d="M-762-2779.1h2.8v2.8h-2.8V-2779.1z" />
+          <path id="Path_337_1_" d="M-752.4-2779.1h2.8v2.8h-2.8V-2779.1z" />
           <path
             id="Path_338_1_"
             d="M-755.6-2770.1h-0.5c-1.8,0-3.5-1.1-4.2-2.8h-2.4l0.3,0.8c1,2.6,3.5,4.3,6.3,4.2
