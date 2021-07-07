@@ -12,9 +12,6 @@ $mb-button-hight: 74px;
 $mb-avatar-button-width: 126px;
 $mb-avatar-button-hight: 49px;
 
-
-
-
 // Import Bootstrap and its default variables
 // @import '~bootstrap/scss/bootstrap.scss';
 
@@ -119,16 +116,19 @@ img {
 /*       會員中心      */
 
 .mb-content {
-  width: 1200px;
   display: flex;
+  justify-content: space-around;
+  width: 80vw;
+  max-width: 1500px;
+  border: 1px solid #aaa;
 }
 
 .mb-aside-menu {
   border: 1px solid #000;
-  width: 200px;
   margin-top: 100px;
   text-align: center;
-  flex: 0 0 20%;
+  flex: 0 0 15%;
+  height: 604px;
 }
 
 .mb-aside-menu li {
@@ -301,9 +301,9 @@ img {
 
 .mb-right-content {
   margin-top: 100px;
-  flex: 0 0 70%;
-  max-width: 800px;
-  
+  flex: 0 0 80%;
+  max-width: 1000px;
+  margin-left: 100px;
 }
 
 .mb-right-content-bcg {
@@ -333,11 +333,20 @@ img {
   border: 0px;
 }
 
-
-.mb-input-box input{
-  width: 400px;
+.mb-input-box,
+.mb-redio-box {
+  width: 43%;
+  height: 70px;
+  margin: 10px 0px;
+  // border: 1px solid #aaf;
 }
 
-.mb-input-box label{
+.mb-input-box input {
+  width: 400px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.mb-input-box label {
   display: block;
 }

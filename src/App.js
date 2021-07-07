@@ -24,7 +24,6 @@ import Logout from './pages/member/Logout'
 function App() {
   const [auth, setAuth] = useState(false)
 
-
   return (
     <>
       <Router>

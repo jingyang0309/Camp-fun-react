@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
-import MbAside from '../../components/MbAside'
+import MbAside from '../../components/member/MbAside'
 
 function Member(props) {
   return (

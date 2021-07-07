@@ -126,6 +126,7 @@ function Register(props) {
                 setEmail(e.target.value)
               }}
               className="mb-login-input"
+              required
             />
             <br />
             <label> 密碼:</label>
@@ -137,9 +138,10 @@ function Register(props) {
                 setPassword(e.target.value)
               }}
               className="mb-login-input"
+              required
             />
             <br />
-            <label> 密碼:</label>
+            <label> 確認您的密碼:</label>
             <input
               type="password"
               placeholder="請再次輸入登入密碼"
@@ -148,6 +150,7 @@ function Register(props) {
                 setPassword2(e.target.value)
               }}
               className="mb-login-input"
+              required
             />
             <br />
             <button

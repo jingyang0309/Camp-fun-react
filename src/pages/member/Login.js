@@ -5,22 +5,52 @@ function Login(props) {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
   // 子曾切換登入狀況
-  const [loginAuth, setLoginAuth] = useState(false)
-
+  const [loginAuth, setLoginAuth] = useState('')
+  
   // 頁面input紀錄的資料
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  
   // 切換顯示項目(可能不使用)
   // const [signmode, setSignmode] = useState(false)
   // 下個導向的網站
   // 改成已登入就導向回首頁
   // const nextpage = <Redirect to="/signup" />
-
+  
+  // 檢查是否登入，已登入就送回首頁
+  function checkLoggin() {
+    if (!!sessionStorage.getItem('mId')) {
+      return props.history.push('/')
+    }
+  }
+  checkLoggin()
   // 錯誤警告
   const [error, setError] = useState(false)
   const [errorMessages, setErrorMessages] = useState([])
 
+
+  // 檢查是否已登入
+  async function UserLogged() {
+    if (!sessionStorage.getItem('mId')) {
+      return
+    }
+    // 連接的伺服器資料網址
+    const url = 'http://localhost:4000/member/checklogin'
+    let mIddata = sessionStorage.getItem('mId')
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log(data)
+  }
+  // UserLogged()
+
+  // 登入function
   function memberLogin() {
     let error = false
     let errorMessages = []
@@ -111,7 +141,6 @@ function Login(props) {
     setAuth(loginAuth)
   }, [loginAuth])
 
-
   return (
     <>
       <div className="mb-login-content">
@@ -161,6 +190,7 @@ function Login(props) {
                 setEmail(e.target.value)
               }}
               className="mb-login-input"
+              required
             />
             <br />
             <label> 密碼:</label>
@@ -172,6 +202,7 @@ function Login(props) {
                 setPassword(e.target.value)
               }}
               className="mb-login-input"
+              required
             />
             <br />
             <button
