@@ -6,9 +6,9 @@ import MbAside from '../../components/member/MbAside'
 function Member(props) {
   return (
     <>
-      <div className="d-flex mb-content mx-auto">
+      <div className="mb-content mx-auto">
         {/* 之後補做 */}
-        <div>麵包屑</div>
+        <p>麵包屑</p>
 
         {/* 側邊選單 */}
         <MbAside />

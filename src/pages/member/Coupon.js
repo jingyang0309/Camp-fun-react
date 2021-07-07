@@ -1,26 +1,23 @@
 import React from 'react'
 
+import MbAside from '../../components/member/MbAside'
+
 function Coupon(props) {
   return (
     <>
       <>
-        <div className="d-flex">
-          <ul className="list-no-style">
-            <li>Camp fun 會員中心</li>
-            <li>個人訊息</li>
-            <li>帳戶訊息</li>
-            <li>會員基本資料</li>
-            <li>我的收件地址</li>
-            <li>訂單中心</li>
-            <li>訂單詳情</li>
-            <li>租借詳情</li>
-            <li>活動查詢</li>
-            <li>其他</li>
-            <li>我的優惠卷</li>
-          </ul>
+        <div className="d-flex mb-content mx-auto ">
+          {/* 之後補做 */}
+          <div>麵包屑</div>
+          <MbAside />
 
-          <div className="Member-imformation">
+          <div
+            className="
+        mb-right-content"
+          >
             <h2>我的優惠卷</h2>
+            <hr />
+            <h2 className="text-center">優惠卷頁面</h2>
           </div>
         </div>
       </>

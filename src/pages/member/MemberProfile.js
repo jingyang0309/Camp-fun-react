@@ -206,7 +206,7 @@ function MemberProfile(props) {
               />
             </div>
           </form>
-          <button onClick={() => {}} className="my-5">
+          <button onClick={() => {}} className="my-5 mb-yellow mb-button">
             確認修改
           </button>
         </div>

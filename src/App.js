@@ -35,7 +35,7 @@ function App() {
             <Session auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/coupon">
-            <AdressBookAdd auth={auth} setAuth={setAuth} />
+            <Coupon auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/adressbookadd">
             <AdressBookAdd auth={auth} setAuth={setAuth} />
