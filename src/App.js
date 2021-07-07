@@ -22,7 +22,7 @@ import Session from './pages/member/Session'
 import Logout from './pages/member/Logout'
 
 // 測試區之後可刪除
-import Avatar from './pages/member/Avatar'
+// import Avatar from './pages/member/Avatar'
 
 
 function App() {
@@ -35,9 +35,6 @@ function App() {
         <NavBar auth={auth} setAuth={setAuth} />
         <Switch>
           {/* 會員中心 */}
-          <Route path="/member/avatar">
-            <Avatar auth={auth} setAuth={setAuth} />
-          </Route>
           <Route path="/member/session">
             <Session auth={auth} setAuth={setAuth} />
           </Route>

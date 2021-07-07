@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import MbAside from '../../components/member/MbAside'
 
 // 匯入元件
-import Avatar from './Avatar'
+import Avatar from '../../components/member/Avatar'
 
 function MemberProfile(props) {
   const formRef = useRef(null)
