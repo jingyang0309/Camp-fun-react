@@ -6,17 +6,17 @@ function Login(props) {
   const { auth, setAuth } = props
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState('')
-  
+
   // 頁面input紀錄的資料
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  
+
   // 切換顯示項目(可能不使用)
   // const [signmode, setSignmode] = useState(false)
   // 下個導向的網站
   // 改成已登入就導向回首頁
   // const nextpage = <Redirect to="/signup" />
-  
+
   // 檢查是否登入，已登入就送回首頁
   function checkLoggin() {
     if (!!sessionStorage.getItem('mId')) {
@@ -27,7 +27,6 @@ function Login(props) {
   // 錯誤警告
   const [error, setError] = useState(false)
   const [errorMessages, setErrorMessages] = useState([])
-
 
   // 檢查是否已登入
   async function UserLogged() {

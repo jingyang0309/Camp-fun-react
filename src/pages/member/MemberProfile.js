@@ -3,9 +3,11 @@ import { withRouter } from 'react-router-dom'
 
 import MbAside from '../../components/member/MbAside'
 
+// 匯入元件
+import Avatar from './Avatar'
+
 function MemberProfile(props) {
   const formRef = useRef(null)
-  const [gender, setGender] = useState('')
 
   // 定義表單有哪些欄位屬性
   const [fields, setFields] = useState({
@@ -123,20 +125,7 @@ function MemberProfile(props) {
         >
           <h2>會員基本資料</h2>
           <hr />
-          <div className="d-flex mb-5">
-            <div className="avatar200 ml-5">
-              <img
-                src="https://i.kfs.io/playlist/global/62588733v1/fit/500x500.jpg"
-                alt="123"
-              />
-            </div>
-            <button
-              className="mb-avatar-button mb-yellow mt-auto"
-              onClick={() => {}}
-            >
-              更換大頭貼
-            </button>
-          </div>
+          <Avatar />
           {/* 表單開始 */}
           <form
             name="mb-profile-form"
@@ -206,7 +195,10 @@ function MemberProfile(props) {
               />
             </div>
           </form>
-          <button onClick={() => {}} className="my-5 mb-yellow mb-button">
+          <button
+            onClick={() => {}}
+            className="my-5 mb-yellow mb-button"
+          >
             確認修改
           </button>
         </div>
