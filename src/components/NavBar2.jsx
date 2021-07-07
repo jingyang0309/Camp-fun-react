@@ -4,7 +4,7 @@ import Profile from '../images/profile.png' //profile檔案
 import { Navbar, Nav, Image } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/navnfooter.css'
-import NavIcon from './NavIcon.js' //icon SVG路徑檔案
+import NavIcon from './NavIcon.jsx' //icon SVG路徑檔案
 import { Link } from 'react-router-dom'
 
 //
@@ -25,8 +25,10 @@ const NavBar = (props) => {
     { item: '找靈感', link: '/discover', icon: 'idea' },
   ]
   //  TODO:
-  //  1.JQ 設定NAV效果
-  //  2.購物車?
+  //  1.各自連結跳頁方法(目前是href)
+  //  2.在各頁面時NAV變化
+  //  3.JQ 設定NAV效果
+  // 4.購物車?
   // href="javascript:void(0)"
   // eventKey={li.link}
 
@@ -46,11 +48,7 @@ const NavBar = (props) => {
           className="order-0"
         />
         {/* Logo */}
-        <Navbar.Brand
-          className="mx-auto order-0"
-          as={Link}
-          to="/"
-        >
+        <Navbar.Brand className="mx-auto order-0" href="/">
           <img className="nav-logo" src={MainLogo} alt="" />
         </Navbar.Brand>
         {/* 購物車Button */}
@@ -59,7 +57,7 @@ const NavBar = (props) => {
             <NavIcon
               className="cartico"
               item="cart"
-              iconstyle="navcart"
+              style="navcart"
             />
           </Nav.Item>
         </Nav>
@@ -75,7 +73,7 @@ const NavBar = (props) => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {sessionStorage.getItem('email') ? (
+                {auth ? (
                   <>
                     <Link to="/member">
                       您好，
@@ -85,9 +83,9 @@ const NavBar = (props) => {
                   </>
                 ) : (
                   <div>
-                    <Link to="/login">
-                      <span>登入 / 註冊</span>
-                    </Link>
+                    <span>
+                      <Link to="/login">登入/註冊</Link>
+                    </span>
                   </div>
                 )}
               </div>
@@ -98,12 +96,11 @@ const NavBar = (props) => {
             {items.map((li, i) => {
               return (
                 <Nav.Link
-                  as={Link}
-                  to={li.link}
+                  href={li.link}
                   key={li.id}
                   className="nav-item"
                 >
-                  <NavIcon item={li.icon} iconstyle="nav" />
+                  <NavIcon item={li.icon} style="nav" />
                   <span className="navon">{li.item}</span>
                 </Nav.Link>
               )
