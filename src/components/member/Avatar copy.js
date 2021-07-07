@@ -3,11 +3,10 @@ import $ from 'jquery'
 
 function Avatar(props) {
   const avatar = $('#avatar')
-
-  const avatarUpload = (e) => {
-    // console.log('this:' + this)
-    // console.log('e.target' + e.target) // 事件觸發的來源(最內層的元素)
-    // console.log('e.currentTarget' + e.currentTarget) //註冊事件處理器的物件
+  avatar.on('change', (e) => {
+    console.log('this:' + this)
+    console.log('e.target' + e.target) // 事件觸發的來源(最內層的元素)
+    console.log('e.currentTarget' + e.currentTarget) //註冊事件處理器的物件
     /* JQ的on(xxxx,()=>{})
         會導致this變成windows */
     const fd = new FormData(document.form1)
@@ -26,7 +25,7 @@ function Avatar(props) {
           )
         }
       })
-  }
+  })
   return (
     <>
       <div class="d-flex mb-5">
@@ -41,7 +40,6 @@ function Avatar(props) {
                 id="avatar"
                 name="avatar"
                 style={{ display: 'none' }}
-                onChange={avatarUpload}
               />
               上傳圖片
             </label>
