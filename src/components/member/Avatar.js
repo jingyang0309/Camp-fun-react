@@ -29,12 +29,12 @@ function Avatar(props) {
   })
   return (
     <>
-      <div class="d-flex mb-5">
+      <div className="d-flex mb-5">
         <div className="avatar200 ml-5">
           <img src="" alt="" id="myimg" />
         </div>
         <form name="form1">
-          <div class="form-group">
+          <div className="form-group">
             <label className="mb-avatar-button mb-yellow mt-auto d-flex align-items-center justify-content-center">
               <input
                 type="file"

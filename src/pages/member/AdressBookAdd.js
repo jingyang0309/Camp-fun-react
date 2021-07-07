@@ -19,7 +19,9 @@ function AdressBookadd(props) {
             <h2>我的收件地址</h2>
             <button
               className="mb-avatar-button mb-blue mt-auto mr-5"
-              onClick={() => { props.history.push('/member/AdressBookAdd')}}
+              onClick={() => {
+                props.history.push('/member/AdressBookAdd')
+              }}
             >
               + 新增地址
             </button>
@@ -31,9 +33,7 @@ function AdressBookadd(props) {
               alt="adressBook"
             ></img>
           </div>
-          <h2 className="text-center">
-            這裡新增地址
-          </h2>
+          <h2 className="text-center">這裡新增地址</h2>
         </div>
       </div>
     </>

@@ -39,13 +39,21 @@ const NavBar = (props) => {
           className="order-0"
         />
         {/* Logo */}
-        <Navbar.Brand className="mx-auto order-0" as={Link} to="/">
+        <Navbar.Brand
+          className="mx-auto order-0"
+          as={Link}
+          to="/"
+        >
           <img className="nav-logo" src={MainLogo} alt="" />
         </Navbar.Brand>
         {/* 購物車Button */}
         <Nav className="order-lg-3 order-0">
           <Nav.Item className="nav-cart">
-            <NavIcon className="cartico" item="cart" iconstyle="navcart" />
+            <NavIcon
+              className="cartico"
+              item="cart"
+              iconstyle="navcart"
+            />
           </Nav.Item>
         </Nav>
         {/* 開合選單 */}
