@@ -22,7 +22,7 @@ const NavBar = (props) => {
     { item: '找用品', link: '/product', icon: 'product' },
     { item: '找場地', link: '/place', icon: 'event' },
     { item: '找活動', link: '/event', icon: 'place' },
-    { item: '找靈感', link: '/discover', icon: 'idea' },
+    { item: '找靈感', link: '/member/session', icon: 'idea' },
   ]
   //  TODO:
   //  1.JQ 設定NAV效果

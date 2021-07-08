@@ -223,7 +223,7 @@ function NavIcon(props) {
     default:
       break
   }
-  console.log(icon)
+  // console.log(icon)
   return (
     <>
       <svg

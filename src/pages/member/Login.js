@@ -22,6 +22,7 @@ function Login(props) {
     if (!!sessionStorage.getItem('mId')) {
       return props.history.push('/')
     }
+    return
   }
   checkLoggin()
   // 錯誤警告
@@ -38,6 +39,7 @@ function Login(props) {
     let mIddata = sessionStorage.getItem('mId')
     const request = new Request(url, {
       method: 'GET',
+      credentials: 'include',
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
