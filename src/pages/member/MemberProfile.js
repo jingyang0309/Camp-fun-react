@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import moment from 'moment'
 
 import MbAside from '../../components/member/MbAside'
 
@@ -8,11 +9,14 @@ import Avatar from '../../components/member/Avatar'
 
 function MemberProfile(props) {
   const formRef = useRef(null)
+  const userid = props.match.params.mId
+  // console.log(userid)
 
   // 定義表單有哪些欄位屬性
   const [fields, setFields] = useState({
     fName: '',
     lName: '',
+    nickName: '',
     birth: '',
     gender: '',
     phone: '',
@@ -21,6 +25,7 @@ function MemberProfile(props) {
   const [fieldErrors, setFieldErrors] = useState({
     fName: '錯誤訊息',
     lName: '',
+    nickName: '',
     birth: '',
     gender: '',
     phone: '',
@@ -44,6 +49,38 @@ function MemberProfile(props) {
 
     setFields(updatedFields)
   }
+  // 獲取會員資料
+  async function getUserData(userid) {
+    const url =
+      'http://localhost:4000/member/userdata/' + userid
+    // `http://localhost:4000/member/${sessionStorage.getItem('mId')}`
+
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log(moment(data.birthday).format('YYYY-MM-DD'),data)
+    setFields({
+      fName: data.fName,
+      lName: data.lName,
+      nickName: data.nickName,
+      birth: moment(data.birthday).format('YYYY-MM-DD'),
+      gender: data.gender,
+      phone: data.phone,
+    })
+  }
+
+  // 生命週期套用效果
+  useEffect(() => {
+    getUserData(userid)
+  }, [])
 
   // 處理表單送出
   const handleSubmit = (e) => {
@@ -155,6 +192,17 @@ function MemberProfile(props) {
                 placeholder="請輸入您的名"
               />
             </div>
+            <div className="mb-input-box">
+              <label>暱稱</label>
+              <input
+                type="text"
+                name="nickName"
+                value={fields.nickName}
+                onChange={handleFieldChange}
+                placeholder="請輸入您的暱稱"
+              />
+            </div>
+            <div className="mb-input-box"></div>
             <div className="mb-input-box">
               <label>生日：</label>
               <input

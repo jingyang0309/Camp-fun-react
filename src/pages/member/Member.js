@@ -21,7 +21,10 @@ function Member(props) {
                 alt="123"
               />
             </div>
-            <h2>歡迎您，帳號代碼</h2>
+            <h2>
+              歡迎您，{sessionStorage.getItem('email')}
+              先生/小姐
+            </h2>
           </div>
           <div className="d-flex mb-imformation-content align-items-center mb-5">
             <div className="mb-card">

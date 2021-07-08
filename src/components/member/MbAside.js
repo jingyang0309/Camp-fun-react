@@ -1,18 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 // 會員中心側邊選單
 function MbAside(props) {
+  // 會員網址
+  let mbProfilePath = '/member/profile/'
+  mbProfilePath += sessionStorage.getItem('mId')
+
   return (
     <>
       <aside className="mb-aside-menu list-no-style ">
         <li>Camp fun 會員中心</li>
         <li>個人訊息</li>
         <li>
-          <Link to="/member">帳戶訊息</Link>
+          <Link to="/member/">帳戶訊息</Link>
         </li>
         <li>
-          <Link to="/member/profile">會員基本資料</Link>
+          <Link to="{mbProfilePath ? mbProfilePath : '/'}" onClick={(e) => { e.preventDefault()
+              props.history.push('/member/profile/' + sessionStorage.getItem('mId'))
+            }}>
+            會員基本資料
+          </Link>
         </li>
         <li>
           <Link to="/member/adressbook">我的收件地址</Link>
@@ -36,4 +44,4 @@ function MbAside(props) {
   )
 }
 
-export default MbAside
+export default withRouter(MbAside)

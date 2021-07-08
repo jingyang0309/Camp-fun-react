@@ -7,11 +7,13 @@ import secondsubtitle from '../images/2nd.png'
 import secondtitle from '../images/sec2.png'
 import { Container, Row, Col } from 'react-bootstrap'
 
+import Session from './member/Session'
 const index = () => {
   return (
     <>
       {/* TODO:導入React Datepicker */}
       <div className="in-carousel" autoPlay>
+      <Session/>
         <Carousel
           autoPlay
           showThumbs={false}

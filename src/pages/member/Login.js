@@ -30,29 +30,29 @@ function Login(props) {
   const [errorMessages, setErrorMessages] = useState([])
 
   // 檢查是否已登入
-  async function UserLogged() {
-    if (!sessionStorage.getItem('mId')) {
-      return
-    }
-    // 連接的伺服器資料網址
-    const url = 'http://localhost:4000/member/checklogin'
-    let mIddata = sessionStorage.getItem('mId')
-    const request = new Request(url, {
-      method: 'GET',
-      credentials: 'include',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log(data)
-  }
+  // async function UserLogged() {
+  //   if (!sessionStorage.getItem('mId')) {
+  //     return
+  //   }
+  //   // 連接的伺服器資料網址
+  //   const url = 'http://localhost:4000/member/checklogin'
+  //   const request = new Request(url, {
+  //     method: 'GET',
+  //     credentials: 'include',
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'appliaction/json',
+  //     }),
+  //   })
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+  //   console.log(data)
+  // }
   // UserLogged()
 
   // 登入function
-  function memberLogin() {
+  function memberLogin(e) {
+    e.preventDefault()
     let error = false
     let errorMessages = []
 
@@ -128,13 +128,13 @@ function Login(props) {
         // 帳號或密碼錯誤的錯誤處理
         console.log(data.message.text)
       }
-      callback()
+      // callback()
       return data
     }
-    //直接在一段x秒關掉指示器
-    setTimeout(() => {
-      props.history.push('/')
-    }, 500)
+    // 直接在一段x秒關掉指示器
+    // setTimeout(() => {
+    //   props.history.push('/')
+    // }, 500)
   }
 
   // 生命週期傳到Navbar
@@ -160,11 +160,11 @@ function Login(props) {
               sessionStorage.getItem('email')
             : ''} */}
           <form
-            action="./"
-            method="POST"
-            onClick={(e) => {
-              e.preventDefault()
-            }}
+            // action="./"
+            // method="POST"
+            // onClick={(e) => {
+            //   e.preventDefault()
+            // }}
             className="text-center"
           >
             <label> 帳號: </label>
@@ -208,8 +208,8 @@ function Login(props) {
             )}
             <button
               className="mb-button mb-brown mb-login-button mt-5"
-              onClick={() => {
-                memberLogin()
+              onClick={(e) => {
+                memberLogin(e)
               }}
             >
               登入

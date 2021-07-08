@@ -53,7 +53,7 @@ function App() {
           <Route path="/member/coupon">
             <Coupon auth={auth} setAuth={setAuth} />
           </Route>
-          <Route path="/member/profile">
+          <Route path="/member/profile/:mId">
             <MemberProfile auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member">
