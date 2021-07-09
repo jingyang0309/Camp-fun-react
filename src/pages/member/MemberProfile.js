@@ -17,29 +17,29 @@ function MemberProfile(props) {
     fName: '',
     lName: '',
     nickName: '',
-    birth: '',
+    birthday: '',
     gender: '',
     phone: '',
   })
   // 定義表單有哪些欄位屬性
   const [fieldErrors, setFieldErrors] = useState({
-    fName: '錯誤訊息',
+    fName: '',
     lName: '',
     nickName: '',
-    birth: '',
+    birthday: '',
     gender: '',
     phone: '',
   })
 
   // 處理每個欄位的變動
   const handleFieldChange = (e) => {
-    console.log(
-      '訊息',
-      e.target.name,
-      e.target.type,
-      e.target.value,
-      e.target.checked
-    )
+    // console.log(
+    //   '訊息',
+    //   e.target.name,
+    //   e.target.type,
+    //   e.target.value,
+    //   e.target.checked
+    // )
 
     // 更新輸入欄位
     const updatedFields = {
@@ -53,7 +53,6 @@ function MemberProfile(props) {
   async function getUserData(userid) {
     const url =
       'http://localhost:4000/member/userdata/' + userid
-    // `http://localhost:4000/member/${sessionStorage.getItem('mId')}`
 
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
@@ -66,12 +65,12 @@ function MemberProfile(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log(moment(data.birthday).format('YYYY-MM-DD'),data)
+    console.log(data)
     setFields({
       fName: data.fName,
       lName: data.lName,
       nickName: data.nickName,
-      birth: moment(data.birthday).format('YYYY-MM-DD'),
+      birthday: moment(data.birthday).format('YYYY-MM-DD'),
       gender: data.gender,
       phone: data.phone,
     })
@@ -83,29 +82,44 @@ function MemberProfile(props) {
   }, [])
 
   // 處理表單送出
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     // 阻擋表單送出預設行為
     e.preventDefault()
 
     // FormData
-    const data = new FormData(e.target)
+    // const data = new FormData(e.target)
 
-    console.log(data.get('email'))
-    console.log(data.get('password'))
+    const url =
+      'http://localhost:4000/member/userdata/' + userid
 
-    // 利用狀態來得到輸入的值
-    console.log(fields)
+    // 注意資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'PUT',
+      body: JSON.stringify(fields),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
 
-    // ex. 送出表單資料到伺服器
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // })
+    console.log(JSON.stringify(fields))
+
+    const response = await fetch(request)
+    const dataPut = await response.json()
+
+    console.log('伺服器回傳的json資料', dataPut)
+    // 要等驗証過，再設定資料(簡單的直接設定)
+
+    //直接在一段x秒關掉指示器
+    // setTimeout(() => {
+    //   alert('儲存完成')
+    //   props.history.push('/member/')
+    // }, 1000)
   }
 
   // form有更動會觸發這個函式
   const handleChange = (e) => {
-    console.log('更動欄位：', e.target.name)
+    // console.log('更動欄位：', e.target.name)
 
     // 該欄位錯誤訊息清空
     const updatedFieldErrors = {
@@ -147,6 +161,13 @@ function MemberProfile(props) {
         }
       }
     }
+
+    const updatedFieldErrors = {
+      ...fieldErrors,
+      ...errorMsg,
+    }
+
+    setFieldErrors(updatedFieldErrors)
   }
 
   return (
@@ -180,7 +201,14 @@ function MemberProfile(props) {
                 value={fields.fName}
                 onChange={handleFieldChange}
                 placeholder="請輸入您的姓"
+                title="自訂訊息：格式錯誤"
+                required
               />
+              {fieldErrors.fName && (
+                <small className="text-danger form-text">
+                  {fieldErrors.fName}
+                </small>
+              )}
             </div>
             <div className="mb-input-box">
               <label>名：</label>
@@ -190,7 +218,13 @@ function MemberProfile(props) {
                 value={fields.lName}
                 onChange={handleFieldChange}
                 placeholder="請輸入您的名"
+                required
               />
+              {fieldErrors.lName && (
+                <small className="text-danger form-text">
+                  {fieldErrors.lName}
+                </small>
+              )}
             </div>
             <div className="mb-input-box">
               <label>暱稱</label>
@@ -201,14 +235,19 @@ function MemberProfile(props) {
                 onChange={handleFieldChange}
                 placeholder="請輸入您的暱稱"
               />
+              {fieldErrors.lName && (
+                <small className="text-danger form-text">
+                  {fieldErrors.lName}
+                </small>
+              )}
             </div>
             <div className="mb-input-box"></div>
             <div className="mb-input-box">
               <label>生日：</label>
               <input
                 type="date"
-                value={fields.birth}
-                name="birth"
+                value={fields.birthday}
+                name="birthday"
                 onChange={handleFieldChange}
               ></input>
             </div>
@@ -242,13 +281,13 @@ function MemberProfile(props) {
                 onChange={handleFieldChange}
               />
             </div>
+            <button
+              type="submit"
+              className="my-5 mb-yellow mb-button"
+            >
+              確認修改
+            </button>
           </form>
-          <button
-            onClick={() => {}}
-            className="my-5 mb-yellow mb-button"
-          >
-            確認修改
-          </button>
         </div>
       </div>
     </>
