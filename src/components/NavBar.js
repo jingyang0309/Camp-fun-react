@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLogo from '../images/logo.svg' //logo檔案
 import Profile from '../images/profile.png' //profile檔案
 import { Navbar, Nav, Image } from 'react-bootstrap'
@@ -6,15 +6,58 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/navnfooter.css'
 import NavIcon from './NavIcon.js' //icon SVG路徑檔案
 import { Link } from 'react-router-dom'
+import { data } from 'jquery'
 
 //
 const NavBar = (props) => {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
+  const [data ,setData] = useState()
 
-  if (!!sessionStorage.getItem('mId')) {
-    setAuth(true)
+  // 大頭貼預設路徑
+  const avatarPath = 'http://localhost:4000/img/'
+
+
+  // if (!!localStorage.getItem('token')) {
+  //   verifyMemberData()
+  //   // setAuth(data)
+  // } else {
+  //   setAuth(false)
+  // }
+
+  useEffect(() => {
+    if (!!localStorage.getItem('token')) {
+      verifyMemberData()
+      // setAuth(data)
+    } else {
+      setAuth(false)
+    }
+  }, [])
+
+  async function verifyMemberData() {
+    const token = localStorage.getItem('token')
+
+    fetch('http://localhost:4000/member/verifyMemberData', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((r) => r.json())
+      .then( (result) => {
+        console.log(result.bearer)
+        setData({
+          email: result.bearer.email,
+          nickname: result.bearer.nickname,
+          avatar: result.bearer.avatar,
+        })
+        console.log(data)
+      })
   }
+
+  useEffect(() => {
+    setAuth(data)
+  }, [data])
 
   //設定Navbar-icon
   // 可以在各自的link中修改
@@ -22,7 +65,11 @@ const NavBar = (props) => {
     { item: '找用品', link: '/product', icon: 'product' },
     { item: '找場地', link: '/place', icon: 'event' },
     { item: '找活動', link: '/event', icon: 'place' },
-    { item: '找靈感', link: '/member/session', icon: 'idea' },
+    {
+      item: '找靈感',
+      link: '/member/session',
+      icon: 'idea',
+    },
   ]
   //  TODO:
   //  1.JQ 設定NAV效果
@@ -53,6 +100,20 @@ const NavBar = (props) => {
         >
           <img className="nav-logo" src={MainLogo} alt="" />
         </Navbar.Brand>
+        <button
+          onClick={() => {
+            console.log(auth)
+          }}
+        >
+          test
+        </button>
+        <button
+          onClick={() => {
+            verifyMemberData()
+          }}
+        >
+          verifyMemberData
+        </button>
         {/* 購物車Button */}
         <Nav className="order-lg-3 order-0">
           <Nav.Item className="nav-cart">
@@ -70,16 +131,25 @@ const NavBar = (props) => {
             <div className="member">
               <Image
                 className="nav-profile-default"
-                src={Profile}
+                src={
+                  auth
+                    ? auth.avatar
+                      ? avatarPath + auth.avatar
+                      : Profile
+                    : Profile
+                }
                 alt=""
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {sessionStorage.getItem('email') ? (
+                {auth ? (
                   <>
                     <Link to="/member">
                       您好，
-                      {sessionStorage.getItem('email')}
+                      {/* {verifyMemberData()} */}
+                      {auth.nickname
+                        ? auth.nickname
+                        : auth.email}
                     </Link>
                     <Link to="/logout">登出</Link>
                   </>

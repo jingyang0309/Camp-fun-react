@@ -16,7 +16,7 @@ function MemberProfile(props) {
   const [fields, setFields] = useState({
     fName: '',
     lName: '',
-    nickName: '',
+    nickname: '',
     birthday: '',
     gender: '',
     phone: '',
@@ -25,7 +25,7 @@ function MemberProfile(props) {
   const [fieldErrors, setFieldErrors] = useState({
     fName: '',
     lName: '',
-    nickName: '',
+    nickname: '',
     birthday: '',
     gender: '',
     phone: '',
@@ -50,9 +50,9 @@ function MemberProfile(props) {
     setFields(updatedFields)
   }
   // 獲取會員資料
-  async function getUserData(userid) {
-    const url =
-      'http://localhost:4000/member/userdata/' + userid
+  async function getUserData() {
+    const token = localStorage.getItem('token')
+    const url = 'http://localhost:4000/member/userdata/'
 
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
@@ -60,6 +60,7 @@ function MemberProfile(props) {
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'appliaction/json',
+        Authorization: `Bearer ${token}`,
       }),
     })
 
@@ -69,7 +70,7 @@ function MemberProfile(props) {
     setFields({
       fName: data.fName,
       lName: data.lName,
-      nickName: data.nickName,
+      nickname: data.nickname,
       birthday: moment(data.birthday).format('YYYY-MM-DD'),
       gender: data.gender,
       phone: data.phone,
@@ -78,19 +79,19 @@ function MemberProfile(props) {
 
   // 生命週期套用效果
   useEffect(() => {
-    getUserData(userid)
+    getUserData()
   }, [])
 
-  // 處理表單送出
+  // 處理表單送出，更新會員資料
   const handleSubmit = async (e) => {
     // 阻擋表單送出預設行為
     e.preventDefault()
 
     // FormData
     // const data = new FormData(e.target)
+    const token = localStorage.getItem('token')
 
-    const url =
-      'http://localhost:4000/member/userdata/' + userid
+    const url = 'http://localhost:4000/member/userdata/'
 
     // 注意資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
@@ -99,6 +100,7 @@ function MemberProfile(props) {
       headers: new Headers({
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       }),
     })
 
@@ -230,8 +232,8 @@ function MemberProfile(props) {
               <label>暱稱</label>
               <input
                 type="text"
-                name="nickName"
-                value={fields.nickName}
+                name="nickname"
+                value={fields.nickname}
                 onChange={handleFieldChange}
                 placeholder="請輸入您的暱稱"
               />

@@ -30,12 +30,18 @@ import Product from './pages/Product'
 
 function App() {
   const [auth, setAuth] = useState(false)
+  const [avatar, setAvatar] = useState(false)
 
   return (
     <>
       <Router>
         {/* 上選單 */}
-        <NavBar auth={auth} setAuth={setAuth} />
+        <NavBar
+          auth={auth}
+          setAuth={setAuth}
+          avatar={avatar}
+          setAvatar={setAvatar}
+        />
         <Switch>
           {/* 會員中心 */}
           <Route path="/member/session">
@@ -53,7 +59,7 @@ function App() {
           <Route path="/member/coupon">
             <Coupon auth={auth} setAuth={setAuth} />
           </Route>
-          <Route path="/member/profile/:mId">
+          <Route path="/member/profile/">
             <MemberProfile auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member">

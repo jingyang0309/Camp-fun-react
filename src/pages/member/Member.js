@@ -15,14 +15,12 @@ function Member(props) {
 
         <div className="mb-right-content mb-right-content-bcg">
           <div className="d-flex align-items-center mb-imformation-title">
+            {/* 預設src */}
             <div className="mb-avatar-100 mx-5">
-              <img
-                src="https://i.kfs.io/playlist/global/62588733v1/fit/500x500.jpg"
-                alt="123"
-              />
+              <img src="./../images/avatar.png" alt="123" />
             </div>
             <h2>
-              歡迎您，{sessionStorage.getItem('email')}
+              歡迎您，{}
               先生/小姐
             </h2>
           </div>

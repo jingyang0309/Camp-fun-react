@@ -11,9 +11,13 @@ function Avatar(props) {
     /* JQ的on(xxxx,()=>{})
         會導致this變成windows */
     const fd = new FormData(document.form1)
-    fetch('http://localhost:4000/member/try-upload', {
-      method: 'POST',
-      body: fd,
+    const token = localStorage.getItem('token')
+    fetch('http://localhost:4000/member/avatarUpload', {
+      method: 'PUT',
+      body: fd,token,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((r) => r.json())
       .then((obj) => {
@@ -31,7 +35,7 @@ function Avatar(props) {
     <>
       <div class="d-flex mb-5">
         <div className="avatar200 ml-5">
-          <img src="" alt="" id="myimg" />
+          <img src="./../images/avatar.png" alt="" id="myimg" />
         </div>
         <form name="form1">
           <div className="form-group">

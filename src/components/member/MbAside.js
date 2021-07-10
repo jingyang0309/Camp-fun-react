@@ -4,8 +4,8 @@ import { Link, withRouter } from 'react-router-dom'
 // 會員中心側邊選單
 function MbAside(props) {
   // 會員網址
-  let mbProfilePath = '/member/profile/'
-  mbProfilePath += sessionStorage.getItem('mId')
+  // let mbProfilePath = '/member/profile/'
+  // mbProfilePath += sessionStorage.getItem('mId')
 
   return (
     <>
@@ -16,11 +16,12 @@ function MbAside(props) {
           <Link to="/member/">帳戶訊息</Link>
         </li>
         <li>
-          <Link to="{mbProfilePath ? mbProfilePath : '/'}" onClick={(e) => { e.preventDefault()
+          {/* <Link to="{mbProfilePath ? mbProfilePath : '/'}" onClick={(e) => { e.preventDefault()
               props.history.push('/member/profile/' + sessionStorage.getItem('mId'))
             }}>
             會員基本資料
-          </Link>
+          </Link> */}
+          <Link to="/member/profile">會員基本資料</Link>
         </li>
         <li>
           <Link to="/member/adressbook">我的收件地址</Link>

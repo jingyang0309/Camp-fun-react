@@ -19,7 +19,7 @@ function Login(props) {
 
   // 檢查是否登入，已登入就送回首頁
   function checkLoggin() {
-    if (!!sessionStorage.getItem('mId')) {
+    if (!!localStorage.getItem('token')) {
       return props.history.push('/')
     }
     return
@@ -28,27 +28,6 @@ function Login(props) {
   // 錯誤警告
   const [error, setError] = useState(false)
   const [errorMessages, setErrorMessages] = useState([])
-
-  // 檢查是否已登入
-  // async function UserLogged() {
-  //   if (!sessionStorage.getItem('mId')) {
-  //     return
-  //   }
-  //   // 連接的伺服器資料網址
-  //   const url = 'http://localhost:4000/member/checklogin'
-  //   const request = new Request(url, {
-  //     method: 'GET',
-  //     credentials: 'include',
-  //     headers: new Headers({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'appliaction/json',
-  //     }),
-  //   })
-  //   const response = await fetch(request)
-  //   const data = await response.json()
-  //   console.log(data)
-  // }
-  // UserLogged()
 
   // 登入function
   function memberLogin(e) {
@@ -116,16 +95,17 @@ function Login(props) {
       if (data.success === true) {
         // 登入成功這裡導向首頁
         console.log(data.message.text)
-        sessionStorage.setItem(
-          'mId',
-          JSON.stringify(data.mId)
-        )
-        sessionStorage.setItem('email', data.email)
+        // 加密資料存進localStorage
+        localStorage.setItem('token', data.token)
 
         // 子曾的登入狀況切換成true
-        setLoginAuth(true)
+        setLoginAuth({
+          email: data.information.email,
+          nickname: data.information.nickname,
+          avatar: data.information.avatar,
+        })
       } else {
-        // 帳號或密碼錯誤的錯誤處理
+        // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
       }
       // callback()

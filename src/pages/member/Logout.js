@@ -8,7 +8,7 @@ function Logout(props) {
   const [loginAuth, setLoginAuth] = useState(false)
 
   async function UserLogout() {
-    if (!sessionStorage.mId) {
+    if (!localStorage.token) {
       return props.history.push('/')
     }
     // 連接的伺服器資料網址
@@ -24,8 +24,9 @@ function Logout(props) {
     const response = await fetch(request)
     const data = await response.json()
     console.log(data)
-    sessionStorage.clear()
+    localStorage.clear()
     setAuth(loginAuth)
+
     props.history.push('/')
   }
   UserLogout()
