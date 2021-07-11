@@ -60,35 +60,40 @@ function AddressBook(props) {
 
   // 找到地址資料顯示這個
   const addressmode = usersaddress.map((v, i) => (
-    <div className="d-flex">
-      <div className="member-address-content-title">
-        <p>城市</p>
-        <p>區/鄉</p>
-        <p>收件地址</p>
+    <>
+      <div className="d-flex mt-5 align-items-center">
+        <div className="member-address-content-title">
+          <p>城市</p>
+          <p>區/鄉</p>
+          <p>收件地址</p>
+        </div>
+        <div className="member-address-content-data ml-5">
+          <p>{countries[usersaddress[i].country]}</p>
+          <p>
+            {
+              townships[usersaddress[i].country][
+                usersaddress[i].township
+              ]
+            }
+          </p>
+          <p>{usersaddress[i].naa}</p>
+        </div>
+        <div className="member-address-content-button ml-auto">
+          <button
+            className="mb-button mb-red-orange mb-address-button-margin d-block"
+            onClick={() => {
+              console.log(usersaddress[i].addressId)
+            }}
+          >
+            刪除
+          </button>
+          <button className="mb-button mb-yellow d-block mt-2">
+            編輯
+          </button>
+        </div>
       </div>
-      <div className="member-address-content-data">
-        <p>{countries[usersaddress[i].country]}</p>
-        <p>
-          {
-            townships[usersaddress[i].country][
-              usersaddress[i].township
-            ]
-          }
-        </p>
-        <p>{usersaddress[i].naa}</p>
-      </div>
-      <div className="member-address-content-button">
-        <button
-          onClick={() => {
-            console.log(usersaddress[0].country)
-          }}
-        >
-          刪除
-        </button>
-        <br />
-        <button>編輯</button>
-      </div>
-    </div>
+      <hr />
+    </>
   ))
 
   return (
@@ -114,7 +119,7 @@ function AddressBook(props) {
             </button>
           </div>
           <hr />
-          <div className="member-address-content ">
+          <div className="mb-address-content">
             {/* {noaddressmode} */}
             {addressmode}
           </div>

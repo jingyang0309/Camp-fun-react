@@ -56,8 +56,8 @@ function Member(props) {
             <div className="mb-avatar-100 mx-5">
               <img
                 src={
-                  (auth.avatar)
-                    ? (avatarPath +auth.avatar)
+                  auth.avatar
+                    ? avatarPath + auth.avatar
                     : './../images/avatar.png'
                 }
                 alt="123"
@@ -65,12 +65,10 @@ function Member(props) {
             </div>
             <h2>
               歡迎您，
-              {auth.nickname
-                ? auth.nickname
-                : auth.email}
+              {auth.nickname ? auth.nickname : auth.email}
               先生/小姐
             </h2>
-            <button
+            {/* <button
               onClick={() => {
                 console.log(auth.avatar)
               }}
@@ -83,7 +81,7 @@ function Member(props) {
               }}
             >
               memberData
-            </button>
+            </button> */}
           </div>
           <div className="d-flex mb-imformation-content align-items-center mb-5">
             <div className="mb-card">

@@ -256,6 +256,10 @@ $mb-avatar-button-hight: 49px;
   color: #fff;
   background-color: #02afc4;
 }
+.mb-red-orange {
+  color: #fff;
+  background-color: #F35100;
+}
 
 .mb-text-line {
   display: flex;
@@ -369,4 +373,13 @@ $mb-avatar-button-hight: 49px;
   width: 200px;
   height: 200px;
   margin-top: 150px;
+}
+
+.mb-address-content{
+  width: 1000px;
+  // border: 1px solid #000;
+}
+
+.mb-address-button-margin{
+  margin-top: 1px;
 }
