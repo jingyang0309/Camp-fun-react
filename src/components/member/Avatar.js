@@ -3,9 +3,10 @@ import $ from 'jquery'
 
 function Avatar(props) {
   const { auth, setAuth, fields, setFields } = props
-  const [avatarFilename, setAvatarFilename] = useState(
-    auth.avatar
-  )
+  // const [avatarFilename, setAvatarFilename] = useState(
+  //   auth.avatar
+  // )
+  const [loginAuth, setLoginAuth] = useState(auth)
 
   const avatar = $('#avatar')
 
@@ -37,15 +38,19 @@ function Avatar(props) {
             'src',
             'http://localhost:4000/img/' + pic
           )
-          setAvatarFilename(pic)
+          let copyAuth = auth
+          setLoginAuth({avatar : pic, email: copyAuth.email, nickname: copyAuth.nickname})
         }
       })
   }
+  // useEffect(() => {
+  //   let object = {avatar: avatarFilename}
+  //   let copyAuth = Object.assign(auth,object)
+  //   setAuth(copyAuth)
+  // }, [avatarFilename])
   useEffect(() => {
-    let object = {avatar: avatarFilename}
-    let copyAuth = Object.assign(auth,object)
-    setAuth(copyAuth)
-  }, [avatarFilename])
+    setAuth(loginAuth)
+  }, [loginAuth])
   return (
     <>
       <button
@@ -65,7 +70,7 @@ function Avatar(props) {
 
           <img
             src={
-              fields
+              auth.avatar
                 ? avatarPath + auth.avatar
                 : './../images/avatar.png'
             }

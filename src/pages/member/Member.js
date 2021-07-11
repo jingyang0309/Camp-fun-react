@@ -67,7 +67,7 @@ function Member(props) {
               歡迎您，
               {auth.nickname
                 ? auth.nickname
-                : '消失了'}
+                : auth.email}
               先生/小姐
             </h2>
             <button

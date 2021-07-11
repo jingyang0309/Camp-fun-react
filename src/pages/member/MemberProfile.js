@@ -200,8 +200,8 @@ function MemberProfile(props) {
           <Avatar
             auth={auth}
             setAuth={setAuth}
-            fields={fields}
-            setFields={setFields}
+            // fields={fields}
+            // setFields={setFields}
           />
           {/* 表單開始 */}
           <form

@@ -16,9 +16,9 @@ function Login(props) {
 
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState(auth)
-  const [emailData, setEmailData] = useState('')
-  const [nicknameData, setNicknameData] = useState('')
-  const [avatarData, setAvatarData] = useState('')
+  // const [emailData, setEmailData] = useState('')
+  // const [nicknameData, setNicknameData] = useState('')
+  // const [avatarData, setAvatarData] = useState('')
 
   // 頁面input紀錄的資料
   const [email, setEmail] = useState('')
@@ -117,9 +117,9 @@ function Login(props) {
           nickname: data.information.nickname,
           avatar: data.information.avatar,
         })
-        setEmailData(data.information.email)
-        setNicknameData(data.information.nickname)
-        setAvatarData(data.information.avatar)
+        // setEmailData(data.information.email)
+        // setNicknameData(data.information.nickname)
+        // setAvatarData(data.information.avatar)
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
