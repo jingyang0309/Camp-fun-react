@@ -16,8 +16,8 @@ import Login from './pages/member/Login'
 import Register from './pages/member/Register'
 import Member from './pages/member/Member'
 import MemberProfile from './pages/member/MemberProfile'
-import AdressBookAdd from './pages/member/AdressBookAdd'
-import AdressBook from './pages/member/AdressBook'
+import AddressBookAdd from './pages/member/AddressBookAdd'
+import AddressBook from './pages/member/AddressBook'
 import Coupon from './pages/member/Coupon'
 import Session from './pages/member/Session'
 import Logout from './pages/member/Logout'
@@ -52,11 +52,11 @@ function App() {
           <Route path="/member/coupon">
             <Coupon auth={auth} setAuth={setAuth} />
           </Route>
-          <Route path="/member/adressbookadd">
-            <AdressBookAdd auth={auth} setAuth={setAuth} />
+          <Route path="/member/addressbookadd">
+            <AddressBookAdd auth={auth} setAuth={setAuth} />
           </Route>
-          <Route path="/member/adressbook">
-            <AdressBook auth={auth} setAuth={setAuth} />
+          <Route path="/member/addressbook">
+            <AddressBook auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/coupon">
             <Coupon auth={auth} setAuth={setAuth} />

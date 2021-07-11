@@ -137,15 +137,15 @@ function Login(props) {
   useEffect(() => {
     setAuth(loginAuth)
   }, [loginAuth])
-  useEffect(() => {
-    setUserEmail(emailData)
-  }, [emailData])
-  useEffect(() => {
-    setUserNickname(nicknameData)
-  }, [nicknameData])
-  useEffect(() => {
-    setUserAvatar(avatarData)
-  }, [avatarData])
+  // useEffect(() => {
+  //   setUserEmail(emailData)
+  // }, [emailData])
+  // useEffect(() => {
+  //   setUserNickname(nicknameData)
+  // }, [nicknameData])
+  // useEffect(() => {
+  //   setUserAvatar(avatarData)
+  // }, [avatarData])
 
   return (
     <>
