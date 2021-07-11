@@ -117,7 +117,7 @@ function MemberProfile(props) {
     setLoginAuth({
       email: dataPut.email,
       nickname: dataPut.nickname,
-      avatar: dataPut.avatar,
+      avatar: auth.avatar,
     })
     // 要等驗証過，再設定資料(簡單的直接設定)
 

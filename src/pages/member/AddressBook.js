@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import MbAside from '../../components/member/MbAside'
@@ -10,28 +10,42 @@ import {
 } from '../../data/townships'
 
 function AddressBook(props) {
-  const [usersaddress, setUsersaddress] = useState()
+  const [usersaddress, setUsersaddress] = useState([
+    {
+      country: '1',
+      township: '1',
+      naa: '1',
+    },
+  ])
+  // const [resultData, setResultData] = useState()
   const [displayMode, setDisplayMode] = useState()
-  // // 取得該會員的地址信息
-  // async function getUseraddress() {
-  //   const token = localStorage.getItem('token')
-  //   const url = 'http://localhost:4000/member/address/'
 
-  //   // 注意header資料格式要設定，伺服器才知道是json格式
-  //   const request = new Request(url, {
-  //     method: 'GET',
-  //     headers: new Headers({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'appliaction/json',
-  //       Authorization: `Bearer ${token}`,
-  //     }),
-  //   })
+  // 取得該會員的所有地址信息
+  async function getUseraddress() {
+    const token = localStorage.getItem('token')
+    const url = 'http://localhost:4000/member/addressbook/'
 
-  //   const response = await fetch(request)
-  //   const data = await response.json()
-  //   console.log(data)
-  // }
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    })
 
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log(data)
+    if (data.length) setUsersaddress(data)
+  }
+
+  useEffect(() => {
+    getUseraddress()
+  }, [])
+
+  // 無地址資料顯示這個
   const noAddressmode = (
     <>
       <div className="mb-addressBook-icon mx-auto ">
@@ -43,6 +57,40 @@ function AddressBook(props) {
       <h2 className="text-center">收件地址空空如也...</h2>
     </>
   )
+
+  // 找到地址資料顯示這個
+  const addressmode = usersaddress.map((v, i) => (
+    <div className="d-flex">
+      <div className="member-address-content-title">
+        <p>城市</p>
+        <p>區/鄉</p>
+        <p>收件地址</p>
+      </div>
+      <div className="member-address-content-data">
+        <p>{countries[usersaddress[i].country]}</p>
+        <p>
+          {
+            townships[usersaddress[i].country][
+              usersaddress[i].township
+            ]
+          }
+        </p>
+        <p>{usersaddress[i].naa}</p>
+      </div>
+      <div className="member-address-content-button">
+        <button
+          onClick={() => {
+            console.log(usersaddress[0].country)
+          }}
+        >
+          刪除
+        </button>
+        <br />
+        <button>編輯</button>
+      </div>
+    </div>
+  ))
+
   return (
     <>
       <div className="d-flex mb-content mx-auto ">
@@ -66,24 +114,10 @@ function AddressBook(props) {
             </button>
           </div>
           <hr />
-          <div className="member-address-content d-flex">
-            <div className="member-address-content-title">
-              <p>城市</p>
-              <p>區/鄉</p>
-              <p>收件地址</p>
-            </div>
-            <div className="member-address-content-data">
-              <p>{countries[0]}</p>
-              <p>{townships[0][0]}</p>
-              <p>{}</p>
-            </div>
-            <div className="member-address-content-button">
-              <button>刪除</button>
-              <br />
-              <button>編輯</button>
-            </div>
+          <div className="member-address-content ">
+            {/* {noaddressmode} */}
+            {addressmode}
           </div>
-          {/* {noaddressmode} */}
         </div>
       </div>
     </>

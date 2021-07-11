@@ -137,15 +137,7 @@ function Login(props) {
   useEffect(() => {
     setAuth(loginAuth)
   }, [loginAuth])
-  // useEffect(() => {
-  //   setUserEmail(emailData)
-  // }, [emailData])
-  // useEffect(() => {
-  //   setUserNickname(nicknameData)
-  // }, [nicknameData])
-  // useEffect(() => {
-  //   setUserAvatar(avatarData)
-  // }, [avatarData])
+
 
   return (
     <>
@@ -155,15 +147,6 @@ function Login(props) {
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />
           </div>
-          {/* {sessionStorage.getItem('mId')
-            ? 'session存的ID : ' +
-              sessionStorage.getItem('mId')
-            : ''}
-          <br />
-          {sessionStorage.getItem('email')
-            ? 'session存的email : ' +
-              sessionStorage.getItem('email')
-            : ''} */}
           <form
             // action="./"
             // method="POST"
