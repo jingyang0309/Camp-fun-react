@@ -8,9 +8,10 @@ import MbAside from '../../components/member/MbAside'
 import Avatar from '../../components/member/Avatar'
 
 function MemberProfile(props) {
+  const { auth, setAuth } = props
+  const [loginAuth, setLoginAuth] = useState(auth)
+
   const formRef = useRef(null)
-  const userid = props.match.params.mId
-  // console.log(userid)
 
   // 定義表單有哪些欄位屬性
   const [fields, setFields] = useState({
@@ -20,6 +21,7 @@ function MemberProfile(props) {
     birthday: '',
     gender: '',
     phone: '',
+    avatar: '',
   })
   // 定義表單有哪些欄位屬性
   const [fieldErrors, setFieldErrors] = useState({
@@ -49,6 +51,7 @@ function MemberProfile(props) {
 
     setFields(updatedFields)
   }
+
   // 獲取會員資料
   async function getUserData() {
     const token = localStorage.getItem('token')
@@ -74,6 +77,7 @@ function MemberProfile(props) {
       birthday: moment(data.birthday).format('YYYY-MM-DD'),
       gender: data.gender,
       phone: data.phone,
+      avatar: data.avatar,
     })
   }
 
@@ -110,6 +114,11 @@ function MemberProfile(props) {
     const dataPut = await response.json()
 
     console.log('伺服器回傳的json資料', dataPut)
+    setLoginAuth({
+      email: dataPut.email,
+      nickname: dataPut.nickname,
+      avatar: dataPut.avatar,
+    })
     // 要等驗証過，再設定資料(簡單的直接設定)
 
     //直接在一段x秒關掉指示器
@@ -118,6 +127,9 @@ function MemberProfile(props) {
     //   props.history.push('/member/')
     // }, 1000)
   }
+  useEffect(() => {
+    setAuth(loginAuth)
+  }, [loginAuth])
 
   // form有更動會觸發這個函式
   const handleChange = (e) => {
@@ -185,7 +197,12 @@ function MemberProfile(props) {
         >
           <h2>會員基本資料</h2>
           <hr />
-          <Avatar />
+          <Avatar
+            auth={auth}
+            setAuth={setAuth}
+            fields={fields}
+            setFields={setFields}
+          />
           {/* 表單開始 */}
           <form
             name="mb-profile-form"

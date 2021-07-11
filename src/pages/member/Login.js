@@ -3,9 +3,22 @@ import { withRouter } from 'react-router-dom'
 
 function Login(props) {
   // 上層傳來的登入狀況
-  const { auth, setAuth } = props
+  const {
+    auth,
+    setAuth,
+    userEmail,
+    setUserEmail,
+    userAvatar,
+    setUserAvatar,
+    userNickname,
+    setUserNickname,
+  } = props
+
   // 子曾切換登入狀況
-  const [loginAuth, setLoginAuth] = useState('')
+  const [loginAuth, setLoginAuth] = useState(auth)
+  const [emailData, setEmailData] = useState('')
+  const [nicknameData, setNicknameData] = useState('')
+  const [avatarData, setAvatarData] = useState('')
 
   // 頁面input紀錄的資料
   const [email, setEmail] = useState('')
@@ -98,12 +111,15 @@ function Login(props) {
         // 加密資料存進localStorage
         localStorage.setItem('token', data.token)
 
-        // 子曾的登入狀況切換成true
+        // 子曾的登入狀況寫入資料
         setLoginAuth({
           email: data.information.email,
           nickname: data.information.nickname,
           avatar: data.information.avatar,
         })
+        setEmailData(data.information.email)
+        setNicknameData(data.information.nickname)
+        setAvatarData(data.information.avatar)
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
@@ -121,6 +137,15 @@ function Login(props) {
   useEffect(() => {
     setAuth(loginAuth)
   }, [loginAuth])
+  useEffect(() => {
+    setUserEmail(emailData)
+  }, [emailData])
+  useEffect(() => {
+    setUserNickname(nicknameData)
+  }, [nicknameData])
+  useEffect(() => {
+    setUserAvatar(avatarData)
+  }, [avatarData])
 
   return (
     <>

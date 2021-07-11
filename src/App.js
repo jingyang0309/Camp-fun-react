@@ -29,19 +29,21 @@ import Product from './pages/Product'
 // import Avatar from './pages/member/Avatar'
 
 function App() {
-  const [auth, setAuth] = useState(false)
-  const [avatar, setAvatar] = useState(false)
+  const [auth, setAuth] = useState({
+    auth: false,
+    email: '',
+    nickname: '',
+    avatar: '',
+  })
+  const [userEmail, setUserEmail] = useState('')
+  const [userNickname, setUserNickname] = useState('')
+  const [userAvatar, setUserAvatar] = useState('')
 
   return (
     <>
       <Router>
         {/* 上選單 */}
-        <NavBar
-          auth={auth}
-          setAuth={setAuth}
-          avatar={avatar}
-          setAvatar={setAvatar}
-        />
+        <NavBar auth={auth} setAuth={setAuth} />
         <Switch>
           {/* 會員中心 */}
           <Route path="/member/session">
@@ -59,7 +61,7 @@ function App() {
           <Route path="/member/coupon">
             <Coupon auth={auth} setAuth={setAuth} />
           </Route>
-          <Route path="/member/profile/">
+          <Route path="/member/profile">
             <MemberProfile auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member">
@@ -69,7 +71,16 @@ function App() {
             <Logout auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/login">
-            <Login auth={auth} setAuth={setAuth} />
+            <Login
+              auth={auth}
+              setAuth={setAuth}
+              userEmail={userEmail}
+              setUserEmail={setUserEmail}
+              userAvatar={userAvatar}
+              setUserAvatar={setUserAvatar}
+              userNickname={userNickname}
+              setUserNickname={setUserNickname}
+            />
           </Route>
           <Route path="/register">
             <Register auth={auth} setAuth={setAuth} />
@@ -80,7 +91,7 @@ function App() {
           </Route>
           {/* 首頁 */}
           <Route exact path="/">
-            <Index />
+            <Index auth={auth} setAuth={setAuth} />
           </Route>
         </Switch>
         {/* 頁尾 */}

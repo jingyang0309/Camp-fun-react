@@ -7,9 +7,12 @@ import secondsubtitle from '../images/2nd.png'
 import secondtitle from '../images/sec2.png'
 import { Container, Row, Col } from 'react-bootstrap'
 
-const index = () => {
+const index = (props) => {
+  const { auth, setAuth } = props
+
   return (
     <>
+    <h2>{auth.email}</h2>
       {/* TODO:導入React Datepicker */}
       <div className="in-carousel" autoPlay>
         <Carousel

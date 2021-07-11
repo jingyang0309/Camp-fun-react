@@ -1,8 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
 
 function Avatar(props) {
+  const { auth, setAuth, fields, setFields } = props
+  const [avatarFilename, setAvatarFilename] = useState(
+    auth.avatar
+  )
+
   const avatar = $('#avatar')
+
+  // 大頭貼預設路徑(前段)
+  const avatarPath = 'http://localhost:4000/img/'
 
   const avatarUpload = (e) => {
     // console.log('this:' + this)
@@ -14,7 +22,8 @@ function Avatar(props) {
     const token = localStorage.getItem('token')
     fetch('http://localhost:4000/member/avatarUpload', {
       method: 'PUT',
-      body: fd,token,
+      body: fd,
+      token,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -22,20 +31,47 @@ function Avatar(props) {
       .then((r) => r.json())
       .then((obj) => {
         console.log(obj)
-        if (obj.filename) {
-          let pic = obj.filename
+        if (obj.avatar) {
+          let pic = obj.avatar
           $('#myimg').attr(
             'src',
             'http://localhost:4000/img/' + pic
           )
+          setAvatarFilename(pic)
         }
       })
   }
+  useEffect(() => {
+    let object = {avatar: avatarFilename}
+    let copyAuth = Object.assign(auth,object)
+    setAuth(copyAuth)
+  }, [avatarFilename])
   return (
     <>
+      <button
+        onClick={() => {
+          console.log(auth)
+        }}
+      >
+        console.log(auth)
+      </button>
       <div class="d-flex mb-5">
         <div className="avatar200 ml-5">
-          <img src="./../images/avatar.png" alt="" id="myimg" />
+          {/* <img
+            src="./../images/avatar.png"
+            alt=""
+            id="myimg"
+          /> */}
+
+          <img
+            src={
+              fields
+                ? avatarPath + auth.avatar
+                : './../images/avatar.png'
+            }
+            alt="avatar"
+            id="myimg"
+          />
         </div>
         <form name="form1">
           <div className="form-group">

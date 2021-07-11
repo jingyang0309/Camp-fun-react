@@ -6,17 +6,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/navnfooter.css'
 import NavIcon from './NavIcon.js' //icon SVG路徑檔案
 import { Link } from 'react-router-dom'
-import { data } from 'jquery'
 
 //
 const NavBar = (props) => {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
-  const [data ,setData] = useState()
+  const [memberData, setMemberData] = useState(auth)
 
   // 大頭貼預設路徑
   const avatarPath = 'http://localhost:4000/img/'
-
 
   // if (!!localStorage.getItem('token')) {
   //   verifyMemberData()
@@ -26,7 +24,7 @@ const NavBar = (props) => {
   // }
 
   useEffect(() => {
-    if (!!localStorage.getItem('token')) {
+    if (!!localStorage.getItem('token') && !auth.auth) {
       verifyMemberData()
       // setAuth(data)
     } else {
@@ -44,21 +42,23 @@ const NavBar = (props) => {
       },
     })
       .then((r) => r.json())
-      .then( (result) => {
-        console.log(result.bearer)
-        setData({
-          email: result.bearer.email,
-          nickname: result.bearer.nickname,
-          avatar: result.bearer.avatar,
+      .then((data) => {
+        console.log(data.bearer)
+        setMemberData({
+          email: data.bearer.email,
+          nickname: data.bearer.nickname,
+          avatar: data.bearer.avatar,
+          from: 'navbar',
         })
-        console.log(data)
+        console.log(memberData)
       })
   }
 
   useEffect(() => {
-    setAuth(data)
-  }, [data])
+    setAuth(memberData)
+  }, [memberData])
 
+  useEffect(() => {}, [])
   //設定Navbar-icon
   // 可以在各自的link中修改
   const items = [
@@ -105,15 +105,17 @@ const NavBar = (props) => {
             console.log(auth)
           }}
         >
-          test
+          console.log(auth)
         </button>
-        <button
+        {/* {auth.avatar} */}
+        {/* {auth.avatar} */}
+        {/* <button
           onClick={() => {
             verifyMemberData()
           }}
         >
           verifyMemberData
-        </button>
+        </button> */}
         {/* 購物車Button */}
         <Nav className="order-lg-3 order-0">
           <Nav.Item className="nav-cart">
@@ -146,7 +148,6 @@ const NavBar = (props) => {
                   <>
                     <Link to="/member">
                       您好，
-                      {/* {verifyMemberData()} */}
                       {auth.nickname
                         ? auth.nickname
                         : auth.email}

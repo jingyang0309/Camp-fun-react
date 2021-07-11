@@ -1,9 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import MbAside from '../../components/member/MbAside'
 
 function Member(props) {
+  // 上層傳來的登入狀況
+  const { auth, setAuth } = props
+  const [memberData, setMemberData] = useState(auth)
+
+  // 大頭貼預設路徑(前段)
+  const avatarPath = 'http://localhost:4000/img/'
+
+  async function verifyMemberData() {
+    const token = localStorage.getItem('token')
+
+    fetch('http://localhost:4000/member/verifyMemberData', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data.bearer)
+        setMemberData({
+          email: data.bearer.email,
+          nickname: data.bearer.nickname,
+          avatar: data.bearer.avatar,
+        })
+        console.log(memberData)
+      })
+  }
+  // 生命週期套用效果
+  useEffect(() => {
+    verifyMemberData()
+  }, [])
+
+  // 設定資料
+  // useEffect(() => {
+  //   setAuth(memberData)
+  // }, [memberData])
+
   return (
     <>
       <div className="mb-content mx-auto">
@@ -17,12 +54,36 @@ function Member(props) {
           <div className="d-flex align-items-center mb-imformation-title">
             {/* 預設src */}
             <div className="mb-avatar-100 mx-5">
-              <img src="./../images/avatar.png" alt="123" />
+              <img
+                src={
+                  (auth.avatar)
+                    ? (avatarPath +auth.avatar)
+                    : './../images/avatar.png'
+                }
+                alt="123"
+              />
             </div>
             <h2>
-              歡迎您，{}
+              歡迎您，
+              {auth.nickname
+                ? auth.nickname
+                : '消失了'}
               先生/小姐
             </h2>
+            <button
+              onClick={() => {
+                console.log(auth.avatar)
+              }}
+            >
+              auth
+            </button>
+            <button
+              onClick={() => {
+                console.log(memberData)
+              }}
+            >
+              memberData
+            </button>
           </div>
           <div className="d-flex mb-imformation-content align-items-center mb-5">
             <div className="mb-card">
