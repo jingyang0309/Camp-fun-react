@@ -1,59 +1,41 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import Swal from 'sweetalert2'
 
 function Session(props) {
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            編輯收件地址
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>編輯收件地址</h4>
-          <p>
-            Cras mattis consectetur purus sit amet
-            fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    )
-  }
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // deleteUserAddress(usersaddress[i].addressId)
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
 
-  function App() {
-    const [modalShow, setModalShow] = React.useState(false)
-
-    return (
-      <>
-        <Button
-          variant="primary"
-          onClick={() => setModalShow(true)}
-        >
-          Launch vertically centered modal
-        </Button>
-
-        <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </>
-    )
-  }
+  
 
   return (
     <>
-      <App />
+      <button
+        className="mb-button mb-red-orange mb-address-button-margin d-block"
+        confirm
+        onClick={() => {
+          // console.log(usersaddress[i].addressId)
+          Swal.fire()
+        }}
+      >
+        刪除
+      </button>
     </>
   )
 }

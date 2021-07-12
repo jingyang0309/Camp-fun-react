@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom'
 import MbAside from '../../components/member/MbAside'
 // 編輯地址元件
 import AddressBookEdit from './AddressBookEdit'
-
-
+// 刪除按鈕
+import Addressdelete from './Addressdelete'
 
 import {
   countries,
@@ -43,7 +43,7 @@ function AddressBook(props) {
     const response = await fetch(request)
     const data = await response.json()
     console.log(data)
-    if (data.length){
+    if (data.length) {
       setUsersaddress(data)
       setDisplayMode(true)
     }
@@ -87,18 +87,15 @@ function AddressBook(props) {
           <p>{usersaddress[i].naa}</p>
         </div>
         <div className="member-address-content-button ml-auto">
-          {/* <button
-            className="mb-button mb-red-orange mb-address-button-margin d-block"
-            onClick={() => {
-              console.log(usersaddress[i].addressId)
-            }}
-          >
-            刪除
-          </button> */}
+          <Addressdelete
+            usersaddress={usersaddress[i].addressId}
+            usersaddressall = {usersaddress}
+            setusersaddressall = {setUsersaddress}
+          />
           {/* <button className="mb-button mb-yellow d-block mt-2">
             編輯
           </button> */}
-          <AddressBookEdit usersaddress={usersaddress[i]}/>
+          <AddressBookEdit usersaddress={usersaddress[i]} />
         </div>
       </div>
       <hr />
@@ -129,7 +126,7 @@ function AddressBook(props) {
           </div>
           <hr />
           <div className="mb-address-content">
-            {(!displayMode)?(noAddressmode):(addressmode)}
+            {!displayMode ? noAddressmode : addressmode}
           </div>
         </div>
       </div>

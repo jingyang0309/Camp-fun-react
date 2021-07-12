@@ -7,13 +7,12 @@ function EditPage(props) {
   const [modalShow, setModalShow] = React.useState(false)
   return (
     <>
-      <Button
-        variant="primary"
+      <button
         onClick={() => setModalShow(true)}
         className="mb-button mb-yellow d-block mt-2"
       >
         編輯
-      </Button>
+      </button>
 
       <MyVerticallyCenteredModal
         show={modalShow}

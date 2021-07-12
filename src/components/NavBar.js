@@ -127,6 +127,7 @@ const NavBar = (props) => {
             <div className="member">
               <Image
                 className="nav-profile-default"
+                style={{width:"50px"}}
                 src={
                   auth
                     ? auth.avatar

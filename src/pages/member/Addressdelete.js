@@ -1,0 +1,78 @@
+import React from 'react'
+import swal from 'sweetalert2'
+
+function Addressdelete(props) {
+  const {
+    usersaddress,
+    usersaddressall,
+    setusersaddressall,
+  } = props
+
+  // 彈出視窗
+  function ask(usersaddress) {
+    swal
+      .fire({
+        title: '確定刪除嗎?',
+        text: '建議您再看看是否有誤哦~',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: '我選錯了..',
+        confirmButtonText: '刪除它',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteUserAddress(usersaddress)
+          swal.fire(
+            '刪除!!',
+            '該筆地址已經消失於地球上',
+            '成功了'
+          )
+        }
+      })
+  }
+
+  // 發送要求給伺服器刪除地址
+  async function deleteUserAddress(usersaddress) {
+    const url =
+      'http://localhost:4000/member/address/' + usersaddress
+    console.log(url)
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'DELETE',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log(data)
+    if (!data.id) {
+      const newUsers = usersaddressall.filter((value, index) => {
+        return value.addressId !== usersaddress
+      })
+      setusersaddressall(newUsers)
+    }
+  }
+  return (
+    <>
+      <button
+        className="mb-button mb-red-orange mb-address-button-margin d-block"
+        confirm
+        onClick={() => {
+          // console.log(usersaddress)
+          // console.log(usersaddressall)
+          ask(usersaddress)
+          // deleteUserAddress(usersaddress)
+        }}
+      >
+        刪除
+      </button>
+    </>
+  )
+}
+
+export default Addressdelete

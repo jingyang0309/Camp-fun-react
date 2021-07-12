@@ -20,7 +20,7 @@ function MyVerticallyCenteredModal(props) {
   const [naa, setNaa] = useState(usersaddress.naa)
   const formRef = useRef(null)
 
-  // 處理表單送出，更新會員資料
+  // 處理表單送出，更新地址
   const handleSubmit = async (e) => {
     // 阻擋表單送出預設行為
     e.preventDefault()
@@ -133,7 +133,7 @@ function MyVerticallyCenteredModal(props) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <button
+          {/* <button
             type="submit"
             className="my-5 mb-yellow mb-button"
             onClick={(e) => {
@@ -141,7 +141,7 @@ function MyVerticallyCenteredModal(props) {
             }}
           >
             console.log(usersaddress)
-          </button>
+          </button> */}
           <button
             type="submit"
             className="my-5 mb-yellow mb-button"
@@ -153,7 +153,7 @@ function MyVerticallyCenteredModal(props) {
           </button>
           <button
             type="submit"
-            className="my-5 mb-yellow mb-button"
+            className="my-5 mb-yellow mb-button mb-red-orange"
             onClick={props.onHide}
           >
             放棄更改
