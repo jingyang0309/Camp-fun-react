@@ -23,7 +23,7 @@ function MemberProfile(props) {
     phone: '',
     avatar: '',
   })
-  // 定義表單有哪些欄位屬性
+  // 定義錯誤表單有哪些欄位屬性
   const [fieldErrors, setFieldErrors] = useState({
     fName: '',
     lName: '',

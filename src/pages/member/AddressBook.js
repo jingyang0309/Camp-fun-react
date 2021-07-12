@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
+// 側邊選單
 import MbAside from '../../components/member/MbAside'
+// 編輯地址元件
+import AddressBookEdit from './AddressBookEdit'
+
+
 
 import {
   countries,
@@ -12,13 +17,13 @@ import {
 function AddressBook(props) {
   const [usersaddress, setUsersaddress] = useState([
     {
-      country: '1',
-      township: '1',
-      naa: '1',
+      country: '0',
+      township: '0',
+      naa: '0',
     },
   ])
   // const [resultData, setResultData] = useState()
-  const [displayMode, setDisplayMode] = useState()
+  const [displayMode, setDisplayMode] = useState(false)
 
   // 取得該會員的所有地址信息
   async function getUseraddress() {
@@ -38,7 +43,10 @@ function AddressBook(props) {
     const response = await fetch(request)
     const data = await response.json()
     console.log(data)
-    if (data.length) setUsersaddress(data)
+    if (data.length){
+      setUsersaddress(data)
+      setDisplayMode(true)
+    }
   }
 
   useEffect(() => {
@@ -79,17 +87,18 @@ function AddressBook(props) {
           <p>{usersaddress[i].naa}</p>
         </div>
         <div className="member-address-content-button ml-auto">
-          <button
+          {/* <button
             className="mb-button mb-red-orange mb-address-button-margin d-block"
             onClick={() => {
               console.log(usersaddress[i].addressId)
             }}
           >
             刪除
-          </button>
-          <button className="mb-button mb-yellow d-block mt-2">
+          </button> */}
+          {/* <button className="mb-button mb-yellow d-block mt-2">
             編輯
-          </button>
+          </button> */}
+          <AddressBookEdit usersaddress={usersaddress[i]}/>
         </div>
       </div>
       <hr />
@@ -120,8 +129,7 @@ function AddressBook(props) {
           </div>
           <hr />
           <div className="mb-address-content">
-            {/* {noaddressmode} */}
-            {addressmode}
+            {(!displayMode)?(noAddressmode):(addressmode)}
           </div>
         </div>
       </div>

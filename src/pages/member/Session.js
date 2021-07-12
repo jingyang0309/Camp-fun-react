@@ -1,39 +1,59 @@
 import React from 'react'
+import { Button, Modal } from 'react-bootstrap'
 
 function Session(props) {
-  async function send() {
-    // fetch('http://localhost:4000/member/try-sess', {
-    //   // 設定include 才有cookie
-    //   credentials: 'include',
-    // })
-    //   .then((r) => r.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   })
-    const url = 'http://localhost:4000/member/try-sess'
-    const request = new Request(url, {
-      method: 'GET',
-      credentials: 'include',
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'appliaction/json',
-      }),
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log(data)
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            編輯收件地址
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>編輯收件地址</h4>
+          <p>
+            Cras mattis consectetur purus sit amet
+            fermentum. Cras justo odio, dapibus ac facilisis
+            in, egestas eget quam. Morbi leo risus, porta ac
+            consectetur ac, vestibulum at eros.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
+
+  function App() {
+    const [modalShow, setModalShow] = React.useState(false)
+
+    return (
+      <>
+        <Button
+          variant="primary"
+          onClick={() => setModalShow(true)}
+        >
+          Launch vertically centered modal
+        </Button>
+
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
+      </>
+    )
   }
 
   return (
     <>
-      <h1>Session</h1>
-      <button
-        onClick={() => {
-          send()
-        }}
-      >
-        send
-      </button>
+      <App />
     </>
   )
 }

@@ -30,7 +30,6 @@ import Product from './pages/Product'
 
 function App() {
   const [auth, setAuth] = useState({
-    auth: false,
     email: '',
     nickname: '',
     avatar: '',

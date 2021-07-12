@@ -16,13 +16,6 @@ const NavBar = (props) => {
   // 大頭貼預設路徑
   const avatarPath = 'http://localhost:4000/img/'
 
-  // if (!!localStorage.getItem('token')) {
-  //   verifyMemberData()
-  //   // setAuth(data)
-  // } else {
-  //   setAuth(false)
-  // }
-
   useEffect(() => {
     if (!!localStorage.getItem('token') && !auth.auth) {
       verifyMemberData()
@@ -35,7 +28,7 @@ const NavBar = (props) => {
   async function verifyMemberData() {
     const token = localStorage.getItem('token')
 
-    fetch('http://localhost:4000/member/verifyMemberData', {
+    fetch('http://localhost:4000/member/userdata/', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -43,11 +36,12 @@ const NavBar = (props) => {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log(data.bearer)
+        // console.log(data.bearer)
+        console.log(data)
         setMemberData({
-          email: data.bearer.email,
-          nickname: data.bearer.nickname,
-          avatar: data.bearer.avatar,
+          email: data.email,
+          nickname: data.nickname,
+          avatar: data.avatar,
           from: 'navbar',
         })
         console.log(memberData)
@@ -144,7 +138,15 @@ const NavBar = (props) => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {auth || auth.auth ? (
+                {!auth ? (
+                  <>
+                    <div>
+                      <Link to="/login">
+                        <span>登入 / 註冊</span>
+                      </Link>
+                    </div>
+                  </>
+                ) : (
                   <>
                     <Link to="/member">
                       您好，
@@ -153,14 +155,6 @@ const NavBar = (props) => {
                         : auth.email}
                     </Link>
                     <Link to="/logout">登出</Link>
-                  </>
-                ) : (
-                  <>
-                    <div>
-                      <Link to="/login">
-                        <span>登入 / 註冊</span>
-                      </Link>
-                    </div>
                   </>
                 )}
               </div>

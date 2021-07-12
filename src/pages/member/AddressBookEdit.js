@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { withRouter } from 'react-router-dom'
-
-import MbAside from '../../components/member/MbAside'
+import { Button, Modal } from 'react-bootstrap'
 
 import {
   countries,
@@ -9,12 +7,27 @@ import {
   postcodes,
 } from '../../data/townships'
 
-function AddressBookadd(props) {
+function AddressBookEdit(props) {
+  const { usersaddress } = props
+  const [usersaddressEdit, setUusersaddressEdit] =
+    useState(usersaddress)
+
+  // // 傳值近來 111
+  // function usersAddressToInput(params) {
+
+  // }
+
+  // useEffect(()=>{},[])
+
   // console.log(countries, townships, postcodes)
   // 記錄陣列的索引值，預設值是-1，相當於"請選擇xxx"
-  const [country, setCountry] = useState(-1)
-  const [township, setTownship] = useState(-1)
-  const [naa, setNaa] = useState('')
+  const [country, setCountry] = useState(
+    usersaddress.country
+  )
+  const [township, setTownship] = useState(
+    usersaddress.township
+  )
+  const [naa, setNaa] = useState(usersaddress.naa)
   const formRef = useRef(null)
 
   // 處理表單送出，更新會員資料
@@ -61,30 +74,18 @@ function AddressBookadd(props) {
     // }, 1000)
   }
 
-  return (
-    <>
-      <div className="d-flex mb-content mx-auto ">
-        {/* 之後補做 */}
-        <div>麵包屑</div>
-        <MbAside />
-
-        <div
-          className="
-        mb-right-content"
-        >
-          <div className="d-flex justify-content-between">
-            <h2>我的收件地址</h2>
-            <button
-              className="mb-avatar-button mb-blue mt-auto mr-5"
-              onClick={() => {
-                props.history.goBack()
-              }}
-            >
-              返回上一頁
-            </button>
-          </div>
-          <hr />
-          <p>新增地址</p>
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <div>
+          <h2>編輯收件地址</h2>
+        </div>
+        <Modal.Body>
           <form
             name="mb-profile-form"
             className="row"
@@ -125,9 +126,6 @@ function AddressBookadd(props) {
                   </option>
                 ))}
             </select>
-            {/* 如果country與township的索引值均大於-1時(也就是都有選的情況下)，呈現postcode */}
-            {/* `條件 && 呈現` 是 `if(條件){呈現}` 的簡寫法，只在React JSX中可以使用 */}
-
             <br />
             <div className="mb-input-box">
               <label>地址</label>
@@ -141,20 +139,67 @@ function AddressBookadd(props) {
                 placeholder="請輸入您的詳細地址"
               />
             </div>
-            <button
-              type="submit"
-              className="my-5 mb-yellow mb-button"
-              onClick={(e) => {
-                handleSubmit(e)
-              }}
-            >
-              確認修改
-            </button>
           </form>
-        </div>
-      </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            type="submit"
+            className="my-5 mb-yellow mb-button"
+            onClick={(e) => {
+              // console.log(usersaddressEdit)
+            }}
+          >
+            console.log(usersaddress)
+          </button>
+          <button
+            type="submit"
+            className="my-5 mb-yellow mb-button"
+            onClick={(e) => {
+              handleSubmit(e)
+            }}
+          >
+            確認修改
+          </button>
+          <button
+            type="submit"
+            className="my-5 mb-yellow mb-button"
+            onClick={props.onHide}
+          >
+            放棄更改
+          </button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
+
+  function App() {
+    const [modalShow, setModalShow] = React.useState(false)
+
+    return (
+      <>
+        <Button
+          variant="primary"
+          onClick={() => setModalShow(true)}
+          className="mb-button mb-yellow d-block mt-2"
+        >
+          編輯
+        </Button>
+
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)
+          
+          }
+        />
+      </>
+    )
+  }
+
+  return (
+    <>
+      <App />
     </>
   )
 }
 
-export default withRouter(AddressBookadd)
+export default AddressBookEdit
