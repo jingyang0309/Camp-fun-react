@@ -115,6 +115,7 @@ function MemberProfile(props) {
 
     console.log('伺服器回傳的json資料', dataPut)
     setLoginAuth({
+      login:true,
       email: dataPut.email,
       nickname: dataPut.nickname,
       avatar: auth.avatar,

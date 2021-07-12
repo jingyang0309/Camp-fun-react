@@ -5,7 +5,7 @@ function Logout(props) {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
   // 子曾切換登入狀況
-  const [loginAuth, setLoginAuth] = useState(false)
+  const [loginAuth, setLoginAuth] = useState({login:false})
 
   async function UserLogout() {
     if (!localStorage.token) {

@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 function Login(props) {
   // 上層傳來的登入狀況
-  const {
-    auth,
-    setAuth,
-    userEmail,
-    setUserEmail,
-    userAvatar,
-    setUserAvatar,
-    userNickname,
-    setUserNickname,
-  } = props
+  const { auth, setAuth } = props
 
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState(auth)
@@ -48,14 +40,6 @@ function Login(props) {
     let error = false
     let errorMessages = []
 
-    if (!email) {
-      error = true
-      errorMessages.push('帳號為必填欄位')
-    }
-    if (!password) {
-      error = true
-      errorMessages.push('密碼為必填欄位')
-    }
     // 測試用兩個，正式發表須改為8個字
     if (email.length < 2) {
       error = true
@@ -69,6 +53,9 @@ function Login(props) {
     if (error) {
       setError(error)
       setErrorMessages(errorMessages)
+      setTimeout(() => {
+        setError(false)
+      }, 1500)
       return
     }
 
@@ -114,16 +101,15 @@ function Login(props) {
 
         // 子曾的登入狀況寫入資料
         setLoginAuth({
+          login: true,
           email: data.information.email,
           nickname: data.information.nickname,
           avatar: data.information.avatar,
         })
-        // setEmailData(data.information.email)
-        // setNicknameData(data.information.nickname)
-        // setAvatarData(data.information.avatar)
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
+        nokAlter()
       }
       // callback()
       return data
@@ -139,7 +125,13 @@ function Login(props) {
     setAuth(loginAuth)
   }, [loginAuth])
 
-
+  function nokAlter() {
+    Swal.fire({
+      icon: 'error',
+      title: '登入失敗...',
+      text: '請再次確認您輸入的帳號密碼',
+    })
+  }
   return (
     <>
       <div className="mb-login-content">
@@ -183,10 +175,7 @@ function Login(props) {
             <br />
             {error ? (
               <>
-                <div
-                  className="alert alert-danger"
-                  role="alert"
-                >
+                <div className="alert-danger" role="alert">
                   {errorMessages.map((v, i) => (
                     <p key={i}>{v}</p>
                   ))}

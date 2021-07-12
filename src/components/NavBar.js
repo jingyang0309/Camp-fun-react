@@ -39,6 +39,7 @@ const NavBar = (props) => {
         // console.log(data.bearer)
         console.log(data)
         setMemberData({
+          login:true,
           email: data.email,
           nickname: data.nickname,
           avatar: data.avatar,
@@ -139,7 +140,7 @@ const NavBar = (props) => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {!auth ? (
+                { !auth.login ? (
                   <>
                     <div>
                       <Link to="/login">

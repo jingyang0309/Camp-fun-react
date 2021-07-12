@@ -39,7 +39,7 @@ function Avatar(props) {
             'http://localhost:4000/img/' + pic
           )
           let copyAuth = auth
-          setLoginAuth({avatar : pic, email: copyAuth.email, nickname: copyAuth.nickname})
+          setLoginAuth({login:true ,avatar : pic, email: copyAuth.email, nickname: copyAuth.nickname})
         }
       })
   }

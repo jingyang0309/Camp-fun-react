@@ -11,30 +11,30 @@ function Member(props) {
   // 大頭貼預設路徑(前段)
   const avatarPath = 'http://localhost:4000/img/'
 
-  async function verifyMemberData() {
-    const token = localStorage.getItem('token')
+  // async function verifyMemberData() {
+  //   const token = localStorage.getItem('token')
 
-    fetch('http://localhost:4000/member/verifyMemberData', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        console.log(data.bearer)
-        setMemberData({
-          email: data.bearer.email,
-          nickname: data.bearer.nickname,
-          avatar: data.bearer.avatar,
-        })
-        console.log(memberData)
-      })
-  }
-  // 生命週期套用效果
-  useEffect(() => {
-    verifyMemberData()
-  }, [])
+  //   fetch('http://localhost:4000/member/verifyMemberData', {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       console.log(data.bearer)
+  //       setMemberData({
+  //         email: data.bearer.email,
+  //         nickname: data.bearer.nickname,
+  //         avatar: data.bearer.avatar,
+  //       })
+  //       console.log(memberData)
+  //     })
+  // }
+  // // 生命週期套用效果
+  // useEffect(() => {
+  //   verifyMemberData()
+  // }, [])
 
   // 設定資料
   // useEffect(() => {
