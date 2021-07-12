@@ -144,7 +144,7 @@ const NavBar = (props) => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                {auth ? (
+                {auth || auth.auth ? (
                   <>
                     <Link to="/member">
                       您好，
@@ -155,11 +155,13 @@ const NavBar = (props) => {
                     <Link to="/logout">登出</Link>
                   </>
                 ) : (
-                  <div>
-                    <Link to="/login">
-                      <span>登入 / 註冊</span>
-                    </Link>
-                  </div>
+                  <>
+                    <div>
+                      <Link to="/login">
+                        <span>登入 / 註冊</span>
+                      </Link>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
