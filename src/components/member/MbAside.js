@@ -10,38 +10,51 @@ function MbAside(props) {
   return (
     <>
       <aside className="mb-aside-menu list-no-style ">
-        <li>Camp fun 會員中心</li>
+        <li>會員中心</li>
         <li>個人訊息</li>
-        <li>
-          <Link to="/member/">帳戶訊息</Link>
+        <li className="ww">
+          <Link
+            to="/member/"
+            style={{ textDecoration: 'none' ,color: "#000"}}
+            
+          >
+            帳戶訊息
+          </Link>
         </li>
-        <li>
+        <li className="ww">
           {/* <Link to="{mbProfilePath ? mbProfilePath : '/'}" onClick={(e) => { e.preventDefault()
               props.history.push('/member/profile/' + sessionStorage.getItem('mId'))
             }}>
             會員基本資料
           </Link> */}
-          <Link to="/member/profile">會員基本資料</Link>
+          <Link
+            to="/member/profile"
+            style={{ textDecoration: 'none' ,color: "#000"}}
+          >
+            會員基本資料
+          </Link>
         </li>
-        <li>
-          <Link to="/member/addressbook">我的收件地址</Link>
+        <li className="ww">
+          <Link to="/member/addressbook" style={{ textDecoration: 'none' ,color: "#000"}}>我的收件地址</Link>
         </li>
-        <li>
-          <Link to="/member/editpassword">修改登入密碼</Link>
+        <li className="ww">
+          <Link to="/member/editpassword" style={{ textDecoration: 'none' ,color: "#000"}}>
+            修改登入密碼
+          </Link>
         </li>
         <li>訂單中心</li>
-        <li>
-          <Link to="">訂單詳情</Link>
+        <li className="ww">
+          <Link to="" style={{ textDecoration: 'none' ,color: "#000"}}>訂單詳情</Link>
         </li>
-        <li>
-          <Link to="">租借詳情</Link>
+        <li className="ww">
+          <Link to="" style={{ textDecoration: 'none' ,color: "#000"}}>租借詳情</Link>
         </li>
-        <li>
-          <Link to="">活動查詢</Link>
+        <li className="ww">
+          <Link to="" style={{ textDecoration: 'none' ,color: "#000"}}>活動查詢</Link>
         </li>
         <li>其他</li>
-        <li>
-          <Link to="/member/Coupon">我的優惠卷</Link>
+        <li className="ww">
+          <Link to="/member/Coupon" style={{ textDecoration: 'none' ,color: "#000"}}>我的優惠卷</Link>
         </li>
       </aside>
     </>

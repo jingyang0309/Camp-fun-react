@@ -3,11 +3,11 @@ import { Button, Modal } from 'react-bootstrap'
 import EditPage from '../../components/member/EditPage'
 
 function AddressBookEdit(props) {
-  const { usersaddress } = props
+  const { usersaddress,setUsersaddress } = props
 
   return (
     <>
-      <EditPage usersaddress={usersaddress}/>
+      <EditPage usersaddress={usersaddress} setUsersaddress={setUsersaddress}/>
     </>
   )
 }

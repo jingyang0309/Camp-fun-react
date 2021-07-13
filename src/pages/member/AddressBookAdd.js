@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import MbAside from '../../components/member/MbAside'
+import Swal from 'sweetalert2'
 
 import {
   countries,
@@ -22,6 +23,18 @@ function AddressBookadd(props) {
     // 阻擋表單送出預設行為
     e.preventDefault()
 
+    if (country < 0) {
+      passwordErrorAlert()
+      return
+    }
+    if (township < 0) {
+      passwordErrorAlert()
+      return
+    }
+    if (!naa) {
+      passwordErrorAlert()
+      return
+    }
     // FormData
     // const data = new FormData(e.target)
     const token = localStorage.getItem('token')
@@ -51,9 +64,8 @@ function AddressBookadd(props) {
     const dataPut = await response.json()
 
     console.log('伺服器回傳的json資料', dataPut)
-
-    // 要等驗証過，再設定資料(簡單的直接設定)
-
+    okAlert()
+    props.history.push('/member/addressbook')
     //直接在一段x秒關掉指示器
     // setTimeout(() => {
     //   alert('儲存完成')
@@ -61,11 +73,26 @@ function AddressBookadd(props) {
     // }, 1000)
   }
 
+  function okAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: '新增成功',
+      text: '您的地址已經新增完成',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
+
+  function passwordErrorAlert(errorMessages) {
+    Swal.fire({
+      icon: 'error',
+      title: '挖哩勒...',
+      text: '請確認下您填寫的地址哦',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
   return (
     <>
       <div className="d-flex mb-content mx-auto ">
-        {/* 之後補做 */}
-        <div>麵包屑</div>
         <MbAside />
 
         <div
@@ -75,7 +102,7 @@ function AddressBookadd(props) {
           <div className="d-flex justify-content-between">
             <h2>我的收件地址</h2>
             <button
-              className="mb-avatar-button mb-blue mt-auto mr-5"
+              className="mb-avatar-button mb-brown mt-auto mr-5"
               onClick={() => {
                 props.history.goBack()
               }}
@@ -84,51 +111,58 @@ function AddressBookadd(props) {
             </button>
           </div>
           <hr />
-          <p>新增地址</p>
           <form
-            name="mb-profile-form"
-            className="row"
+            name="mb-profile-form d-flex justify-items-center"
+            // className="row"
             ref={formRef}
             onSubmit={(e) => {
               e.preventDefault()
             }}
           >
-            <select
-              value={country}
-              onChange={(e) => {
-                setTownship(+e.target.value)
-                // 將字串轉成數字
-                setCountry(+e.target.value)
-                // 重置township的值
-                setTownship(-1)
-              }}
-            >
-              <option value="-1">選擇縣市</option>
-              {countries.map((value, index) => (
-                <option key={index} value={index}>
-                  {value}
-                </option>
-              ))}
-            </select>
-            <select
-              value={township}
-              onChange={(e) => {
-                // 將字串轉成數字
-                setTownship(+e.target.value)
-              }}
-            >
-              <option value="-1">選擇區域</option>
-              {country > -1 &&
-                townships[country].map((value, index) => (
-                  <option key={index} value={index}>
-                    {value}
-                  </option>
-                ))}
-            </select>
-            {/* 如果country與township的索引值均大於-1時(也就是都有選的情況下)，呈現postcode */}
-            {/* `條件 && 呈現` 是 `if(條件){呈現}` 的簡寫法，只在React JSX中可以使用 */}
-
-            <br />
+            <div className="d-flex mt-5">
+              <div>
+                <label>城市</label>
+                <br />
+                <select
+                  value={country}
+                  onChange={(e) => {
+                    setTownship(+e.target.value)
+                    // 將字串轉成數字
+                    setCountry(+e.target.value)
+                    // 重置township的值
+                    setTownship(-1)
+                  }}
+                >
+                  <option value="-1">選擇縣市</option>
+                  {countries.map((value, index) => (
+                    <option key={index} value={index}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="ml-4">
+                <label>區/鄉</label>
+                <br />
+                <select
+                  value={township}
+                  onChange={(e) => {
+                    // 將字串轉成數字
+                    setTownship(+e.target.value)
+                  }}
+                >
+                  <option value="-1">選擇區域</option>
+                  {country > -1 &&
+                    townships[country].map(
+                      (value, index) => (
+                        <option key={index} value={index}>
+                          {value}
+                        </option>
+                      )
+                    )}
+                </select>
+              </div>
+            </div>
             <div className="mb-input-box">
               <label>地址</label>
               <input
@@ -141,15 +175,17 @@ function AddressBookadd(props) {
                 placeholder="請輸入您的詳細地址"
               />
             </div>
-            <button
-              type="submit"
-              className="my-5 mb-yellow mb-button"
-              onClick={(e) => {
-                handleSubmit(e)
-              }}
-            >
-              確認修改
-            </button>
+            <div>
+              <button
+                type="submit"
+                className="my-5 mb-yellow mb-button"
+                onClick={(e) => {
+                  handleSubmit(e)
+                }}
+              >
+                確認修改
+              </button>
+            </div>
           </form>
         </div>
       </div>

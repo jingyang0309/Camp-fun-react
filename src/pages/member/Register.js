@@ -19,7 +19,7 @@ function Register(props) {
     // 要上email的正規表達式
     if (password !== password2) {
       error = true
-      errorMessages.push('兩組密碼需一致')
+      errorMessages.push('兩組密碼需一致哦')
     }
     // 測試用兩個，正式發表須改為8個字
     if (email.length < 2) {
@@ -34,9 +34,11 @@ function Register(props) {
     if (error) {
       setError(error)
       setErrorMessages(errorMessages)
-      setTimeout(() => {
-        setError(false)
-      }, 1500)
+      errorAlert(errorMessages)
+
+      // setTimeout(() => {
+      //   setError(false)
+      // }, 1500)
       return
     }
 
@@ -76,8 +78,19 @@ function Register(props) {
       icon: 'success',
       title: '註冊成功!',
       text: '已跳回登入頁面，請再次登入',
+      confirmButtonColor: '#ffbb00',
     })
   }
+
+  function errorAlert(errorMessages) {
+    Swal.fire({
+      icon: 'error',
+      title: '挖哩勒...',
+      text: errorMessages,
+      confirmButtonColor: '#ffbb00',
+    })
+  }
+
   return (
     <>
       <div className="mb-login-content">
@@ -130,7 +143,7 @@ function Register(props) {
               required
             />
             <br />
-            {error ? (
+            {/* {error ? (
               <>
                 <div className="alert-danger" role="alert">
                   {errorMessages.map((v, i) => (
@@ -140,7 +153,7 @@ function Register(props) {
               </>
             ) : (
               ''
-            )}
+            )} */}
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={() => {
@@ -157,7 +170,6 @@ function Register(props) {
             >
               確認註冊
             </button>
-            {/* <button onClick={()=>{okAlter()}}>alter</button> */}
           </form>
           <div className="mb-text-line py-3">
             或者使用社群帳號登入

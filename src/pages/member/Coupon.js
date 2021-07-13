@@ -7,8 +7,6 @@ function Coupon(props) {
     <>
       <>
         <div className="d-flex mb-content mx-auto ">
-          {/* 之後補做 */}
-          <div>麵包屑</div>
           <MbAside />
 
           <div

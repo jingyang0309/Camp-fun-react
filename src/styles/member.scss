@@ -6,10 +6,10 @@ $mb-gray-bcg: #f9f9f9;
 // 現場發表
 // $mb-gray-bcg: #e4e4e4;
 
-$mb-button-width: 191px;
-$mb-button-hight: 74px;
+$mb-button-width: 120px;
+$mb-button-hight: 50px;
 
-$mb-avatar-button-width: 126px;
+$mb-avatar-button-width: 120px;
 $mb-avatar-button-hight: 49px;
 
 // Import Bootstrap and its default variables
@@ -31,6 +31,9 @@ $mb-avatar-button-hight: 49px;
 //   height: 100%;
 //   width: 100%;
 // }
+a {
+  text-decoration: none;
+}
 
 .mb-avatar-100 {
   width: 100px;
@@ -113,7 +116,7 @@ $mb-avatar-button-hight: 49px;
 .mb-button {
   width: $mb-button-width;
   height: $mb-button-hight;
-  font-size: 32px;
+  font-size: 20px;
   border-radius: 8px;
   border: 0px;
 }
@@ -136,7 +139,7 @@ $mb-avatar-button-hight: 49px;
 }
 .mb-red-orange {
   color: #fff;
-  background-color: #F35100;
+  background-color: #f35100;
 }
 
 .mb-text-line {
@@ -174,20 +177,13 @@ $mb-avatar-button-hight: 49px;
   max-width: 1200px;
 }
 
-
 .mb-aside-menu {
-  border: 1px solid #000;
+  // border: 1px solid rgb(168, 168, 168);
   margin-top: 100px;
   text-align: center;
   flex: 0 0 15%;
   height: 660px;
-}
-
-.mb-aside-menu {
-  border: 1px solid #000;
   width: 200px;
-  margin-top: 100px;
-  text-align: center;
 }
 
 .mb-aside-menu li {
@@ -201,16 +197,22 @@ $mb-avatar-button-hight: 49px;
   color: white;
 }
 .mb-aside-menu li:nth-child(2) {
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  background-color: #5e994a;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
 }
 .mb-aside-menu li:nth-child(7) {
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  background-color: #5e994a;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
 }
 .mb-aside-menu li:nth-child(11) {
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  background-color: #5e994a;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+}
+.ww:hover {
+  background-color: #cff1d5;
 }
 
 .mb-right-content {
@@ -273,11 +275,14 @@ $mb-avatar-button-hight: 49px;
   margin-top: 150px;
 }
 
-.mb-address-content{
-  width: 1000px;
+.mb-address-content {
+  width: 920px;
   // border: 1px solid #000;
 }
 
-.mb-address-button-margin{
+.mb-address-button-margin {
   margin-top: 1px;
+}
+.qq {
+  border: 1px solid #000;
 }

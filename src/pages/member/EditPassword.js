@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import moment from 'moment'
+import Swal from 'sweetalert2'
 
 import MbAside from '../../components/member/MbAside'
-
-// 匯入元件
-import Avatar from '../../components/member/Avatar'
 
 function EditPassword(props) {
   const { auth, setAuth } = props
@@ -40,10 +37,7 @@ function EditPassword(props) {
   }
 
   // 處理表單送出，更新會員資料
-  const handleSubmit = async (e) => {
-    // 阻擋表單送出預設行為
-    e.preventDefault()
-
+  const handleSubmit = async () => {
     // FormData
     // const data = new FormData(e.target)
     const token = localStorage.getItem('token')
@@ -67,6 +61,12 @@ function EditPassword(props) {
     const reportData = await response.json()
 
     console.log('伺服器回傳的json資料', reportData)
+
+    if (!reportData.email) {
+      ErrorAlert()
+    } else {
+      okAlert()
+    }
     // 要等驗証過，再設定資料(簡單的直接設定)
 
     //直接在一段x秒關掉指示器
@@ -76,11 +76,27 @@ function EditPassword(props) {
     // }, 1000)
   }
 
+  function okAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: '修改成功',
+      text: '下次請您使用新密碼登入',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
+
+  function ErrorAlert(errorMessages) {
+    Swal.fire({
+      icon: 'error',
+      title: '挖哩勒...',
+      text: '輸入錯誤哦，再檢查一下',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
+
   return (
     <>
       <div className="d-flex mb-content mx-auto ">
-        {/* 之後補做 */}
-        <div>麵包屑</div>
         <MbAside />
 
         <div
@@ -90,52 +106,55 @@ function EditPassword(props) {
           <h2>修改登入密碼</h2>
           <hr />
           {/* 表單開始 */}
-          <form
+          {/* <form
             name="mb-profile-form"
             ref={formRef}
             onSubmit={handleSubmit}
-          >
-            <div className="mb-input-box">
-              <label>舊密碼</label>
-              <input
-                type="text"
-                name="password"
-                value={fields.password}
-                onChange={handleFieldChange}
-                placeholder="請輸入您的密碼"
-                required
-              />
-            </div>
-            <div className="mb-input-box">
-              <label>新密碼</label>
-              <input
-                type="text"
-                name="newPassword"
-                value={fields.newPassword}
-                onChange={handleFieldChange}
-                placeholder="請輸入您的新密碼"
-                required
-              />
-            </div>
-            <div className="mb-input-box">
-              <label>確認新密碼</label>
-              <input
-                type="text"
-                name="newPasswordAgain"
-                value={fields.newPasswordAgain}
-                onChange={handleFieldChange}
-                value={fields.nickname}
-                placeholder="請確認您的新密碼"
-              />
-            </div>
+          > */}
+          <div className="mb-input-box">
+            <label>舊密碼</label>
+            <input
+              type="text"
+              name="password"
+              value={fields.password}
+              onChange={handleFieldChange}
+              placeholder="請輸入您的密碼"
+              required
+            />
+          </div>
+          <div className="mb-input-box">
+            <label>新密碼</label>
+            <input
+              type="text"
+              name="newPassword"
+              value={fields.newPassword}
+              onChange={handleFieldChange}
+              placeholder="請輸入您的新密碼"
+              required
+            />
+          </div>
+          <div className="mb-input-box">
+            <label>確認新密碼</label>
+            <input
+              type="text"
+              name="newPasswordAgain"
+              value={fields.newPasswordAgain}
+              onChange={handleFieldChange}
+              value={fields.nickname}
+              placeholder="請確認您的新密碼"
+            />
+          </div>
 
-            <button
-              type="submit"
-              className="my-5 mb-yellow mb-button"
-            >
-              確認修改
-            </button>
-          </form>
+          <button
+            type="submit"
+            className="my-5 mb-yellow mb-button"
+            onClick={() => {
+              handleSubmit()
+            }}
+          >
+            確認修改
+          </button>
+          {/* </form> */}
         </div>
       </div>
     </>

@@ -49,13 +49,13 @@ function Login(props) {
       error = true
       errorMessages.push('密碼至少要2個字')
     }
-
     if (error) {
       setError(error)
       setErrorMessages(errorMessages)
-      setTimeout(() => {
-        setError(false)
-      }, 1500)
+      errorAlert(errorMessages)
+      // setTimeout(() => {
+      //   setError(false)
+      // }, 1500)
       return
     }
 
@@ -66,8 +66,7 @@ function Login(props) {
     console.log(userData)
 
     sendLoginDataToServer(userData, () =>
-      // 改成SWEETALTER
-      alert('登入成功，即將回到首頁')
+      okAlert()
     )
 
     async function sendLoginDataToServer(
@@ -109,10 +108,9 @@ function Login(props) {
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
-        nokAlter()
+        passwordErrorAlert()
       }
-      // callback()
-      return data
+      callback()
     }
     // 直接在一段x秒關掉指示器
     // setTimeout(() => {
@@ -125,11 +123,29 @@ function Login(props) {
     setAuth(loginAuth)
   }, [loginAuth])
 
-  function nokAlter() {
+  function okAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: '登入成功',
+      text: '歡迎您，已回到首頁',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
+
+  function errorAlert(errorMessages) {
     Swal.fire({
       icon: 'error',
-      title: '登入失敗...',
+      title: '挖哩勒...',
+      text: errorMessages,
+      confirmButtonColor: '#ffbb00',
+    })
+  }
+  function passwordErrorAlert(errorMessages) {
+    Swal.fire({
+      icon: 'error',
+      title: '挖哩勒...',
       text: '請再次確認您輸入的帳號密碼',
+      confirmButtonColor: '#ffbb00',
     })
   }
   return (
@@ -173,7 +189,7 @@ function Login(props) {
               required
             />
             <br />
-            {error ? (
+            {/* {error ? (
               <>
                 <div className="alert-danger" role="alert">
                   {errorMessages.map((v, i) => (
@@ -183,7 +199,7 @@ function Login(props) {
               </>
             ) : (
               ''
-            )}
+            )} */}
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={(e) => {

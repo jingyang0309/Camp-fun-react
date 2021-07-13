@@ -44,9 +44,6 @@ function Member(props) {
   return (
     <>
       <div className="mb-content mx-auto">
-        {/* 之後補做 */}
-        <p>麵包屑</p>
-
         {/* 側邊選單 */}
         <MbAside />
 
@@ -66,7 +63,6 @@ function Member(props) {
             <h2>
               歡迎您，
               {auth.nickname ? auth.nickname : auth.email}
-              先生/小姐
             </h2>
             {/* <button
               onClick={() => {
@@ -99,7 +95,13 @@ function Member(props) {
           </div>
           <div className="d-flex">
             <div className="button">
-              <img src="../image/button.png" alt="" />
+              <img
+                src="../image/button.png"
+                alt=""
+                onClick={() => {
+                  props.history.push('/member/profile')
+                }}
+              />
             </div>
             <div className="button">
               <img src="../image/button2.png" alt="" />

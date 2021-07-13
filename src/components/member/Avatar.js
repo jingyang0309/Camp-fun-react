@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
+import Swal from 'sweetalert2'
 
 function Avatar(props) {
   const { auth, setAuth, fields, setFields } = props
@@ -39,7 +40,13 @@ function Avatar(props) {
             'http://localhost:4000/img/' + pic
           )
           let copyAuth = auth
-          setLoginAuth({login:true ,avatar : pic, email: copyAuth.email, nickname: copyAuth.nickname})
+          setLoginAuth({
+            login: true,
+            avatar: pic,
+            email: copyAuth.email,
+            nickname: copyAuth.nickname,
+          })
+          okAlert()
         }
       })
   }
@@ -51,15 +58,24 @@ function Avatar(props) {
   useEffect(() => {
     setAuth(loginAuth)
   }, [loginAuth])
+
+  function okAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: '更換成功',
+      text: '秀出你的大頭貼 !',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
   return (
     <>
-      <button
+      {/* <button
         onClick={() => {
           console.log(auth)
         }}
       >
         console.log(auth)
-      </button>
+      </button> */}
       <div class="d-flex mb-5">
         <div className="avatar200 ml-5">
           {/* <img

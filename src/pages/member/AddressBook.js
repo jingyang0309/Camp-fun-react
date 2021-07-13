@@ -13,8 +13,10 @@ import {
   townships,
   postcodes,
 } from '../../data/townships'
+import { array } from 'prop-types'
 
 function AddressBook(props) {
+  const [arrayNum, setArrayNum] = useState()
   const [usersaddress, setUsersaddress] = useState([
     {
       country: '0',
@@ -89,13 +91,16 @@ function AddressBook(props) {
         <div className="member-address-content-button ml-auto">
           <Addressdelete
             usersaddress={usersaddress[i].addressId}
-            usersaddressall = {usersaddress}
-            setusersaddressall = {setUsersaddress}
+            usersaddressall={usersaddress}
+            setusersaddressall={setUsersaddress}
           />
           {/* <button className="mb-button mb-yellow d-block mt-2">
             編輯
           </button> */}
-          <AddressBookEdit usersaddress={usersaddress[i]} />
+          <AddressBookEdit
+            usersaddress={usersaddress[i]}
+            setUsersaddress={setUsersaddress}
+          />
         </div>
       </div>
       <hr />
@@ -105,8 +110,6 @@ function AddressBook(props) {
   return (
     <>
       <div className="d-flex mb-content mx-auto ">
-        {/* 之後補做 */}
-        <div>麵包屑</div>
         <MbAside />
 
         <div
@@ -116,7 +119,7 @@ function AddressBook(props) {
           <div className="d-flex justify-content-between">
             <h2>我的收件地址</h2>
             <button
-              className="mb-avatar-button mb-blue mt-auto mr-5"
+              className="mb-avatar-button mb-brown mt-auto mr-5"
               onClick={() => {
                 props.history.push('/member/addressbookadd')
               }}

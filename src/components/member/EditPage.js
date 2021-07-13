@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import MyVerticallyCenteredModal from './MyVerticallyCenteredModal'
 
 function EditPage(props) {
-  const { usersaddress } = props
+  const { usersaddress, setUsersaddress } = props
   const [modalShow, setModalShow] = React.useState(false)
   return (
     <>
@@ -18,6 +18,8 @@ function EditPage(props) {
         show={modalShow}
         onHide={() => setModalShow(false)}
         usersaddress={usersaddress}
+        setModalShow={setModalShow}
+        setUsersaddress={setUsersaddress}
       />
     </>
   )

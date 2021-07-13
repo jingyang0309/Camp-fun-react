@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import {
   countries,
   townships,
   postcodes,
 } from '../../data/townships'
-
+import Swal from 'sweetalert2'
 function MyVerticallyCenteredModal(props) {
-  const { usersaddress } = props
+  const { usersaddress, setModalShow, setUsersaddress } =
+    props
   const [usersaddressEdit, setUusersaddressEdit] =
     useState(usersaddress)
 
@@ -55,16 +57,43 @@ function MyVerticallyCenteredModal(props) {
     const dataPut = await response.json()
 
     console.log('伺服器回傳的json資料', dataPut)
-
-    // 要等驗証過，再設定資料(簡單的直接設定)
-
-    //直接在一段x秒關掉指示器
-    // setTimeout(() => {
-    //   alert('儲存完成')
-    //   props.history.push('/member/')
-    // }, 1000)
+    okAlert()
+    setModalShow(false)
+    getUseraddress()
   }
 
+  // 取得該會員的所有地址信息
+  async function getUseraddress() {
+    const token = localStorage.getItem('token')
+    const url = 'http://localhost:4000/member/addressbook/'
+
+    // 注意header資料格式要設定，伺服器才知道是json格式
+    const request = new Request(url, {
+      method: 'GET',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'appliaction/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    })
+
+    const response = await fetch(request)
+    const data = await response.json()
+    console.log(data)
+    if (data.length) {
+      let newData = data
+      setUsersaddress(newData)
+    }
+  }
+
+  function okAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: '修改完成',
+      text: '您的資料已更新完成',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
   return (
     <>
       <Modal
@@ -133,15 +162,6 @@ function MyVerticallyCenteredModal(props) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          {/* <button
-            type="submit"
-            className="my-5 mb-yellow mb-button"
-            onClick={(e) => {
-              console.log(usersaddressEdit)
-            }}
-          >
-            console.log(usersaddress)
-          </button> */}
           <button
             type="submit"
             className="my-5 mb-yellow mb-button"
@@ -164,4 +184,4 @@ function MyVerticallyCenteredModal(props) {
   )
 }
 
-export default MyVerticallyCenteredModal
+export default withRouter(MyVerticallyCenteredModal)

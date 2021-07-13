@@ -16,19 +16,19 @@ function Addressdelete(props) {
         text: '建議您再看看是否有誤哦~',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#F35100',
+        cancelButtonColor: '#ffbb00',
         cancelButtonText: '我選錯了..',
         confirmButtonText: '刪除它',
       })
       .then((result) => {
         if (result.isConfirmed) {
           deleteUserAddress(usersaddress)
-          swal.fire(
-            '刪除!!',
-            '該筆地址已經消失於地球上',
-            '成功了'
-          )
+          swal.fire({
+            title: '刪除成功',
+            text: '該筆地址已經消失於地球上',
+            confirmButtonColor: '#ffbb00',
+          })
         }
       })
   }
@@ -51,9 +51,11 @@ function Addressdelete(props) {
     const data = await response.json()
     console.log(data)
     if (!data.id) {
-      const newUsers = usersaddressall.filter((value, index) => {
-        return value.addressId !== usersaddress
-      })
+      const newUsers = usersaddressall.filter(
+        (value, index) => {
+          return value.addressId !== usersaddress
+        }
+      )
       setusersaddressall(newUsers)
     }
   }

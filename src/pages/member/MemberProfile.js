@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
+import Swal from 'sweetalert2'
 
 import MbAside from '../../components/member/MbAside'
-
-// 匯入元件
 import Avatar from '../../components/member/Avatar'
 
 function MemberProfile(props) {
@@ -122,11 +121,7 @@ function MemberProfile(props) {
     })
     // 要等驗証過，再設定資料(簡單的直接設定)
 
-    //直接在一段x秒關掉指示器
-    // setTimeout(() => {
-    //   alert('儲存完成')
-    //   props.history.push('/member/')
-    // }, 1000)
+    okAlert()
   }
   useEffect(() => {
     setAuth(loginAuth)
@@ -185,11 +180,17 @@ function MemberProfile(props) {
     setFieldErrors(updatedFieldErrors)
   }
 
+  function okAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: '修改成功',
+      text: '已將您的資料修改完成囉',
+      confirmButtonColor: '#ffbb00',
+    })
+  }
   return (
     <>
       <div className="d-flex mb-content mx-auto ">
-        {/* 之後補做 */}
-        <div>麵包屑</div>
         <MbAside />
 
         <div
@@ -309,7 +310,7 @@ function MemberProfile(props) {
             </div>
             <button
               type="submit"
-              className="my-5 mb-yellow mb-button"
+              className=" mb-yellow mb-button"
             >
               確認修改
             </button>
