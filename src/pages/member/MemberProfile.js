@@ -115,7 +115,7 @@ function MemberProfile(props) {
 
     console.log('伺服器回傳的json資料', dataPut)
     setLoginAuth({
-      login:true,
+      login: true,
       email: dataPut.email,
       nickname: dataPut.nickname,
       avatar: auth.avatar,
@@ -214,7 +214,7 @@ function MemberProfile(props) {
             onInvalid={handleInvalid}
           >
             <div className="mb-input-box">
-              <label>姓：</label>
+              <label htmlFor="fName">姓：</label>
               <input
                 type="text"
                 name="fName"
@@ -222,7 +222,7 @@ function MemberProfile(props) {
                 onChange={handleFieldChange}
                 placeholder="請輸入您的姓"
                 title="自訂訊息：格式錯誤"
-                required
+                id="fName"
               />
               {fieldErrors.fName && (
                 <small className="text-danger form-text">
@@ -231,14 +231,14 @@ function MemberProfile(props) {
               )}
             </div>
             <div className="mb-input-box">
-              <label>名：</label>
+              <label htmlFor="text">名：</label>
               <input
                 type="text"
+                id="text"
                 name="lName"
                 value={fields.lName}
                 onChange={handleFieldChange}
                 placeholder="請輸入您的名"
-                required
               />
               {fieldErrors.lName && (
                 <small className="text-danger form-text">
@@ -247,8 +247,9 @@ function MemberProfile(props) {
               )}
             </div>
             <div className="mb-input-box">
-              <label>暱稱</label>
+              <label htmlFor="nickname">暱稱</label>
               <input
+                id="nickname"
                 type="text"
                 name="nickname"
                 value={fields.nickname}
@@ -263,8 +264,9 @@ function MemberProfile(props) {
             </div>
             <div className="mb-input-box"></div>
             <div className="mb-input-box">
-              <label>生日：</label>
+              <label htmlFor="birthday">生日：</label>
               <input
+                id="birthday"
                 type="date"
                 value={fields.birthday}
                 name="birthday"
@@ -272,29 +274,33 @@ function MemberProfile(props) {
               ></input>
             </div>
             <div className="mb-redio-box">
-              <label className="">性別：</label>
+              <label>性別：</label>
               <br />
               <input
+                id="men"
                 type="radio"
                 value="男"
                 name="gender"
                 checked={fields.gender === '男'}
                 onChange={handleFieldChange}
               />
-              男生
+              <label htmlFor="men">男生</label>
+
               <input
+                id="woman"
                 type="radio"
                 value="女"
                 name="gender"
                 checked={fields.gender === '女'}
                 onChange={handleFieldChange}
               />
-              女生
+              <label htmlFor="woman">女生</label>
             </div>
 
             <div className="mb-input-box">
-              <label>手機號碼：</label>
+              <label htmlFor="phone">手機號碼：</label>
               <input
+                id="phone"
                 type="text"
                 value={fields.phone}
                 name="phone"

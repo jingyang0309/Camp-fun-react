@@ -21,6 +21,7 @@ import AddressBook from './pages/member/AddressBook'
 import Coupon from './pages/member/Coupon'
 import Session from './pages/member/Session'
 import Logout from './pages/member/Logout'
+import EditPassword from './pages/member/EditPassword'
 // 首頁+商品
 import Index from './pages/Index'
 import Product from './pages/Product'
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route path="/member/addressbookadd">
             <AddressBookAdd auth={auth} setAuth={setAuth} />
+          </Route>
+          <Route path="/member/editpassword">
+            <EditPassword auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/addressbook">
             <AddressBook auth={auth} setAuth={setAuth} />

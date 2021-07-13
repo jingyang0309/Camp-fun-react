@@ -26,6 +26,9 @@ function MbAside(props) {
         <li>
           <Link to="/member/addressbook">我的收件地址</Link>
         </li>
+        <li>
+          <Link to="/member/editpassword">修改登入密碼</Link>
+        </li>
         <li>訂單中心</li>
         <li>
           <Link to="">訂單詳情</Link>

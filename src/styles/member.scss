@@ -44,129 +44,7 @@ $mb-avatar-button-hight: 49px;
   height: 100%;
 }
 
-.list-no-style {
-  list-style-type: none;
-}
-
-/*      登入頁面       */
-.mb-login-content {
-  display: flex;
-}
-.mb-login-background {
-  height: 90vh;
-  width: 50%;
-  background: url('./../images/Sing-in-logo.png') no-repeat
-    10% 100%;
-  background-size: 200%;
-}
-
-.mb-login-form {
-  margin: 0px auto;
-}
-
-.mb-login-logo {
-  width: 400px;
-  margin: 0px auto;
-  margin-top: 150px;
-  margin-bottom: 100px;
-}
-
-.mb-login-input {
-  width: 400px;
-  height: 50px;
-  border-radius: 4px;
-  margin-bottom: 18px;
-  margin-left: 30px;
-  border: 1px solid rgb(116, 116, 116);
-}
-
-.mb-login-button {
-  margin-right: 25px;
-}
-
-.mb-brown {
-  color: #fff;
-  background-color: #e18e12;
-}
-
-.mb-yellow {
-  color: #fff;
-  background-color: #ffbb00;
-}
-
-.mb-text-line {
-  display: flex;
-  align-items: center;
-}
-.mb-text-line::before {
-  content: '';
-  display: block;
-  //  width: 100px;
-  border-top: 1px solid #777;
-  flex: 1 1 0;
-}
-.mb-text-line::after {
-  content: '';
-  //  width: 100px;
-  border-top: 1px solid #777;
-  flex: 1 1 0;
-}
-
-.mb-login-icon {
-  width: 70px;
-  height: 70px;
-}
-.mb-login-icon img {
-  width: 100%;
-  height: 100%;
-}
-
-/*       會員中心      */
-
-.mb-content {
-  display: flex;
-  justify-content: space-around;
-  width: 80vw;
-  max-width: 1200px;
-}
-.mb-aside-menu {
-  border: 1px solid #000;
-  margin-top: 100px;
-  text-align: center;
-  flex: 0 0 15%;
-  height: 604px;
-}
-
-.mb-aside-menu li {
-  padding: 15px 0px;
-  display: block;
-}
-
-.mb-aside-menu li:nth-child(1) {
-  width: 100%;
-  background-color: #145041;
-  color: white;
-}
-.mb-aside-menu li:nth-child(2) {
-  border-bottom: 1px solid #000;
-}
-.mb-aside-menu li:nth-child(6) {
-  border-bottom: 1px solid #000;
-}
 @import '~bootstrap/scss/bootstrap.scss';
-
-// 其它要導入覆蓋掉原本的預設bootstrap樣式要放在這下面
-// main > .container {
-//   padding: 60px 15px 0;
-// }
-
-// .footer {
-//     background-color: #f5f5f5;
-// }
-
-// .color-black{
-//   color: #000;
-// }
 .avatar200 {
   width: 200px;
   height: 200px;
@@ -283,8 +161,27 @@ $mb-avatar-button-hight: 49px;
   width: 70px;
   height: 70px;
 }
-
+.mb-login-icon img {
+  width: 100%;
+  height: 100%;
+}
 /*----------------會員中心--------------*/
+
+.mb-content {
+  display: flex;
+  justify-content: space-around;
+  width: 80vw;
+  max-width: 1200px;
+}
+
+
+.mb-aside-menu {
+  border: 1px solid #000;
+  margin-top: 100px;
+  text-align: center;
+  flex: 0 0 15%;
+  height: 660px;
+}
 
 .mb-aside-menu {
   border: 1px solid #000;
@@ -304,16 +201,17 @@ $mb-avatar-button-hight: 49px;
   color: white;
 }
 .mb-aside-menu li:nth-child(2) {
-  border-bottom: 1px solid #000;
-}
-.mb-aside-menu li:nth-child(4n + 2) {
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
 }
-// .mb-aside-menu li:nth-child(10){
-//   border-top: 1px solid #000;
-//   border-bottom: 1px solid #000;
-// }
+.mb-aside-menu li:nth-child(7) {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.mb-aside-menu li:nth-child(11) {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
 
 .mb-right-content {
   margin-top: 100px;
