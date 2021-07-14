@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 
 import Swal from 'sweetalert2'
-
+import LoginLeftBcg from '../../components/member/LoginLeftbcg'
 function Register(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
+  const [bcg, setBcg] = useState(
+    'http://localhost:4000/img/bcg/loginBcg1.jpg'
+  )
 
   // 錯誤警告
   const [error, setError] = useState(false)
@@ -91,10 +94,40 @@ function Register(props) {
     })
   }
 
+  let newBcg = ''
+  autoChangbcg()
+  function autoChangbcg() {
+    setTimeout(() => {
+      switch (bcg) {
+        case 'http://localhost:4000/img/bcg/loginBcg1.jpg':
+          newBcg =
+            'http://localhost:4000/img/bcg/loginBcg2.jpg'
+          setBcg(newBcg)
+          break
+        case 'http://localhost:4000/img/bcg/loginBcg2.jpg':
+          newBcg =
+            'http://localhost:4000/img/bcg/loginBcg3.jpg'
+          setBcg(newBcg)
+          break
+        case 'http://localhost:4000/img/bcg/loginBcg3.jpg':
+          newBcg =
+            'http://localhost:4000/img/bcg/loginBcg4.jpg'
+          setBcg(newBcg)
+          break
+
+        default:
+          newBcg =
+            'http://localhost:4000/img/bcg/loginBcg1.jpg'
+          setBcg(newBcg)
+          break
+      }
+    }, 2000)
+  }
+  autoChangbcg()
   return (
     <>
       <div className="mb-login-content">
-        <div className="mb-login-background"></div>
+        <LoginLeftBcg/>
         <div className="mb-login-form">
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import LoginLeftBcg from '../../components/member/LoginLeftbcg'
 
 function Login(props) {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
-  const [bcg, setBcg] = useState(
-    'http://localhost:4000/img/bcg/loginBcg1.jpg'
-  )
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState(auth)
   // const [emailData, setEmailData] = useState('')
@@ -148,94 +146,16 @@ function Login(props) {
       confirmButtonColor: '#ffbb00',
     })
   }
-
-  let bcgInterval
-  let newBcg = ''
-  autoChangbcg()
-  function autoChangbcg() {
-
-    setTimeout(() => {
-      switch (bcg) {
-        case 'http://localhost:4000/img/bcg/loginBcg1.jpg':
-          newBcg =
-            'http://localhost:4000/img/bcg/loginBcg2.jpg'
-          setBcg(newBcg)
-          break
-        case 'http://localhost:4000/img/bcg/loginBcg2.jpg':
-          newBcg =
-            'http://localhost:4000/img/bcg/loginBcg3.jpg'
-          setBcg(newBcg)
-          break
-        case 'http://localhost:4000/img/bcg/loginBcg3.jpg':
-          newBcg =
-            'http://localhost:4000/img/bcg/loginBcg4.jpg'
-          setBcg(newBcg)
-          break
-
-        default:
-          newBcg =
-            'http://localhost:4000/img/bcg/loginBcg1.jpg'
-          setBcg(newBcg)
-          break
-      }
-    }, 2000)
-  }
-  autoChangbcg()
-  // function autoChangbcg(params) {
-  //   clearInterval(bcgInterval)
-  //   switch (bcg) {
-  //     case 'http://localhost:4000/img/bcg/loginBcg1.jpg':
-  //       newBcg =
-  //         'http://localhost:4000/img/bcg/loginBcg2.jpg'
-  //       setBcg(newBcg)
-  //       break
-  //     case 'http://localhost:4000/img/bcg/loginBcg2.jpg':
-  //       newBcg =
-  //         'http://localhost:4000/img/bcg/loginBcg3.jpg'
-  //       setBcg(newBcg)
-  //       break
-  //     case 'http://localhost:4000/img/bcg/loginBcg3.jpg':
-  //       newBcg =
-  //         'http://localhost:4000/img/bcg/loginBcg4.jpg'
-  //       setBcg(newBcg)
-  //       break
-
-  //     default:
-  //       newBcg =
-  //         'http://localhost:4000/img/bcg/loginBcg1.jpg'
-  //       setBcg(newBcg)
-  //       break
-  //   }
-
-  //   bcgInterval = setInterval(() => {
-  //     autoChangbcg()
-  //   }, 2000)
-  // }
-  // autoChangbcg()
-
   return (
     <>
       <div className="mb-login-content">
         {/* 大圖 */}
-        <div
-          className="mb-login-background"
-          style={{
-            background: `url(${bcg}) no-repeat`,
-            backgroundSize: 'cover'
-          }}
-        ></div>
+        <LoginLeftBcg/>
         <div className="mb-login-form">
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />
           </div>
-          <form
-            // action="./"
-            // method="POST"
-            // onClick={(e) => {
-            //   e.preventDefault()
-            // }}
-            className="text-center"
-          >
+          <form className="text-center">
             <label> 帳號: </label>
             {/* 最後type要記得改成E-mail */}
             <input
@@ -261,17 +181,6 @@ function Login(props) {
               required
             />
             <br />
-            {/* {error ? (
-              <>
-                <div className="alert-danger" role="alert">
-                  {errorMessages.map((v, i) => (
-                    <p key={i}>{v}</p>
-                  ))}
-                </div>
-              </>
-            ) : (
-              ''
-            )} */}
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={(e) => {
