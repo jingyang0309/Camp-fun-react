@@ -84,9 +84,7 @@ a {
 .mb-login-background {
   height: 90vh;
   width: 50%;
-  background: url('./../images/Sing-in-logo.png') no-repeat
-    10% 100%;
-  background-size: 200%;
+  transition: .5s;
 }
 
 .mb-login-form {
