@@ -19,7 +19,16 @@ function Register(props) {
     let error = false
     let errorMessages = []
 
+    let checkEmailPatten = /^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$/
+    let checkEmail = checkEmailPatten.exec('email')
+    console.log(checkEmail)
+
+
     // 要上email的正規表達式
+    if (email !== checkEmail) {
+      error = true
+      errorMessages.push('帳號請填寫您的信箱')
+    }
     if (password !== password2) {
       error = true
       errorMessages.push('兩組密碼需一致哦')
@@ -139,7 +148,7 @@ function Register(props) {
             }}
             className="text-center"
           >
-            <label> 帳號: </label>
+            <label htmlFor="email"> 帳號: </label>
             {/* 最後type要記得改成E-mail */}
             <input
               type="text"
@@ -149,10 +158,10 @@ function Register(props) {
                 setEmail(e.target.value)
               }}
               className="mb-login-input"
-              required
+              id="email"
             />
             <br />
-            <label> 密碼:</label>
+            <label htmlFor="password"> 密碼:</label>
             <input
               type="password"
               placeholder="請輸入登入密碼"
@@ -161,7 +170,7 @@ function Register(props) {
                 setPassword(e.target.value)
               }}
               className="mb-login-input"
-              required
+              id="password"
             />
             <br />
             <label> 確認密碼:</label>

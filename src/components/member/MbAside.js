@@ -15,8 +15,10 @@ function MbAside(props) {
         <li className="ww">
           <Link
             to="/member/"
-            style={{ textDecoration: 'none' ,color: "#000"}}
-            
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
           >
             帳戶訊息
           </Link>
@@ -29,32 +31,81 @@ function MbAside(props) {
           </Link> */}
           <Link
             to="/member/profile"
-            style={{ textDecoration: 'none' ,color: "#000"}}
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
           >
             會員基本資料
           </Link>
         </li>
         <li className="ww">
-          <Link to="/member/addressbook" style={{ textDecoration: 'none' ,color: "#000"}}>我的收件地址</Link>
+          <Link
+            to="/member/addressbook"
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+          >
+            我的收件地址
+          </Link>
         </li>
         <li className="ww">
-          <Link to="/member/editpassword" style={{ textDecoration: 'none' ,color: "#000"}}>
+          <Link
+            to="/member/editpassword"
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+          >
             修改登入密碼
           </Link>
         </li>
         <li>訂單中心</li>
         <li className="ww">
-          <Link to="" style={{ textDecoration: 'none' ,color: "#000"}}>訂單詳情</Link>
+          <Link
+            to=""
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+          >
+            訂單詳情
+          </Link>
         </li>
         <li className="ww">
-          <Link to="" style={{ textDecoration: 'none' ,color: "#000"}}>租借詳情</Link>
+          <Link
+            to=""
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+          >
+            租借詳情
+          </Link>
         </li>
         <li className="ww">
-          <Link to="" style={{ textDecoration: 'none' ,color: "#000"}}>活動查詢</Link>
+          <Link
+            to=""
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+          >
+            活動查詢
+          </Link>
         </li>
         <li>其他</li>
         <li className="ww">
-          <Link to="/member/Coupon" style={{ textDecoration: 'none' ,color: "#000"}}>我的優惠卷</Link>
+          <Link
+            to="/member/Coupon"
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+          >
+            我的優惠卷
+          </Link>
         </li>
       </aside>
     </>

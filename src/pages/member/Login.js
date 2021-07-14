@@ -150,13 +150,13 @@ function Login(props) {
     <>
       <div className="mb-login-content">
         {/* 大圖 */}
-        <LoginLeftBcg/>
+        <LoginLeftBcg />
         <div className="mb-login-form">
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />
           </div>
           <form className="text-center">
-            <label> 帳號: </label>
+            <label htmlFor="email"> 帳號: </label>
             {/* 最後type要記得改成E-mail */}
             <input
               type="text"
@@ -166,10 +166,10 @@ function Login(props) {
                 setEmail(e.target.value)
               }}
               className="mb-login-input"
-              required
+              id="email"
             />
             <br />
-            <label> 密碼:</label>
+            <label htmlFor="password"> 密碼:</label>
             <input
               type="password"
               placeholder="請輸入登入密碼"
@@ -178,7 +178,7 @@ function Login(props) {
                 setPassword(e.target.value)
               }}
               className="mb-login-input"
-              required
+              id="password"
             />
             <br />
             <button
@@ -198,7 +198,7 @@ function Login(props) {
               註冊
             </button>
           </form>
-          <div className="mb-text-line py-3">
+          <div className="mb-text-line py-3 mx-auto">
             或者使用社群帳號登入
           </div>
           <div className="d-flex justify-content-center">
