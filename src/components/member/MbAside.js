@@ -9,7 +9,7 @@ function MbAside(props) {
 
   return (
     <>
-      <aside className="mb-aside-menu list-no-style ">
+      <aside className="mb-aside-menu mb-list-no-style ">
         <li>會員中心</li>
         <li>個人訊息</li>
         <li className="ww">

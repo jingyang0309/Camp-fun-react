@@ -15,20 +15,39 @@ function Register(props) {
   const [error, setError] = useState(false)
   const [errorMessages, setErrorMessages] = useState([])
 
+  // let strEmail = 'foxfirejack@gmail.com'
+
+  // //Regular expression Testing
+  // let emailRule =
+  //   /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
+
+  // //validate ok or not
+  // function qwe() {
+  //   if (strEmail.search(emailRule) != -1) {
+  //     alert('true')
+  //   } else {
+  //     alert('false')
+  //   }
+  // }
+
   function memberRegister() {
     let error = false
     let errorMessages = []
 
-    let checkEmailPatten = /^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$/
-    let checkEmail = checkEmailPatten.exec('email')
-    console.log(checkEmail)
+    let emailRule =
+      /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
 
-
+    console.log(email.search(emailRule))
     // 要上email的正規表達式
-    if (email !== checkEmail) {
+    if (email.search(emailRule) === -1) {
       error = true
-      errorMessages.push('帳號請填寫您的信箱')
+      errorMessages.push('請使用信箱註冊帳號')
     }
+    // 要上email的正規表達式
+    // if (email !== checkEmail) {
+    //   error = true
+    //   errorMessages.push('請使用信箱註冊')
+    // }
     if (password !== password2) {
       error = true
       errorMessages.push('兩組密碼需一致哦')
@@ -89,7 +108,7 @@ function Register(props) {
     Swal.fire({
       icon: 'success',
       title: '註冊成功!',
-      text: '已跳回登入頁面，請再次登入',
+      text: '新人送優惠，趕緊登入查看!',
       confirmButtonColor: '#ffbb00',
     })
   }
@@ -136,7 +155,7 @@ function Register(props) {
   return (
     <>
       <div className="mb-login-content">
-        <LoginLeftBcg/>
+        <LoginLeftBcg />
         <div className="mb-login-form">
           <div className="mb-login-logo">
             <img src="./image/Member-logo.png" alt="logo" />

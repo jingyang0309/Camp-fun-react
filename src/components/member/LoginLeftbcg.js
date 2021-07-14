@@ -40,14 +40,14 @@ function LoginLeftBcg(props) {
       <div
         className="mb-login-background-big"
         style={{
-          background: `url(${bcg}) no-repeat`,
+          backgroundImage: `url(${bcg})`,
           backgroundSize: 'cover',
         }}
       ></div>
       <div
         className="mb-login-background-small"
         style={{
-          background: `url(${bcg}) no-repeat`,
+          backgroundImage: `url(${bcg})`,
           backgroundSize: 'cover',
         }}
       ></div>

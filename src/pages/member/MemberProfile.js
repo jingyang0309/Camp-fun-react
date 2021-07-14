@@ -22,15 +22,6 @@ function MemberProfile(props) {
     phone: '',
     avatar: '',
   })
-  // 定義錯誤表單有哪些欄位屬性
-  const [fieldErrors, setFieldErrors] = useState({
-    fName: '',
-    lName: '',
-    nickname: '',
-    birthday: '',
-    gender: '',
-    phone: '',
-  })
 
   // 處理每個欄位的變動
   const handleFieldChange = (e) => {
@@ -127,59 +118,6 @@ function MemberProfile(props) {
     setAuth(loginAuth)
   }, [loginAuth])
 
-  // form有更動會觸發這個函式
-  const handleChange = (e) => {
-    // console.log('更動欄位：', e.target.name)
-
-    // 該欄位錯誤訊息清空
-    const updatedFieldErrors = {
-      ...fieldErrors,
-      [e.target.name]: '',
-    }
-
-    setFieldErrors(updatedFieldErrors)
-  }
-
-  // 有錯誤的訊息會觸發在這裡
-  const handleInvalid = (e) => {
-    e.preventDefault()
-
-    // 表單實體的物件參照
-    const form = formRef.current
-
-    let errorMsg = {}
-
-    for (let i = 0; i < form.elements.length; i++) {
-      const element = form.elements[i]
-
-      if (
-        element.tagName !== 'button' &&
-        element.willValidate &&
-        !element.validity.valid
-      ) {
-        // 必填用預設訊息，但錯誤格式驗証用title中的字串
-        if (element.validity.valueMissing) {
-          errorMsg = {
-            ...errorMsg,
-            [element.name]: element.validationMessage,
-          }
-        } else {
-          errorMsg = {
-            ...errorMsg,
-            [element.name]: element.title,
-          }
-        }
-      }
-    }
-
-    const updatedFieldErrors = {
-      ...fieldErrors,
-      ...errorMsg,
-    }
-
-    setFieldErrors(updatedFieldErrors)
-  }
-
   function okAlert() {
     Swal.fire({
       icon: 'success',
@@ -199,20 +137,13 @@ function MemberProfile(props) {
         >
           <h2>會員基本資料</h2>
           <hr />
-          <Avatar
-            auth={auth}
-            setAuth={setAuth}
-            // fields={fields}
-            // setFields={setFields}
-          />
+          <Avatar auth={auth} setAuth={setAuth} />
           {/* 表單開始 */}
           <form
             name="mb-profile-form"
             className="row"
             ref={formRef}
             onSubmit={handleSubmit}
-            onChange={handleChange}
-            onInvalid={handleInvalid}
           >
             <div className="mb-input-box">
               <label htmlFor="fName">姓：</label>
@@ -225,11 +156,6 @@ function MemberProfile(props) {
                 title="自訂訊息：格式錯誤"
                 id="fName"
               />
-              {fieldErrors.fName && (
-                <small className="text-danger form-text">
-                  {fieldErrors.fName}
-                </small>
-              )}
             </div>
             <div className="mb-input-box">
               <label htmlFor="text">名：</label>
@@ -241,11 +167,6 @@ function MemberProfile(props) {
                 onChange={handleFieldChange}
                 placeholder="請輸入您的名"
               />
-              {fieldErrors.lName && (
-                <small className="text-danger form-text">
-                  {fieldErrors.lName}
-                </small>
-              )}
             </div>
             <div className="mb-input-box">
               <label htmlFor="nickname">暱稱</label>
@@ -257,11 +178,6 @@ function MemberProfile(props) {
                 onChange={handleFieldChange}
                 placeholder="請輸入您的暱稱"
               />
-              {fieldErrors.lName && (
-                <small className="text-danger form-text">
-                  {fieldErrors.lName}
-                </small>
-              )}
             </div>
             <div className="mb-input-box"></div>
             <div className="mb-input-box">
@@ -310,7 +226,7 @@ function MemberProfile(props) {
             </div>
             <button
               type="submit"
-              className=" mb-yellow mb-button"
+              className=" mb-yellow mb-button mb-profile-buttom"
             >
               確認修改
             </button>

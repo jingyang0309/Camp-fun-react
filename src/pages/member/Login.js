@@ -65,12 +65,9 @@ function Login(props) {
     }
     console.log(userData)
 
-    sendLoginDataToServer(userData, () => okAlert())
+    sendLoginDataToServer(userData)
 
-    async function sendLoginDataToServer(
-      userData,
-      callback
-    ) {
+    async function sendLoginDataToServer(userData) {
       // 注意資料格式要設定，伺服器才知道是json格式
       const request = new Request(
         'http://localhost:4000/member/login',
@@ -103,17 +100,13 @@ function Login(props) {
           nickname: data.information.nickname,
           avatar: data.information.avatar,
         })
+        okAlert()
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
         passwordErrorAlert()
       }
-      callback()
     }
-    // 直接在一段x秒關掉指示器
-    // setTimeout(() => {
-    //   props.history.push('/')
-    // }, 500)
   }
 
   // 生命週期傳到Navbar
