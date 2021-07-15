@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
-import MyVerticallyCenteredModal from './MyVerticallyCenteredModal'
+import EditPageForm from './EditPageForm'
 
 function EditPage(props) {
   const { usersaddress, setUsersaddress } = props
@@ -14,7 +14,7 @@ function EditPage(props) {
         編輯
       </button>
 
-      <MyVerticallyCenteredModal
+      <EditPageForm
         show={modalShow}
         onHide={() => setModalShow(false)}
         usersaddress={usersaddress}

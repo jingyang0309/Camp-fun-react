@@ -1,0 +1,20 @@
+import React from 'react'
+import LosepasswordForm from '../../components/member/LosepasswordForm'
+
+function LosePassword(props) {
+  const [modalShow, setModalShow] = React.useState(false)
+
+  return (
+    <>
+      <div className="mb-color-red">
+        <p onClick={() => setModalShow(true)}>忘記密碼?</p>
+      </div>
+      <LosepasswordForm
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
+  )
+}
+
+export default LosePassword

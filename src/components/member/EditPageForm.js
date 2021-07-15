@@ -7,7 +7,7 @@ import {
   postcodes,
 } from '../../data/townships'
 import Swal from 'sweetalert2'
-function MyVerticallyCenteredModal(props) {
+function EditPageForm(props) {
   const { usersaddress, setModalShow, setUsersaddress } =
     props
   const [usersaddressEdit, setUusersaddressEdit] =
@@ -182,7 +182,6 @@ function MyVerticallyCenteredModal(props) {
                     確認修改
                   </button>
                   <button
-                    type="submit"
                     className="my- mb-yellow mb-button mb-red-orange"
                     onClick={props.onHide}
                   >
@@ -198,4 +197,4 @@ function MyVerticallyCenteredModal(props) {
   )
 }
 
-export default withRouter(MyVerticallyCenteredModal)
+export default withRouter(EditPageForm)

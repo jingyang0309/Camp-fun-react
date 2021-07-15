@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import LoginLeftBcg from '../../components/member/LoginLeftbcg'
+import LosePassword from './LosePassword'
 
 function Login(props) {
   // 上層傳來的登入狀況
@@ -174,6 +175,7 @@ function Login(props) {
               id="password"
             />
             <br />
+            <LosePassword />
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={(e) => {
