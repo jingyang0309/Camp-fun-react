@@ -12,6 +12,7 @@ function LosePassword(props) {
       <LosepasswordForm
         show={modalShow}
         onHide={() => setModalShow(false)}
+        setModalShow={setModalShow}
       />
     </>
   )

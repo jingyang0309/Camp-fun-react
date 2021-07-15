@@ -13,7 +13,6 @@ import {
   townships,
   postcodes,
 } from '../../data/townships'
-import { array } from 'prop-types'
 
 function AddressBook(props) {
   const [arrayNum, setArrayNum] = useState()

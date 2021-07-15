@@ -92,8 +92,8 @@ function Login(props) {
         console.log(data.message.text)
         // 加密資料存進localStorage
         localStorage.setItem('token', data.token)
-        // 其他組員要求的sessionStorage(名碼)
-
+        // 其他組員要求的sessionStorage(明碼)
+        sessionStorage.setItem('mId',data.mId)
         // 子曾的登入狀況寫入資料
         setLoginAuth({
           login: true,
