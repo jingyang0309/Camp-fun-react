@@ -22,6 +22,7 @@ import Coupon from './pages/member/Coupon'
 import Session from './pages/member/Session'
 import Logout from './pages/member/Logout'
 import EditPassword from './pages/member/EditPassword'
+import CustomerService from './components/member/CustomerService'
 // 首頁+商品
 import Index from './pages/Index'
 import Product from './pages/Product'
@@ -45,6 +46,8 @@ function App() {
       <Router>
         {/* 上選單 */}
         <NavBar auth={auth} setAuth={setAuth} />
+        {/* 客服 */}
+        <CustomerService auth={auth} setAuth={setAuth} />
         <Switch>
           {/* 會員中心 */}
           <Route path="/member/session">
@@ -75,16 +78,7 @@ function App() {
             <Logout auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/login">
-            <Login
-              auth={auth}
-              setAuth={setAuth}
-              userEmail={userEmail}
-              setUserEmail={setUserEmail}
-              userAvatar={userAvatar}
-              setUserAvatar={setUserAvatar}
-              userNickname={userNickname}
-              setUserNickname={setUserNickname}
-            />
+            <Login auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/register">
             <Register auth={auth} setAuth={setAuth} />
