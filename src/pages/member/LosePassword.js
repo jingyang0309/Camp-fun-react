@@ -6,7 +6,7 @@ function LosePassword(props) {
 
   return (
     <>
-      <div className="mb-color-red">
+      <div className="mb-losepwd">
         <p onClick={() => setModalShow(true)}>忘記密碼?</p>
       </div>
       <LosepasswordForm

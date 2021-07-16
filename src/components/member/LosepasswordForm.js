@@ -12,6 +12,7 @@ function LosepasswordForm(props) {
   const [getPwdEmail, setGetPwdEmail] = useState('')
   const [otg, setOtg] = useState('')
   const [newPwd, setNewPwd] = useState('')
+  const [showPwd3, setShowPwd3] = useState(false)
 
   let nextMode = {}
 
@@ -178,7 +179,7 @@ function LosepasswordForm(props) {
             輸入安全驗證碼
           </h2>
           <p className="text-center">
-            請查看您電子信箱中是否有包含驗證碼的信件，您的驗證碼長度為6位數，我們已將信件發送至:
+            請查看您電子信箱中是否有包含驗證碼的信件，我們已將您的驗證碼發送至信件:
             {getPwdEmail}
           </p>
           <label htmlFor="otg">驗證碼:</label>
@@ -234,7 +235,7 @@ function LosepasswordForm(props) {
           </p>
           <label htmlFor="newPwd">新密碼:</label>
           <input
-            type="text"
+            type={showPwd3 ? 'text' : 'password'}
             name="email"
             value={newPwd}
             onChange={(e) => {
@@ -243,6 +244,19 @@ function LosepasswordForm(props) {
             placeholder="請輸入新密碼"
             id="newPwd"
           />
+          <div className="mb-show-pwd3">
+            <img
+              src={
+                showPwd3
+                  ? './images/eye.png'
+                  : './images/eye2.png'
+              }
+              alt="showPwd"
+              onClick={() => {
+                setShowPwd3(!showPwd3)
+              }}
+            />
+          </div>
           <div>
             <button
               className="my-4 mb-yellow mb-button mr-3"

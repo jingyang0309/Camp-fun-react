@@ -7,6 +7,9 @@ import MbAside from '../../components/member/MbAside'
 function EditPassword(props) {
   const { auth, setAuth } = props
   const [loginAuth, setLoginAuth] = useState(auth)
+  const [showPwd, setShowPwd] = useState(false)
+  const [showPwd2, setShowPwd2] = useState(false)
+  const [showPwd3, setShowPwd3] = useState(false)
 
   const formRef = useRef(null)
 
@@ -114,35 +117,74 @@ function EditPassword(props) {
           <div className="mb-input-box">
             <label>舊密碼</label>
             <input
-              type="text"
+              type={showPwd ? 'text' : 'password'}
               name="password"
               value={fields.password}
               onChange={handleFieldChange}
               placeholder="請輸入您的密碼"
               required
             />
+            <div className="mb-show-pwd4">
+              <img
+                src={
+                  showPwd
+                    ? './../images/eye.png'
+                    : './../images/eye2.png'
+                }
+                alt="showPwd"
+                onClick={() => {
+                  setShowPwd(!showPwd)
+                }}
+              />
+            </div>
           </div>
           <div className="mb-input-box">
             <label>新密碼</label>
             <input
-              type="text"
+              type={showPwd2 ? 'text' : 'password'}
               name="newPassword"
               value={fields.newPassword}
               onChange={handleFieldChange}
               placeholder="請輸入您的新密碼"
               required
             />
+            <div className="mb-show-pwd4">
+              <img
+                src={
+                  showPwd2
+                    ? './../images/eye.png'
+                    : './../images/eye2.png'
+                }
+                alt="showPwd"
+                onClick={() => {
+                  setShowPwd2(!showPwd2)
+                }}
+              />
+            </div>
           </div>
           <div className="mb-input-box">
             <label>確認新密碼</label>
             <input
-              type="text"
+              type={showPwd3 ? 'text' : 'password'}
               name="newPasswordAgain"
               value={fields.newPasswordAgain}
               onChange={handleFieldChange}
               value={fields.nickname}
               placeholder="請確認您的新密碼"
             />
+            <div className="mb-show-pwd4">
+              <img
+                src={
+                  showPwd3
+                    ? './../images/eye.png'
+                    : './../images/eye2.png'
+                }
+                alt="showPwd"
+                onClick={() => {
+                  setShowPwd3(!showPwd3)
+                }}
+              />
+            </div>
           </div>
 
           <button

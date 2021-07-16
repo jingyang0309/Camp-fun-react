@@ -10,10 +10,10 @@ function Register(props) {
   const [bcg, setBcg] = useState(
     'http://localhost:4000/img/bcg/loginBcg1.jpg'
   )
-
+  const [showPwd, setShowPwd] = useState(false)
+  const [showPwd2, setShowPwd2] = useState(false)
   // 錯誤警告
   const [error, setError] = useState(false)
-  const [errorMessages, setErrorMessages] = useState([])
 
   // let strEmail = 'foxfirejack@gmail.com'
 
@@ -53,23 +53,18 @@ function Register(props) {
       errorMessages.push('兩組密碼需一致哦')
     }
     // 測試用兩個，正式發表須改為8個字
-    if (email.length < 2) {
+    if (email.length < 6) {
       error = true
-      errorMessages.push('帳號至少要2個字')
+      errorMessages.push('帳號至少要6個字')
     }
-    if (password.length < 2) {
+    if (password.length < 6) {
       error = true
-      errorMessages.push('密碼至少要2個字')
+      errorMessages.push('密碼至少要6個字')
     }
 
     if (error) {
       setError(error)
-      setErrorMessages(errorMessages)
       errorAlert(errorMessages)
-
-      // setTimeout(() => {
-      //   setError(false)
-      // }, 1500)
       return
     }
 
@@ -182,7 +177,7 @@ function Register(props) {
             <br />
             <label htmlFor="password"> 密碼:</label>
             <input
-              type="password"
+              type={showPwd ? 'text' : 'password'}
               placeholder="請輸入登入密碼"
               value={password}
               onChange={(e) => {
@@ -191,10 +186,22 @@ function Register(props) {
               className="mb-login-input"
               id="password"
             />
-            <br />
+            <div className="mb-show-pwd">
+              <img
+                src={
+                  showPwd
+                    ? './images/eye.png'
+                    : './images/eye2.png'
+                }
+                alt="showPwd"
+                onClick={() => {
+                  setShowPwd(!showPwd)
+                }}
+              />
+            </div>
             <label> 確認密碼:</label>
             <input
-              type="password"
+              type={showPwd2 ? 'text' : 'password'}
               placeholder="請再次輸入登入密碼"
               value={password2}
               onChange={(e) => {
@@ -203,18 +210,19 @@ function Register(props) {
               className="mb-login-input"
               required
             />
-            <br />
-            {/* {error ? (
-              <>
-                <div className="alert-danger" role="alert">
-                  {errorMessages.map((v, i) => (
-                    <p key={i}>{v}</p>
-                  ))}
-                </div>
-              </>
-            ) : (
-              ''
-            )} */}
+            <div className="mb-show-pwd2">
+              <img
+                src={
+                  showPwd2
+                    ? './images/eye.png'
+                    : './images/eye2.png'
+                }
+                alt="showPwd"
+                onClick={() => {
+                  setShowPwd2(!showPwd2)
+                }}
+              />
+            </div>
             <button
               className="mb-button mb-brown mb-login-button mt-5"
               onClick={() => {

@@ -9,9 +9,7 @@ function Login(props) {
   const { auth, setAuth } = props
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState(auth)
-  // const [emailData, setEmailData] = useState('')
-  // const [nicknameData, setNicknameData] = useState('')
-  // const [avatarData, setAvatarData] = useState('')
+  const [showPwd, setShowPwd] = useState(false)
 
   // 頁面input紀錄的資料
   const [email, setEmail] = useState('')
@@ -42,13 +40,13 @@ function Login(props) {
     let errorMessages = []
 
     // 測試用兩個，正式發表須改為8個字
-    if (email.length < 2) {
+    if (email.length < 6) {
       error = true
-      errorMessages.push('帳號至少要2個字')
+      errorMessages.push('帳號至少要6個字')
     }
-    if (password.length < 2) {
+    if (password.length < 6) {
       error = true
-      errorMessages.push('密碼至少要2個字')
+      errorMessages.push('密碼至少要6個字')
     }
     if (error) {
       setError(error)
@@ -93,7 +91,7 @@ function Login(props) {
         // 加密資料存進localStorage
         localStorage.setItem('token', data.token)
         // 其他組員要求的sessionStorage(明碼)
-        sessionStorage.setItem('mId',data.mId)
+        sessionStorage.setItem('mId', data.mId)
         // 子曾的登入狀況寫入資料
         setLoginAuth({
           login: true,
@@ -165,15 +163,28 @@ function Login(props) {
             <br />
             <label htmlFor="password"> 密碼:</label>
             <input
-              type="password"
+              type={showPwd ? 'text' : 'password'}
               placeholder="請輸入登入密碼"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value)
               }}
-              className="mb-login-input"
+              className="mb-login-input mb-login-input-pwd"
               id="password"
             />
+            <div className="mb-show-pwd">
+              <img
+                src={
+                  showPwd
+                    ? './images/eye.png'
+                    : './images/eye2.png'
+                }
+                alt="showPwd"
+                onClick={() => {
+                  setShowPwd(!showPwd)
+                }}
+              />
+            </div>
             <br />
             <LosePassword />
             <button
