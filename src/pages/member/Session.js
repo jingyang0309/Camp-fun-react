@@ -5,14 +5,12 @@ import Swal from 'sweetalert2'
 // ------------此頁已經改為測試用頁面------------
 
 function Session(props) {
-  async function send() {
-    fetch('http://localhost:4000/member/losepassword/', {
-      method: 'GET',
+  async function swalert() {
+    Swal.fire({
+      icon: 'warning',
+      title: '你把我灌醉',
+      text: '你讓我流淚',
     })
-      .then((r) => r.json())
-      .then((data) => {
-        console.log(data)
-      })
   }
 
   return (
@@ -21,7 +19,7 @@ function Session(props) {
         className="mb-button mb-red-orange mb-address-button-margin d-block"
         confirm
         onClick={() => {
-          send()
+          swalert()
         }}
       >
         發信

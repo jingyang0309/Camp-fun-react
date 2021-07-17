@@ -1,15 +1,14 @@
-import React, { useState, Link } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
 
 function CustomersServiceWindow(props) {
   const { auth, csSWindow, serCsSWindow } = props
   const [displayMsg, setDisplayMsg] = useState([
     {
-      created_at: '',
-      formWho: '',
-      messageId: '',
-      messsage: '',
-      toWho: '',
+      created_at: '0',
+      formWho: '0',
+      messageId: '0',
+      messsage: '0',
+      toWho: '0',
     },
   ])
   const [usersMsg, setUsersMsg] = useState('')
@@ -40,7 +39,7 @@ function CustomersServiceWindow(props) {
   }
 
   // 發送文字
-  async function sendMessage() {
+  async function sendMessage(params) {
     console.log('123')
 
     if (usersMsg.length < 1) {
@@ -67,79 +66,44 @@ function CustomersServiceWindow(props) {
     const data = await response.json()
     console.log(data)
     setUsersMsg('')
-    getAllMessage()
   }
 
-  // 尚未登入的畫面
-  const noLoginMode = (
+  const authMode = displayMsg.map((v, i) => (
     <>
-      <h2 className="mt-3">
-        聯繫客服需先登入會員，請
-        <span
-          onClick={() => {
-            props.history.push('/login')
-            serCsSWindow(false)
-          }}
-          style={{
-            color: 'blue',
-            cursor: 'pointer',
-          }}
-        >
-          點擊此處
-        </span>
-        前往登入頁
-      </h2>
-      <div className="pl-4">
-        <img
-          src="http://localhost:4000/img/flypig.png"
-          alt="sorry"
-        />
+      {/* 客服發送的訊息 */}
+      <div className="mb-cs-cs">
+        <div className="mb-cs-cs-avatar">
+          <img
+            src={avatarPath + 'flypig.png'}
+            alt="cs-avatar"
+          />
+        </div>
+        <div>
+          <div className="mb-cs-cs-message">
+            <p>{displayMsg[i].messsage}</p>
+          </div>
+          <p className="mb-cs-cs-time">07/16 20:30:16</p>
+        </div>
+      </div>
+      {/* 會員訊息 */}
+      <div className="mb-cs-user">
+        <div>
+          <div className="mb-cs-user-message">
+            <p>{displayMsg[i].messsage}</p>
+          </div>
+          <p className="mb-cs-user-time">
+            {displayMsg[i].created_at}
+          </p>
+        </div>
+        <div className="mb-cs-user-avatar">
+          <img
+            src={avatarPath + auth.avatar}
+            alt="cs-avatar"
+          />
+        </div>
       </div>
     </>
-  )
-
-  // 開始對話
-  const authMode = displayMsg.map((v, i) =>
-    displayMsg[i].fromWho === 'csStaff' ? (
-      <>
-        {/* 客服發送的訊息 */}
-        <div className="mb-cs-cs">
-          <div className="mb-cs-cs-avatar">
-            <img
-              src={avatarPath + 'flypig.png'}
-              alt="cs-avatar"
-            />
-          </div>
-          <div>
-            <div className="mb-cs-cs-message">
-              <p>{displayMsg[i].messsage}</p>
-            </div>
-            <p className="mb-cs-cs-time">07/16 20:30:16</p>
-          </div>
-        </div>
-      </>
-    ) : (
-      <>
-        {/* 會員訊息 */}
-        <div className="mb-cs-user">
-          <div>
-            <div className="mb-cs-user-message">
-              <p>{displayMsg[i].messsage}</p>
-            </div>
-            <p className="mb-cs-user-time">
-              {displayMsg[i].created_at}
-            </p>
-          </div>
-          <div className="mb-cs-user-avatar">
-            <img
-              src={avatarPath + auth.avatar}
-              alt="cs-avatar"
-            />
-          </div>
-        </div>
-      </>
-    )
-  )
+  ))
 
   return (
     <>
@@ -160,9 +124,7 @@ function CustomersServiceWindow(props) {
             alt="line"
           ></img>
         </div>
-        <div className="mb-cs-content">
-          {auth.login ? authMode : noLoginMode}
-        </div>
+        <div className="mb-cs-content">{authMode}</div>
         <div className="mb-cs-input-area d-flex">
           <input
             type="text"
@@ -208,4 +170,4 @@ function CustomersServiceWindow(props) {
   )
 }
 
-export default withRouter(CustomersServiceWindow)
+export default CustomersServiceWindow
