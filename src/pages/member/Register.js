@@ -15,21 +15,6 @@ function Register(props) {
   // 錯誤警告
   const [error, setError] = useState(false)
 
-  // let strEmail = 'foxfirejack@gmail.com'
-
-  // //Regular expression Testing
-  // let emailRule =
-  //   /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/
-
-  // //validate ok or not
-  // function qwe() {
-  //   if (strEmail.search(emailRule) != -1) {
-  //     alert('true')
-  //   } else {
-  //     alert('false')
-  //   }
-  // }
-
   function memberRegister() {
     let error = false
     let errorMessages = []
@@ -43,11 +28,6 @@ function Register(props) {
       error = true
       errorMessages.push('請使用信箱註冊帳號')
     }
-    // 要上email的正規表達式
-    // if (email !== checkEmail) {
-    //   error = true
-    //   errorMessages.push('請使用信箱註冊')
-    // }
     if (password !== password2) {
       error = true
       errorMessages.push('兩組密碼需一致哦')

@@ -37,9 +37,6 @@ function App() {
     nickname: '',
     avatar: '',
   })
-  const [userEmail, setUserEmail] = useState('')
-  const [userNickname, setUserNickname] = useState('')
-  const [userAvatar, setUserAvatar] = useState('')
 
   return (
     <>
@@ -50,7 +47,7 @@ function App() {
         <CustomerService auth={auth} setAuth={setAuth} />
         <Switch>
           {/* 會員中心 */}
-          <Route path="/member/session">
+          <Route path="/member/test">
             <Session auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/member/coupon">
@@ -81,7 +78,7 @@ function App() {
             <Login auth={auth} setAuth={setAuth} />
           </Route>
           <Route path="/register">
-            <Register auth={auth} setAuth={setAuth} />
+            <Register />
           </Route>
           {/* 商品 */}
           <Route exact path="/product">

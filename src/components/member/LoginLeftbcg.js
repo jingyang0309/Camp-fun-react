@@ -6,6 +6,7 @@ function LoginLeftBcg(props) {
   )
 
   let newBcg = ''
+
   autoChangbcg()
   function autoChangbcg() {
     setTimeout(() => {
@@ -34,7 +35,7 @@ function LoginLeftBcg(props) {
       }
     }, 2000)
   }
-  autoChangbcg()
+
   return (
     <>
       <div

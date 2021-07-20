@@ -73,7 +73,7 @@ function CustomersServiceWindow(props) {
   // 尚未登入的畫面
   const noLoginMode = (
     <>
-      <h2 className="mt-3">
+      <p className="mt-3">
         聯繫客服需先登入會員，請
         <span
           onClick={() => {
@@ -81,14 +81,14 @@ function CustomersServiceWindow(props) {
             serCsSWindow(false)
           }}
           style={{
-            color: 'blue',
+            color: '#149920',
             cursor: 'pointer',
           }}
         >
           點擊此處
         </span>
         前往登入頁
-      </h2>
+      </p>
       <div className="pl-4">
         <img
           src="http://localhost:4000/img/flypig.png"
@@ -132,7 +132,11 @@ function CustomersServiceWindow(props) {
           </div>
           <div className="mb-cs-user-avatar">
             <img
-              src={avatarPath + auth.avatar}
+              src={
+                auth.avatar
+                  ? avatarPath + auth.avatar
+                  : avatarPath + 'oringAvatar.png'
+              }
               alt="cs-avatar"
             />
           </div>
@@ -179,17 +183,21 @@ function CustomersServiceWindow(props) {
                 : { cursor: 'default' }
             }
           >
-            <img
-              src={
-                usersMsg.length
-                  ? 'http://localhost:4000/img/messageArrow2.png'
-                  : 'http://localhost:4000/img/messageArrow.png'
-              }
-              alt="messageArrow.png"
-              onClick={() => {
-                sendMessage()
-              }}
-            />
+            {auth.login ? (
+              <img
+                src={
+                  usersMsg.length
+                    ? 'http://localhost:4000/img/messageArrow2.png'
+                    : 'http://localhost:4000/img/messageArrow.png'
+                }
+                alt="messageArrow.png"
+                onClick={() => {
+                  sendMessage()
+                }}
+              />
+            ) : (
+              ''
+            )}
             <img
               src={
                 usersMsg.length

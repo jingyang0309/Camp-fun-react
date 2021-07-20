@@ -99,7 +99,7 @@ function Login(props) {
           nickname: data.information.nickname,
           avatar: data.information.avatar,
         })
-        okAlert()
+        // okAlert()
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
