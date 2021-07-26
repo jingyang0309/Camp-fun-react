@@ -82,60 +82,6 @@ a {
 .mb-login-background-small {
   display: none;
 }
-@media (max-width: 850px) {
-  .mb-login-content {
-    display: flex;
-    flex-direction: column;
-    .mb-login-form {
-      align-self: center;
-      margin-top: -780px;
-      margin-bottom: 65px;
-      width: 470px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 8px;
-      padding-bottom: 50px;
-    }
-  }
-  .mb-login-background-small {
-    height: 90vh;
-    width: 100%;
-    transition: 0.5s;
-    display: inline;
-  }
-  .mb-login-background-big {
-    display: none;
-  }
-  .mb-login-logo {
-    margin-top: 0px;
-    img {
-      margin-top: -50px;
-    }
-  }
-}
-
-.mb-login-form {
-  margin: 0px auto;
-}
-
-.mb-login-logo {
-  width: 400px;
-  margin: 0px auto;
-  margin-top: 150px;
-  margin-bottom: 100px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.mb-login-input {
-  width: 300px;
-  height: 50px;
-  border-radius: 4px;
-  margin-top: 20px;
-  margin-left: 30px;
-  border: 1px solid #dddddd;
-}
 
 .mb-show-pwd {
   width: 25px;
@@ -172,6 +118,76 @@ a {
     width: 100%;
     height: 100%;
   }
+}
+
+@media (max-width: 850px) {
+  .mb-login-content {
+    display: flex;
+    flex-direction: column;
+    .mb-login-form {
+      align-self: center;
+      margin-top: -780px;
+      margin-bottom: 65px;
+      width: 470px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      padding-bottom: 50px;
+    }
+  }
+  .mb-login-background-small {
+    height: 90vh;
+    width: 100%;
+    transition: 0.5s;
+    display: inline;
+  }
+  .mb-login-background-big {
+    display: none;
+  }
+  .mb-login-logo {
+    margin-top: 0px;
+    img {
+      margin-top: -50px;
+    }
+  }
+
+  .mb-show-pwd {
+    margin: -37px 0 0 370px;
+  }
+  .mb-show-pwd2 {
+    margin: -37px 0 0 370px;
+  }
+}
+
+.mb-login-form {
+  margin: 0px auto;
+}
+
+.mb-login-logo {
+  width: 400px;
+  margin: 0px auto;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.mb-login-input {
+  width: 300px;
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-left: 30px;
+  border: 1px solid #dddddd;
+}
+.mb-login-input-again {
+  width: 300px;
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 30px;
+  margin-left: 0px;
+  border: 1px solid #dddddd;
 }
 
 .mb-show-pwd img:hover {
@@ -297,7 +313,7 @@ a {
   font-weight: 900;
   color: rgb(255, 255, 255);
 }
-.mb-aside-menu li:nth-child(11) {
+.mb-aside-menu li:nth-child(10) {
   background-color: #5e994a;
   font-weight: 900;
   color: rgb(255, 255, 255);
@@ -461,8 +477,8 @@ a {
   cursor: pointer;
   right: 20px;
   top: 700px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.2);
   img {
     width: 100%;
@@ -473,7 +489,7 @@ a {
   position: fixed;
   z-index: 999;
   right: 30px;
-  top: 400px;
+  top: 230px;
   width: 400px;
   height: 600px;
   background-color: rgb(255, 255, 255);
@@ -584,7 +600,155 @@ a {
       width: 40px;
       height: 40px;
       margin-left: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+// 客服回話視窗
+.mb-cs-staff-window {
+  margin: 200px auto;
+  width: 600px;
+  height: 600px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  .mb-cs-aside {
+    width: 200px;
+    height: 100%;
+    border-right: 3px solid #dddddd;
+    // background-color: #aaf;
+    .mb-cs-aside-list {
+      width: 150px;
+      height: 50px;
+      border: 1px solid #000;
+      margin-left: -15px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+      border-radius: 8px;
       
+      p{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .mb-cs-line {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 15px;
+    height: 25px;
+    width: 23px;
+    img {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+  .mb-cs-staff-title {
+    width: 100%;
+    border-bottom: 3px solid #e6e6e6;
+  }
+
+  .mb-cs-content {
+    // border: 1px solid #000;
+    width: 380px;
+    height: 460px;
+    margin: 10px 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    // 客服訊息
+    .mb-cs-cs {
+      display: flex;
+      margin-bottom: 15px;
+
+      .mb-cs-cs-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid #dddddd;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .mb-cs-cs-message {
+        width: 240px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        padding-bottom: 0px;
+        margin-left: 15px;
+        border-radius: 15px;
+        p {
+          margin-bottom: 0px;
+        }
+      }
+      .mb-cs-cs-time {
+        margin: 5px 0 0 25px;
+      }
+    }
+    // 訊息
+    .mb-cs-user {
+      display: flex;
+      margin-left: 70px;
+      margin-bottom: 15px;
+
+      .mb-cs-user-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid #dddddd;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .mb-cs-user-message {
+        width: 240px;
+        border: 1px solid #dddddd;
+        padding: 10px;
+        padding-bottom: 0px;
+        margin-right: 15px;
+        border-radius: 15px;
+        p {
+          margin-bottom: 0px;
+        }
+      }
+      .mb-cs-user-time {
+        margin: 5px 0 0 25px;
+      }
+    }
+  }
+  .mb-cs-input-area {
+    // border: 1px solid #000;
+    width: 100%;
+    height: 50px;
+    input {
+      width: 310px;
+      margin-left: 20px;
+      padding: 7px 10px;
+      font-size: 18px;
+      border: 1px solid #dddddd;
+    }
+    .mb-cs-input-arrow {
+      margin-top: 3px;
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+
       img {
         width: 100%;
         height: 100%;

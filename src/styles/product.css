@@ -1,0 +1,109 @@
+.pro-top {
+  min-height: calc(100vh - 80px);
+}
+
+.pro-link {
+  height: 25vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+/* .pro-link:hover {
+  background-size: 150%;
+  background-position: center;
+} */
+
+.pro-linktouch {
+  width: 100%;
+  height: 100%;
+  color: #e3e5e2;
+}
+.pro-linktext {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px #777474;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.pro-c1e {
+  /* background-size: 100% !important; */
+  background-image: url('http://localhost:3000/images/product/event01.png');
+}
+.pro-c1i1 {
+  background-image: url('http://localhost:3000/images/product/item01.jpg');
+}
+.pro-c1i2 {
+  background-image: url('http://localhost:3000/images/product/item02.jpg');
+}
+.pro-c1i3 {
+  background-image: url('http://localhost:3000/images/product/item03.jpg');
+}
+.pro-c2i4 {
+  background-image: url('http://localhost:3000/images/product/item04.jpg');
+}
+.pro-c2i5 {
+  background-image: url('http://localhost:3000/images/product/item05.jpg');
+}
+.pro-c2i6 {
+  background-image: url('http://localhost:3000/images/product/item06.jpg');
+}
+.pro-c2i7 {
+  background-image: url('http://localhost:3000/images/product/item07.jpg');
+}
+.pro-c2i8 {
+  background-image: url('http://localhost:3000/images/product/item08.jpg');
+}
+
+.pro-banner {
+  height: 350px;
+  background-color: #e3e5e2;
+}
+.pro-bannerbg {
+  background-color: #ffbb00;
+}
+.pro-bannerimg {
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.pro-bannertext {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.pro-bannerkv {
+  width: 100%;
+}
+
+.pro-subtext {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+.pro-maintext {
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.pro-cards {
+  background-color: #e3e5e2;
+}
+
+.search-bar input {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 0;
+  box-sizing: border-box;
+  color: #0e0e0e;
+  font-size: 18px;
+  height: 50px;
+  width: 100%;
+  outline: 0;
+  padding: 0 10px;
+  margin: 0 10px;
+  box-shadow: inset 3px 3px 5px 0 rgba(143, 143, 143, 0.096),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}

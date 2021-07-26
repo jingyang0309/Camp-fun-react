@@ -4,11 +4,7 @@ import { withRouter } from 'react-router-dom'
 import MbAside from '../../components/member/MbAside'
 import Swal from 'sweetalert2'
 
-import {
-  countries,
-  townships,
-  postcodes,
-} from '../../data/townships'
+import { countries, townships, postcodes } from '../../json/townships'
 
 function AddressBookadd(props) {
   // console.log(countries, townships, postcodes)
@@ -153,13 +149,11 @@ function AddressBookadd(props) {
                 >
                   <option value="-1">選擇區域</option>
                   {country > -1 &&
-                    townships[country].map(
-                      (value, index) => (
-                        <option key={index} value={index}>
-                          {value}
-                        </option>
-                      )
-                    )}
+                    townships[country].map((value, index) => (
+                      <option key={index} value={index}>
+                        {value}
+                      </option>
+                    ))}
                 </select>
               </div>
             </div>

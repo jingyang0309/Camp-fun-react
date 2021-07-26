@@ -1,0 +1,50 @@
+{
+  "_from": "@svg-maps/taiwan.main",
+  "_id": "@svg-maps/taiwan.main@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-8Sz2MAuCeAYMOfOF0ohQ2pMNmfVfXSerFOTe7ffI2koCSJKUPL92sQ3hajpkW/X9Iqo5xxOd6VRb5/M8SXnnHw==",
+  "_location": "/@svg-maps/taiwan.main",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@svg-maps/taiwan.main",
+    "name": "@svg-maps/taiwan.main",
+    "escapedName": "@svg-maps%2ftaiwan.main",
+    "scope": "@svg-maps",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@svg-maps/taiwan.main/-/taiwan.main-1.0.0.tgz",
+  "_shasum": "45af6da0c10ecb1e41bcffa6298983d44820d32f",
+  "_spec": "@svg-maps/taiwan.main",
+  "_where": "D:\\資策會\\專題\\campfun-react",
+  "author": {
+    "name": "Victor Cazanave",
+    "email": "victor.cazanave@gmail.com"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Map of Taiwan main island",
+  "gitHead": "bee5ca2ba0005a243d4cf8e6ba0420be305bf0d7",
+  "keywords": [
+    "svg",
+    "map",
+    "taiwan"
+  ],
+  "main": "index.js",
+  "name": "@svg-maps/taiwan.main",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VictorCazanave/svg-maps/tree/master/packages/taiwan.main"
+  },
+  "version": "1.0.0"
+}

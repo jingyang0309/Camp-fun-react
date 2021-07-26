@@ -1,0 +1,238 @@
+/* 設定容器大小及圖片 */
+.win-container {
+  position: relative;
+  width: 1100px;
+}
+.win-mainimage {
+  width: 100%;
+  height: 100%;
+}
+.win-mainimg {
+  width: 1100px;
+}
+/*設定櫥窗標題*/
+.win-title {
+  position: absolute;
+  display: flex;
+  left: 0px;
+  bottom: 0px;
+  color: #fff;
+  font-weight: 800;
+  padding: 0 30px;
+  width: 1100px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+.win-describe {
+  margin-left: 20px;
+  padding-top: 20px;
+}
+.win-subtitle {
+  position: absolute;
+}
+.win-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+/*設定資訊卡*/
+.win-procard {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.win-procard-imgarea {
+  width: 250px;
+  border-radius: 10px 10px 0px 0px;
+}
+.win-procard-img {
+  width: 250px;
+  border-radius: 10px 10px 0px 0px;
+}
+.win-procard-title h5 {
+  padding: 0 10px;
+  margin: 10px auto;
+  color: #fb0;
+  font-weight: 800;
+}
+.win-procard-summary {
+  padding: 0 10px;
+  margin: 5px auto;
+  font-weight: 800;
+}
+/*設定點位固定資訊*/
+.win-none {
+  display: none;
+}
+
+.win-display {
+  display: block;
+}
+
+.win-toucharea {
+  position: absolute;
+  transition: 0.3s;
+}
+.win-toucharea:hover {
+  background-color: rgba(255, 255, 255, 0.233);
+  transition: 0.3s;
+}
+.win-icon {
+  display: block;
+  position: inherit;
+  font-size: 30px;
+  color: #fb0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.609);
+}
+
+/* 設定資訊點位(變數) */
+/* 焚火tagid:12 */
+#win-12-1-toucharea {
+  top: 140px;
+  right: 370px;
+  width: 180px;
+  height: 180px;
+}
+
+#win-12-2-toucharea {
+  top: 200px;
+  right: 600px;
+  width: 300px;
+  height: 250px;
+}
+
+/* ----------- 女生派對tagid:44 ----------- */
+#win-44-1-toucharea {
+  top: 180px;
+  right: 410px;
+  width: 180px;
+  height: 180px;
+}
+/* 需新增商品 https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%A6%E3%82%A7%E3%82%A2/%E3%82%B9%E3%83%86%E3%83%B3%E3%83%AC%E3%82%B9%E7%9C%9F%E7%A9%BA%E3%83%9E%E3%82%B0-450/p/132856 
+產品代碼:60*/
+
+#win-44-2-toucharea {
+  top: 100px;
+  right: 820px;
+  width: 280px;
+  height: 280px;
+} /* 連結商品 pid=5 */
+
+#win-44-3-toucharea {
+  top: 150px;
+  right: 10px;
+  width: 180px;
+  height: 180px;
+}
+/* 需新增商品 https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%83%BB%E3%83%81%E3%82%A7%E3%82%A2/%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5FD%E3%83%81%E3%82%A7%E3%82%A2-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/p/140045 
+產品代碼:62*/
+
+/* -----------野外餐桌tagid:28 -----------*/
+#win-28-1-toucharea {
+  top: 230px;
+  right: 740px;
+  width: 100px;
+  height: 100px;
+}
+/* 需新增商品 https://ec.snowpeak.co.jp/snowpeak/ja/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97/%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%A6%E3%82%A7%E3%82%A2/SP%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%A6%E3%82%A7%E3%82%A2-%E3%83%9C%E3%83%BC%E3%83%AB-M/p/445 
+產品代碼:61*/
+
+#win-28-2-toucharea {
+  top: 70px;
+  right: 50px;
+  width: 280px;
+  height: 280px;
+} /* 連結商品 pid=2 */
+
+#win-28-3-toucharea {
+  top: 10px;
+  right: 310px;
+  width: 180px;
+  height: 180px;
+} /* 連結商品 pid=56 */
+
+/* ----------- 派對tagid:45 ------------- */
+#win-45-1-toucharea {
+  top: 290px;
+  right: 500px;
+  width: 150px;
+  height: 150px;
+} /* 連結商品 pid=29 */
+
+#win-45-2-toucharea {
+  top: 120px;
+  right: 650px;
+  width: 200px;
+  height: 200px;
+} /* 連結商品 pid=24 */
+
+#win-45-3-toucharea {
+  top: 130px;
+  right: 420px;
+  width: 130px;
+  height: 130px;
+} /* 連結商品 pid=48 */
+
+/* ----------- 親子tagid:8 ------------- */
+#win-8-1-toucharea {
+  top: 50px;
+  right: 400px;
+  width: 150px;
+  height: 150px;
+} /* 連結商品 pid=29 */
+
+#win-8-2-toucharea {
+  top: 250px;
+  right: 800px;
+  width: 200px;
+  height: 200px;
+} /* 連結商品 pid=24 */
+
+#win-8-3-toucharea {
+  top: 10px;
+  right: 50px;
+  width: 400px;
+  height: 300px;
+} /* 連結商品 pid=48 */
+
+/* ----------- 儀式感tagid:27 ------------- */
+#win-27-1-toucharea {
+  top: 100px;
+  right: 250px;
+  width: 150px;
+  height: 150px;
+} /* 連結商品 pid=29 */
+
+#win-27-2-toucharea {
+  top: 50px;
+  right: 780px;
+  width: 100px;
+  height: 80px;
+} /* 連結商品 pid=24 */
+
+#win-27-3-toucharea {
+  top: 250px;
+  right: 100px;
+  width: 300px;
+  height: 150px;
+} /* 連結商品 pid=48 */

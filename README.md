@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# **CampFun-共用整合 git**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+組內使用 React 整合倉
+## 第一次安裝請先執行 "npm install"後，將"mapdata"內的"taiwan.main"覆蓋掉"\node_modules\@svg-maps"裡面的"taiwan.main"，地圖功能才能正常顯示喔!
 
-## Available Scripts
+## ChangeLog
 
-In the project directory, you can run:
+#### 2021/07/17 產品搜尋頁(70%)
 
-### `yarn start`
+-產品搜尋頁完成 / 未整合版面及 TAG 搜尋器
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### 2021/07/16 產品詳細頁(80%)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-詳細頁版面完成(可加購物車)
 
-### `yarn test`
+-商品卡片元件更新(可加購物車/調整按鈕及圖片對接位置)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 2021/07/12 更新首頁(70%)/ 產品首頁(90%)
 
-### `yarn build`
+-首頁元件完成 / 搜尋機能未實裝(TD)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-新增 商品卡片元件
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 2021/07/06 更新首頁(40%)/ 更改架構及副檔名(jsx->js) / 新增 route
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-首頁建置
 
-### `yarn eject`
+-副檔名修正為 js (部分異常以詳細檔名為主)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-Route 表建立(連結方式變更 a->link to)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 2021/07/05 建立專案檔，完成 Navbar 及 Footer 雙版
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 已可使用之物件
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### NavBar:
 
-## Learn More
+> 二版-更新連結/實裝隱藏式 NAVBAR(by 儒儒)
+> 初版-調整購物車 button 位置 (異於設計稿)  
+> rwd done
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### SrNavBar:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> 二版-關鍵字連動設定完成
+> 初版-設定時間元件(連同全站式)
 
-### Code Splitting
+### Min Footer:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> 初版  
+> rwd done
 
-### Analyzing the Bundle Size
+### Full Footer:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> 初版  
+> rwd done
 
-### Making a Progressive Web App
+### 商品卡片(slidebox)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> 二版-更新加入購物車，調整卡片版面
+> 初版(不含切換功能，可改 api)
 
-### Advanced Configuration
+## 已可使用頁面
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 首頁
 
-### Deployment
+> 場地卡片未製作(尚未提供資料) / 編輯精選單元連結未上
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 商品頁首頁
 
-### `yarn build` fails to minify
+> 上方連結未上(search by Catagory) / 搜尋頁未上
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 各商品頁
+
+> 下部詳細資料未上(暫時刪除) / 相簿資料待建立
+
+### 搜尋頁
+
+> 切換 TAG 搜尋未實裝 / 基本搜尋完成

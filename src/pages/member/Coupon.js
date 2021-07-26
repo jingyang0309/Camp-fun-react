@@ -18,7 +18,7 @@ function Coupon(props) {
             <hr />
             <div className="mb-coupon-card">
               <div className="mb-coupon-pic">
-                <img src="./../images/cp100.png"></img>
+                <img src="./../images/cp100.png" alt="優惠券"></img>
               </div>
               <div className="mb-coupon-tag">
                 <div>新人好禮</div>

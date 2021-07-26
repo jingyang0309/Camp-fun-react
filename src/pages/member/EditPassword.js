@@ -6,7 +6,6 @@ import MbAside from '../../components/member/MbAside'
 
 function EditPassword(props) {
   const { auth, setAuth } = props
-  const [loginAuth, setLoginAuth] = useState(auth)
   const [showPwd, setShowPwd] = useState(false)
   const [showPwd2, setShowPwd2] = useState(false)
   const [showPwd3, setShowPwd3] = useState(false)
@@ -22,15 +21,6 @@ function EditPassword(props) {
 
   // 處理每個欄位的變動
   const handleFieldChange = (e) => {
-    // console.log(
-    //   '訊息',
-    //   e.target.name,
-    //   e.target.type,
-    //   e.target.value,
-    //   e.target.checked
-    // )
-
-    // 更新輸入欄位
     const updatedFields = {
       ...fields,
       [e.target.name]: e.target.value,
@@ -69,14 +59,13 @@ function EditPassword(props) {
       ErrorAlert()
     } else {
       okAlert()
+      const newObj = {
+        password: '',
+        newPassword: '',
+        newPasswordAgain: '',
+      }
+      setFields(newObj)
     }
-    // 要等驗証過，再設定資料(簡單的直接設定)
-
-    //直接在一段x秒關掉指示器
-    // setTimeout(() => {
-    //   alert('儲存完成')
-    //   props.history.push('/member/')
-    // }, 1000)
   }
 
   function okAlert() {
@@ -126,11 +115,7 @@ function EditPassword(props) {
             />
             <div className="mb-show-pwd4">
               <img
-                src={
-                  showPwd
-                    ? './../images/eye.png'
-                    : './../images/eye2.png'
-                }
+                src={showPwd ? './../images/eye.png' : './../images/eye2.png'}
                 alt="showPwd"
                 onClick={() => {
                   setShowPwd(!showPwd)
@@ -150,11 +135,7 @@ function EditPassword(props) {
             />
             <div className="mb-show-pwd4">
               <img
-                src={
-                  showPwd2
-                    ? './../images/eye.png'
-                    : './../images/eye2.png'
-                }
+                src={showPwd2 ? './../images/eye.png' : './../images/eye2.png'}
                 alt="showPwd"
                 onClick={() => {
                   setShowPwd2(!showPwd2)
@@ -169,16 +150,11 @@ function EditPassword(props) {
               name="newPasswordAgain"
               value={fields.newPasswordAgain}
               onChange={handleFieldChange}
-              value={fields.nickname}
               placeholder="請確認您的新密碼"
             />
             <div className="mb-show-pwd4">
               <img
-                src={
-                  showPwd3
-                    ? './../images/eye.png'
-                    : './../images/eye2.png'
-                }
+                src={showPwd3 ? './../images/eye.png' : './../images/eye2.png'}
                 alt="showPwd"
                 onClick={() => {
                   setShowPwd3(!showPwd3)

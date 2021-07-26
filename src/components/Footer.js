@@ -5,14 +5,8 @@ import Subscribe from '../images/subscribe.png' //訂閱檔案
 import background from '../images/social-back.png' //full背景
 import '../styles/navnfooter.css'
 import NavIcon from './NavIcon.js'
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-} from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
+import { Container, Row, Col, Form, Button, Badge } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function footer(props) {
   let footer = ''
@@ -20,69 +14,35 @@ function footer(props) {
     case 'full':
       footer = (
         <>
-          <Container
-            className="footer d-none d-lg-block"
-            fluid
-          >
+          <Container className="footer d-none d-lg-block" fluid>
             <Row className="justify-content-center mt-5">
-              <Col
-                xl={4}
-                md={6}
-                className="d-flex justify-content-center"
-              >
-                <img
-                  className="foo-qu"
-                  src={Subscribe}
-                  alt="sub"
-                />
+              <Col xl={4} md={6} className="d-flex justify-content-center">
+                <img className="foo-qu" src={Subscribe} alt="sub" />
               </Col>
-              <Col
-                xl={4}
-                md={6}
-                className="d-flex justify-content-center"
-              >
-                <img
-                  className="foo-qu"
-                  src={Follow}
-                  alt="follow"
-                />
+              <Col xl={4} md={6} className="d-flex justify-content-center">
+                <img className="foo-qu" src={Follow} alt="follow" />
               </Col>
             </Row>
             <Row className="foo-social justify-content-center">
-              <Col
-                xl={4}
-                md={6}
-                className="mt-5 d-flex flex-column"
-              >
+              <Col xl={4} md={6} className="mt-5 d-flex flex-column">
                 <Form className="mx-auto">
                   <Form.Row>
                     <Col xl={8} md={8}>
                       <Form.Control placeholder="請輸入您的email" />
                     </Col>
                     <Col xl={4} md={4}>
-                      <Button variant="light">
-                        立即訂閱
-                      </Button>
+                      <Button variant="light">立即訂閱</Button>
                     </Col>
                   </Form.Row>
                 </Form>
                 <div className="foo-note mt-3 mx-auto">
-                  <h6>
-                    熱門露營話題、超夯戶外情報、商品推薦及最新優惠
-                  </h6>
+                  <h6>熱門露營話題、超夯戶外情報、商品推薦及最新優惠</h6>
                 </div>
               </Col>
-              <Col
-                xl={4}
-                md={6}
-                className="mt-5 d-flex flex-column"
-              >
+              <Col xl={4} md={6} className="mt-5 d-flex flex-column">
                 <div className="foo-social-icon d-flex justify-content-center">
                   <div>
-                    <NavIcon
-                      item="youtube"
-                      iconstyle="social"
-                    />
+                    <NavIcon item="youtube" iconstyle="social" />
                   </div>
                   <div>
                     <NavIcon item="fb" iconstyle="social" />
@@ -91,10 +51,7 @@ function footer(props) {
                     <NavIcon item="ig" iconstyle="social" />
                   </div>
                   <div>
-                    <NavIcon
-                      item="twitter"
-                      iconstyle="social"
-                    />
+                    <NavIcon item="twitter" iconstyle="social" />
                   </div>
                 </div>
 
@@ -105,9 +62,7 @@ function footer(props) {
             </Row>
             <Row
               className="foo-bottom"
-              style={{
-                backgroundImage: `url(${background})`,
-              }}
+              style={{ backgroundImage: `url(${background})` }}
             >
               <Col
                 xl={8}
@@ -160,29 +115,27 @@ function footer(props) {
                 xl={4}
                 className="mt-4 foo-note foo-cl d-flex flex-lg-column"
               >
-                <img
-                  className="nav-logo"
-                  src={MainLogo}
-                  alt=""
-                />
+                <img className="nav-logo" src={MainLogo} alt="" />
+                <Link to="/cartcheck">
+                  <h4>
+                    <Badge variant="secondary">門市作業</Badge>
+                  </h4>
+                </Link>
                 <div className="d-flex flex-md-column mx-md-auto">
                   <span>
-                    電話：( 02 ) - 2123-5678 / 0800-123-678
+                    {' '}
+                    Camp Fun (c) 2021 本網站內容、資訊皆為教育使用，非供任何商業
+                    使用，版權屬各公司所有
                   </span>
                   <span className="d-lg-none d-xl-block">
-                    管理部地址：10622
-                    台北市大安區和平東路二段106號
+                    {/* 管理部地址：10622 台北市大安區和平東路二段106號 */}
                   </span>
                   <span className="d-lg-none d-xl-block">
-                    email：sv @ campfun.tw
+                    {/* email：sv @ campfun.tw */}
                   </span>
-                  <span className="d-lg-none d-xl-block">
-                    Line @ CampFuntw
-                  </span>
+                  <span className="d-lg-none d-xl-block">Line @ CampFuntw</span>
 
-                  <span>
-                    隱私權政策　|　網站資料使用對策　|　購物須知
-                  </span>
+                  <span>隱私權政策　|　網站資料使用對策　|　購物須知</span>
                   <span>Camp Fun 台灣露肯 (c) 2021</span>
                 </div>
               </Col>
@@ -193,21 +146,14 @@ function footer(props) {
             fluid
           >
             <Row className="order-1 d-flex justify-content-center py-3">
-              <span>
-                隱私權政策　|　網站資料使用對策　|　購物須知
-              </span>
+              <span>隱私權政策　|　網站資料使用對策　|　購物須知</span>
             </Row>
             <Row className="order-0 d-flex justify-content-center">
-              <img
-                className="nav-logo"
-                src={MainLogo}
-                alt=""
-              />
+              <img className="nav-logo" src={MainLogo} alt="" />
             </Row>
             <Row className="order-1 d-flex justify-content-center py-2 px-5">
               <span>
-                Camp Fun (c) 2021
-                本網站內容、資訊皆為教育使用，非供任何商業
+                Camp Fun (c) 2021 本網站內容、資訊皆為教育使用，非供任何商業
                 使用，版權屬各公司所有
               </span>
             </Row>
@@ -218,22 +164,14 @@ function footer(props) {
     case 'min':
       footer = (
         <>
-          <Container
-            className="footer d-none d-lg-block mt-1"
-            fluid
-          >
+          <Container className="footer d-none d-lg-block mt-1" fluid>
             <Row className="foo-social d-flex justify-content-center align-items-center">
               <span className="mx-3 foo-note">
                 隱私權政策　|　網站資料使用對策　|　購物須知
               </span>
-              <img
-                className="foo-logo mx-3"
-                src={MainLogo}
-                alt=""
-              />
+              <img className="foo-logo mx-3" src={MainLogo} alt="" />
               <span className="mx-3 foo-note">
-                Camp Fun (c) 2021
-                本網站內容、資訊皆為教育使用，非供任何商業
+                Camp Fun (c) 2021 本網站內容、資訊皆為教育使用，非供任何商業
                 使用，版權屬各公司所有
               </span>
             </Row>
@@ -243,21 +181,14 @@ function footer(props) {
             fluid
           >
             <Row className="order-1 d-flex justify-content-center py-3 mt-1">
-              <span>
-                隱私權政策　|　網站資料使用對策　|　購物須知
-              </span>
+              <span>隱私權政策　|　網站資料使用對策　|　購物須知</span>
             </Row>
             <Row className="order-0 d-flex justify-content-center">
-              <img
-                className="nav-logo"
-                src={MainLogo}
-                alt=""
-              />
+              <img className="nav-logo" src={MainLogo} alt="" />
             </Row>
             <Row className="order-1 d-flex justify-content-center py-2 px-5">
               <span>
-                Camp Fun (c) 2021
-                本網站內容、資訊皆為教育使用，非供任何商業
+                Camp Fun (c) 2021 本網站內容、資訊皆為教育使用，非供任何商業
                 使用，版權屬各公司所有
               </span>
             </Row>

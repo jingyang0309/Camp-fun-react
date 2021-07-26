@@ -25,15 +25,6 @@ function MemberProfile(props) {
 
   // 處理每個欄位的變動
   const handleFieldChange = (e) => {
-    // console.log(
-    //   '訊息',
-    //   e.target.name,
-    //   e.target.type,
-    //   e.target.value,
-    //   e.target.checked
-    // )
-
-    // 更新輸入欄位
     const updatedFields = {
       ...fields,
       [e.target.name]: e.target.value,

@@ -3,7 +3,8 @@ import CustomersServiceWindow from './CustomersServiceWindow'
 
 function CustomerService(props) {
   const { auth } = props
-  const [csSWindow, serCsSWindow] = useState(false)
+  const [csSWindow, setCsSWindow] = useState(false)
+  const [autoRefresh, setAutoRefresh] = useState(false)
   return (
     <>
       {csSWindow ? (
@@ -12,7 +13,8 @@ function CustomerService(props) {
         <div
           className="mb-cs-icon"
           onClick={() => {
-            serCsSWindow(!csSWindow)
+            setCsSWindow(!csSWindow)
+            setAutoRefresh(true)
           }}
         >
           <img
@@ -24,8 +26,10 @@ function CustomerService(props) {
       {csSWindow ? (
         <CustomersServiceWindow
           csSWindow={csSWindow}
-          serCsSWindow={serCsSWindow}
+          setCsSWindow={setCsSWindow}
           auth={auth}
+          autoRefresh={autoRefresh}
+          setAutoRefresh={setAutoRefresh}
         />
       ) : (
         ''

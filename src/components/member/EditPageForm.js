@@ -1,24 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-import {
-  countries,
-  townships,
-  postcodes,
-} from '../../data/townships'
+import { countries, townships, postcodes } from '../../data/townships'
 import Swal from 'sweetalert2'
 function EditPageForm(props) {
-  const { usersaddress, setModalShow, setUsersaddress } =
-    props
-  const [usersaddressEdit, setUusersaddressEdit] =
-    useState(usersaddress)
+  const { usersaddress, setModalShow, setUsersaddress } = props
+  const [usersaddressEdit, setUusersaddressEdit] = useState(usersaddress)
 
-  const [country, setCountry] = useState(
-    usersaddress.country
-  )
-  const [township, setTownship] = useState(
-    usersaddress.township
-  )
+  const [country, setCountry] = useState(usersaddress.country)
+  const [township, setTownship] = useState(usersaddress.township)
   const [naa, setNaa] = useState(usersaddress.naa)
   const formRef = useRef(null)
 
@@ -148,13 +138,11 @@ function EditPageForm(props) {
                   >
                     <option value="-1">選擇區域</option>
                     {country > -1 &&
-                      townships[country].map(
-                        (value, index) => (
-                          <option key={index} value={index}>
-                            {value}
-                          </option>
-                        )
-                      )}
+                      townships[country].map((value, index) => (
+                        <option key={index} value={index}>
+                          {value}
+                        </option>
+                      ))}
                   </select>
                 </div>
               </div>

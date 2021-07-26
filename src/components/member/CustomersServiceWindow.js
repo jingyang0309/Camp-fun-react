@@ -1,8 +1,10 @@
-import React, { useState, Link } from 'react'
+import React, { useState, Link, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
+import moment from 'moment'
+import $ from 'jquery'
 
 function CustomersServiceWindow(props) {
-  const { auth, csSWindow, serCsSWindow } = props
+  const { auth, csSWindow, setCsSWindow, autoRefresh, setAutoRefresh } = props
   const [displayMsg, setDisplayMsg] = useState([
     {
       created_at: '',
@@ -13,12 +15,13 @@ function CustomersServiceWindow(props) {
     },
   ])
   const [usersMsg, setUsersMsg] = useState('')
+  const [dataLoading, setDataLoading] = useState(false)
 
   const avatarPath = 'http://localhost:4000/img/'
 
   // 獲取全部對話內容
   async function getAllMessage() {
-    console.log('獲取對話')
+    // console.log('更新')
     const token = localStorage.getItem('token')
     const url = 'http://localhost:4000/member/getAllMessage'
 
@@ -34,15 +37,26 @@ function CustomersServiceWindow(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    // console.log(data)
     setDisplayMsg(data)
-    console.log(displayMsg)
+    setDataLoading(true)
+
+    // try {
+    //   mbCsContentscroll.scrollBy(0, 9999)
+    // } catch (ex) {
+    //   console.log(ex)
+    // }
   }
 
+  useEffect(() => {
+    let autoRefreshmsg = setInterval(() => {
+      getAllMessage()
+    }, 1000)
+  }, [])
+
+  // 對話視窗卷軸
+  let mbCsContentscroll = window.document.getElementById('mbCsContentscroll')
   // 發送文字
   async function sendMessage() {
-    console.log('123')
-
     if (usersMsg.length < 1) {
       return
     }
@@ -50,22 +64,18 @@ function CustomersServiceWindow(props) {
     const msgData = { message: usersMsg }
     const token = localStorage.getItem('token')
 
-    const request = new Request(
-      'http://localhost:4000/member/sendMessage',
-      {
-        method: 'POST',
-        body: JSON.stringify(msgData),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    const request = new Request('http://localhost:4000/member/sendMessage', {
+      method: 'POST',
+      body: JSON.stringify(msgData),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log(data)
     setUsersMsg('')
     getAllMessage()
   }
@@ -73,48 +83,44 @@ function CustomersServiceWindow(props) {
   // 尚未登入的畫面
   const noLoginMode = (
     <>
+      <div className="pl-4">
+        <img src="http://localhost:4000/img/flypig.png" alt="sorry" />
+      </div>
       <p className="mt-3">
         聯繫客服需先登入會員，請
         <span
           onClick={() => {
             props.history.push('/login')
-            serCsSWindow(false)
+            setCsSWindow(false)
           }}
           style={{
-            color: '#149920',
+            color: '#209920',
             cursor: 'pointer',
           }}
         >
           點擊此處
         </span>
-        前往登入頁
+        前往登入頁。
       </p>
-      <div className="pl-4">
-        <img
-          src="http://localhost:4000/img/flypig.png"
-          alt="sorry"
-        />
-      </div>
     </>
   )
 
-  // 開始對話
+  // 登入後的對話畫面
   const authMode = displayMsg.map((v, i) =>
     displayMsg[i].fromWho === 'csStaff' ? (
       <>
         {/* 客服發送的訊息 */}
         <div className="mb-cs-cs">
           <div className="mb-cs-cs-avatar">
-            <img
-              src={avatarPath + 'flypig.png'}
-              alt="cs-avatar"
-            />
+            <img src={avatarPath + 'flypig.png'} alt="cs-avatar" />
           </div>
           <div>
             <div className="mb-cs-cs-message">
               <p>{displayMsg[i].messsage}</p>
             </div>
-            <p className="mb-cs-cs-time">07/16 20:30:16</p>
+            <p className="mb-cs-cs-time">
+              {moment(displayMsg[i].created_at).format('YYYY-MM-DD')}
+            </p>
           </div>
         </div>
       </>
@@ -127,7 +133,7 @@ function CustomersServiceWindow(props) {
               <p>{displayMsg[i].messsage}</p>
             </div>
             <p className="mb-cs-user-time">
-              {displayMsg[i].created_at}
+              {moment(displayMsg[i].created_at).format('MM-DD hh:mm')}
             </p>
           </div>
           <div className="mb-cs-user-avatar">
@@ -145,27 +151,31 @@ function CustomersServiceWindow(props) {
     )
   )
 
+  const loading = (
+    <>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    </>
+  )
   return (
     <>
       <div className="mb-cs-window">
         <div className="mb-cs-title">
-          <p className="text-center mt-3">
-            在線客服-飛天豬排
-          </p>
+          <p className="text-center pt-3">在線客服-飛天豬排</p>
         </div>
         <div
           className="mb-cs-line"
           onClick={() => {
-            serCsSWindow(!csSWindow)
+            setCsSWindow(!csSWindow)
           }}
         >
-          <img
-            src="http://localhost:4000/img/line.png"
-            alt="line"
-          ></img>
+          <img src="http://localhost:4000/img/line.png" alt="line"></img>
         </div>
-        <div className="mb-cs-content">
-          {auth.login ? authMode : noLoginMode}
+        <div className="mb-cs-content" id="mbCsContentscroll">
+          {auth.login ? (dataLoading ? authMode : loading) : noLoginMode}
         </div>
         <div className="mb-cs-input-area d-flex">
           <input
@@ -178,26 +188,9 @@ function CustomersServiceWindow(props) {
           <div
             className="mb-cs-input-arrow"
             style={
-              usersMsg.length
-                ? { cursor: 'pointer' }
-                : { cursor: 'default' }
+              usersMsg.length ? { cursor: 'pointer' } : { cursor: 'default' }
             }
           >
-            {auth.login ? (
-              <img
-                src={
-                  usersMsg.length
-                    ? 'http://localhost:4000/img/messageArrow2.png'
-                    : 'http://localhost:4000/img/messageArrow.png'
-                }
-                alt="messageArrow.png"
-                onClick={() => {
-                  sendMessage()
-                }}
-              />
-            ) : (
-              ''
-            )}
             <img
               src={
                 usersMsg.length
@@ -206,7 +199,7 @@ function CustomersServiceWindow(props) {
               }
               alt="messageArrow.png"
               onClick={() => {
-                getAllMessage()
+                sendMessage()
               }}
             />
           </div>

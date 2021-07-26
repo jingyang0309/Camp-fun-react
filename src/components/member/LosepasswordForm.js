@@ -175,9 +175,7 @@ function LosepasswordForm(props) {
         style={{ background: 'transparent' }}
       >
         <Modal.Body className="mb-losepassword">
-          <h2 style={{ marginBottom: '50px' }}>
-            輸入安全驗證碼
-          </h2>
+          <h2 style={{ marginBottom: '50px' }}>輸入安全驗證碼</h2>
           <p className="text-center">
             請查看您電子信箱中是否有包含驗證碼的信件，我們已將您的驗證碼發送至信件:
             {getPwdEmail}
@@ -226,9 +224,7 @@ function LosepasswordForm(props) {
         style={{ background: 'transparent' }}
       >
         <Modal.Body className="mb-losepassword">
-          <h2 style={{ marginBottom: '50px' }}>
-            更改新密碼
-          </h2>
+          <h2 style={{ marginBottom: '50px' }}>更改新密碼</h2>
           <p className="text-center">
             請設定長度至少6個字元的新密碼。
             {getPwdEmail}
@@ -246,11 +242,7 @@ function LosepasswordForm(props) {
           />
           <div className="mb-show-pwd3">
             <img
-              src={
-                showPwd3
-                  ? './images/eye.png'
-                  : './images/eye2.png'
-              }
+              src={showPwd3 ? './images/eye.png' : './images/eye2.png'}
               alt="showPwd"
               onClick={() => {
                 setShowPwd3(!showPwd3)

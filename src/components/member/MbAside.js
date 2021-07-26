@@ -64,7 +64,7 @@ function MbAside(props) {
         <li>訂單中心</li>
         <li className="ww">
           <Link
-            to=""
+            to="/cartorder"
             style={{
               textDecoration: 'none',
               color: '#000',
@@ -75,24 +75,13 @@ function MbAside(props) {
         </li>
         <li className="ww">
           <Link
-            to=""
+            to="/cartorder"
             style={{
               textDecoration: 'none',
               color: '#000',
             }}
           >
             租借詳情
-          </Link>
-        </li>
-        <li className="ww">
-          <Link
-            to=""
-            style={{
-              textDecoration: 'none',
-              color: '#000',
-            }}
-          >
-            活動查詢
           </Link>
         </li>
         <li>其他</li>

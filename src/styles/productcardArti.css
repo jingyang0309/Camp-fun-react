@@ -1,0 +1,121 @@
+.Apro-cardout {
+  /* --gradient-color: rgba(227, 229, 226, 1), rgba(227, 229, 226, 0.7),
+      rgba(255, 255, 255, 0);
+    --gradient-width: 10%; */
+  /* margin: 0px; */
+  text-decoration: none;
+}
+
+/* .pro-cardout::before {
+    background: linear-gradient(to right, var(--gradient-color));
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: var(--gradient-width);
+    z-index: 1;
+    left: 15px;
+    top: 0;
+  }
+  .pro-cardout::after {
+    background: linear-gradient(to right, var(--gradient-color));
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: var(--gradient-width);
+    z-index: 1;
+    right: 15px;
+    top: 0;
+    transform: rotateZ(180deg);
+  } */
+.Apro-card {
+  width: 320px;
+  height: 450px;
+
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px rgb(236, 236, 236);
+  padding: 0px 0 15px 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+}
+.Apro-card:hover {
+  box-shadow: 0 5px 5px 0 rgba(192, 192, 192, 0.308);
+}
+.Apro-cardimgarea {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+.Apro-cardimg {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.Apro-card-info {
+  margin: 0 30px;
+}
+.Apro-card-info hr {
+  size: 30px;
+}
+.Apro-cardtitle {
+  padding: 20px 0 0 0;
+  height: 40px;
+}
+.Apro-cardtitle h5 {
+  font-weight: bold;
+  color: rgb(33, 78, 61);
+}
+.Apro-cardsummary {
+  margin: 50px 0 0 0;
+  padding-bottom: 20px;
+  /* height: 50px; */
+  font-size: 16px;
+
+  border-bottom: 1.5px solid rgb(195, 195, 195);
+}
+
+.slick-prev {
+  height: 400px !important;
+  width: 30px;
+}
+
+.slick-next {
+  height: 400px !important;
+  width: 30px;
+}
+
+.Apro-cardrank {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.a-card-rating {
+  color: #999999;
+  font-weight: 600;
+}
+
+.a-card-sum {
+  color: #999999;
+}
+
+.Apro-check {
+  color: #145041;
+  border: 2px solid #145041;
+  border-radius: 15px;
+  padding: 8px 15px;
+  margin-left: 35px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.Apro-check:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #145041;
+}

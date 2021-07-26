@@ -1,0 +1,135 @@
+.pro-cardout {
+  margin: 15px;
+  text-decoration: none;
+}
+
+.pro-card {
+  width: 230px;
+  height: 380px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 4px rgb(218, 218, 218);
+  padding: 0px 0 50px 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  /* margin: 0 2px; */
+}
+.pro-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(138, 138, 138, 0.2);
+}
+.pro-cardimgarea {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+.pro-cardimg {
+  min-height: 100%;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.pro-card-info {
+  margin: 0 10px;
+}
+.pro-card-info hr {
+  size: 30px;
+}
+.pro-cardtitle {
+  padding: 15px 0 0 0;
+  /* line-height: 30px; */
+  height: 40px;
+}
+.pro-cardtitle h5 {
+  font-weight: bold;
+  color: rgb(33, 78, 61);
+}
+.pro-cardsummary {
+  margin: 30px 0 0 0;
+  padding-bottom: 10px;
+  /* height: 50px; */
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 1.5px solid rgb(195, 195, 195);
+}
+.slick-prev {
+  height: 400px !important;
+  width: 30px;
+  margin: 10px;
+}
+
+.slick-next {
+  height: 400px !important;
+  width: 30px;
+}
+
+.pro-cardrank {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pro-card-number {
+  font-weight: bold;
+  font-size: 25px;
+}
+.pro-card-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 0.3px solid #ffbb00;
+  border-radius: 15px;
+  background-color: #fff;
+  color: #ffbb00;
+  height: 50px;
+  width: 100%;
+}
+.pro-card-btn:hover {
+  /* transition: 0.2s; */
+  background-color: #ffbb00;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pro-card-carticon {
+  margin: 0px 10px;
+}
+
+/* 地點DEMO用 */
+.place-pro-card {
+  width: 350px;
+  height: 380px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 4px rgb(218, 218, 218);
+  padding: 0px 0 50px 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  /* margin: 0 2px; */
+}
+
+.place-pro-cardimgarea {
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+  position: relative;
+}
+.place-location {
+  position: absolute;
+  color: #fff;
+  top: 10px;
+  right: 10px;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+.place-pro-cardimg {
+  min-height: 100%;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.place-pro-cardsummary {
+}

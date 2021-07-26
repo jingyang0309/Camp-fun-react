@@ -2,11 +2,8 @@ import React from 'react'
 import swal from 'sweetalert2'
 
 function Addressdelete(props) {
-  const {
-    usersaddress,
-    usersaddressall,
-    setusersaddressall,
-  } = props
+  const { usersaddress, usersaddressall, setusersaddressall, setDisplayMode } =
+    props
 
   // 彈出視窗
   function ask(usersaddress) {
@@ -35,8 +32,7 @@ function Addressdelete(props) {
 
   // 發送要求給伺服器刪除地址
   async function deleteUserAddress(usersaddress) {
-    const url =
-      'http://localhost:4000/member/address/' + usersaddress
+    const url = 'http://localhost:4000/member/address/' + usersaddress
     console.log(url)
     // 注意header資料格式要設定，伺服器才知道是json格式
     const request = new Request(url, {
@@ -49,14 +45,14 @@ function Addressdelete(props) {
 
     const response = await fetch(request)
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     if (!data.id) {
-      const newUsers = usersaddressall.filter(
-        (value, index) => {
-          return value.addressId !== usersaddress
-        }
-      )
+      const newUsers = usersaddressall.filter((value, index) => {
+        return value.addressId !== usersaddress
+      })
+      console.log('新物件', newUsers)
       setusersaddressall(newUsers)
+      if (newUsers.length < 1) setDisplayMode(false)
     }
   }
   return (

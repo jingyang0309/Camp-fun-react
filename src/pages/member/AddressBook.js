@@ -8,11 +8,7 @@ import AddressBookEdit from './AddressBookEdit'
 // 刪除按鈕
 import Addressdelete from './Addressdelete'
 
-import {
-  countries,
-  townships,
-  postcodes,
-} from '../../data/townships'
+import { countries, townships, postcodes } from '../../json/townships'
 
 function AddressBook(props) {
   const [arrayNum, setArrayNum] = useState()
@@ -58,10 +54,7 @@ function AddressBook(props) {
   const noAddressmode = (
     <>
       <div className="mb-addressBook-icon mx-auto ">
-        <img
-          src="../svg/addressBook-gray.svg"
-          alt="addressBook"
-        />
+        <img src="../svg/addressBook-gray.svg" alt="addressBook" />
       </div>
       <h2 className="text-center">收件地址空空如也...</h2>
     </>
@@ -78,13 +71,7 @@ function AddressBook(props) {
         </div>
         <div className="member-address-content-data ml-5">
           <p>{countries[usersaddress[i].country]}</p>
-          <p>
-            {
-              townships[usersaddress[i].country][
-                usersaddress[i].township
-              ]
-            }
-          </p>
+          <p>{townships[usersaddress[i].country][usersaddress[i].township]}</p>
           <p>{usersaddress[i].naa}</p>
         </div>
         <div className="member-address-content-button ml-auto">
@@ -92,6 +79,7 @@ function AddressBook(props) {
             usersaddress={usersaddress[i].addressId}
             usersaddressall={usersaddress}
             setusersaddressall={setUsersaddress}
+            setDisplayMode={setDisplayMode}
           />
           {/* <button className="mb-button mb-yellow d-block mt-2">
             編輯

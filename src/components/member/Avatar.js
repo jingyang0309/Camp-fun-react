@@ -35,10 +35,7 @@ function Avatar(props) {
         console.log(obj)
         if (obj.avatar) {
           let pic = obj.avatar
-          $('#myimg').attr(
-            'src',
-            'http://localhost:4000/img/' + pic
-          )
+          $('#myimg').attr('src', 'http://localhost:4000/img/' + pic)
           let copyAuth = auth
           setLoginAuth({
             login: true,
@@ -86,9 +83,7 @@ function Avatar(props) {
 
           <img
             src={
-              auth.avatar
-                ? avatarPath + auth.avatar
-                : './../images/avatar.png'
+              auth.avatar ? avatarPath + auth.avatar : './../images/avatar.png'
             }
             alt="avatar"
             id="myimg"

@@ -7,6 +7,7 @@ function Member(props) {
   // 上層傳來的登入狀況
   const { auth, setAuth } = props
   const [memberData, setMemberData] = useState(auth)
+  const [money, setMoney] = useState('0')
 
   // 大頭貼預設路徑(前段)
   const avatarPath = 'http://localhost:4000/img/'
@@ -35,11 +36,48 @@ function Member(props) {
   // useEffect(() => {
   //   verifyMemberData()
   // }, [])
-
   // 設定資料
   // useEffect(() => {
   //   setAuth(memberData)
   // }, [memberData])
+
+  function testMoney(params) {
+    const token = localStorage.getItem('token')
+    fetch('http://localhost:4000/member/testAddMoney', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+      })
+
+    getAmountOfConsumption()
+  }
+
+  async function getAmountOfConsumption() {
+    const token = localStorage.getItem('token')
+
+    fetch('http://localhost:4000/member/getAmountOfConsumption', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+        const moneyData = data.length > 0 ? data[0].money : '0'
+        setMoney(moneyData)
+      })
+  }
+
+  // 生命週期套用效果
+  useEffect(() => {
+    getAmountOfConsumption()
+  }, [])
 
   return (
     <>
@@ -57,6 +95,9 @@ function Member(props) {
                     ? avatarPath + auth.avatar
                     : './../images/avatar.png'
                 }
+                onClick={() => {
+                  testMoney()
+                }}
                 alt="123"
               />
             </div>
@@ -82,35 +123,56 @@ function Member(props) {
           <div className="d-flex mb-imformation-content align-items-center mb-5">
             <div className="mb-card">
               <img
-                src="../image/Member-card.jpg"
+                src={
+                  money > 10000
+                    ? '../images/member-card-silver.png'
+                    : '../images/member-card-bronze.png'
+                }
                 alt="123"
               />
             </div>
             <div className="Member-level-content">
-              <p>您的會員卡等級: 銅牌</p>
+              <p>您的會員卡等級: {money > 10000 ? '銀牌' : '銅牌'}</p>
               <p>會員卡有效期限: 終身永久</p>
-              <p>累計消費金額: NT$ 0</p>
-              <p>參加活動次數: 0 次</p>
+              <p>累計消費金額: NT$ {money}</p>
             </div>
           </div>
-          <div className="d-flex">
+          <div className="d-flex pt-4">
             <div className="button">
               <img
-                src="../image/button.png"
-                alt=""
+                src="../images/button.png"
+                alt="mbProfile"
                 onClick={() => {
                   props.history.push('/member/profile')
                 }}
               />
             </div>
             <div className="button">
-              <img src="../image/button2.png" alt="" />
+              <img
+                src="../images/button2.png"
+                alt="cart"
+                onClick={() => {
+                  props.history.push('/cart')
+                }}
+              />
             </div>
             <div className="button">
-              <img src="../image/button3.png" alt="" />
+              <img
+                src="../images/button3.png"
+                alt="cartorder"
+                onClick={() => {
+                  props.history.push('/cartorder')
+                }}
+              />
             </div>
             <div className="button">
-              <img src="../image/button4.png" alt="" />
+              <img
+                src="../images/button4.png"
+                alt="coupon"
+                onClick={() => {
+                  props.history.push('/member/Coupon')
+                }}
+              />
             </div>
           </div>
         </div>

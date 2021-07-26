@@ -99,7 +99,7 @@ function Login(props) {
           nickname: data.information.nickname,
           avatar: data.information.avatar,
         })
-        // okAlert()
+        okAlert()
       } else {
         // 帳號或密碼錯誤的錯誤處理 放sweetalter
         console.log(data.message.text)
@@ -145,7 +145,10 @@ function Login(props) {
         <LoginLeftBcg />
         <div className="mb-login-form">
           <div className="mb-login-logo">
-            <img src="./image/Member-logo.png" alt="logo" />
+            <img
+              src="./images/Member-logo.png"
+              alt="logo"
+            />
           </div>
           <form className="text-center">
             <label htmlFor="email"> 帳號: </label>
@@ -204,23 +207,15 @@ function Login(props) {
               註冊
             </button>
           </form>
-          <div className="mb-text-line py-3 mx-auto">
-            或者使用社群帳號登入
-          </div>
+          {/* <div className="mb-text-line py-3 mx-auto">或者使用社群帳號登入</div>
           <div className="d-flex justify-content-center">
             <div className="mb-login-icon mr-5">
-              <img
-                src="./svg/facebook.svg"
-                alt="facebook"
-              ></img>
+              <img src="./svg/facebook.svg" alt="facebook"></img>
             </div>
             <div className="mb-login-icon">
-              <img
-                src="./svg/instagram.svg"
-                alt="instagram"
-              ></img>
+              <img src="./svg/instagram.svg" alt="instagram"></img>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

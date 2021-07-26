@@ -7,6 +7,9 @@ function Logout(props) {
   // 子曾切換登入狀況
   const [loginAuth, setLoginAuth] = useState({
     login: false,
+    email: '',
+    nickname: '',
+    avatar: '',
   })
 
   async function UserLogout() {

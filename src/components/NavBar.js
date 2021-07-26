@@ -1,21 +1,39 @@
+//無搜尋框基本NAVBAR
+//基本元件
 import React, { useEffect, useState } from 'react'
-import MainLogo from '../images/logo.svg' //logo檔案
-import Profile from '../images/profile.png' //profile檔案
 import { Navbar, Nav, Image } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import '../styles/navnfooter.css'
-import NavIcon from './NavIcon.js' //icon SVG路徑檔案
+import $ from 'jquery'
 import { Link } from 'react-router-dom'
 
-//
+//引入必要圖片及SVG
+import MainLogo from '../images/logo.svg' //logo檔案
+import Profile from '../images/profile.png' //profile檔案
+import NavIcon from './NavIcon.js' //icon SVG路徑檔案
+
+//引入CSS
+import '../styles/navnfooter.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+//載入其他自用套件
+import CartHover123 from './CartHover123'
+//程式起始
 const NavBar = (props) => {
-  // 上層傳來的登入狀況
+  //會員區
+  //-登入狀態確認
   const { auth, setAuth } = props
   const [memberData, setMemberData] = useState(auth)
-
-  // 大頭貼預設路徑
+  //-大頭貼路徑
   const avatarPath = 'http://localhost:4000/img/'
+  // 所有連結表可以在各自的link中修改
+  const items = [
+    { item: '找用品', link: '/product', icon: 'product' },
+    { item: '找場地', link: '/pickplace', icon: 'place' },
+    { item: '找靈感', link: '/articles', icon: 'idea' },
+  ]
+  //讀取購物車session
+  const { getSession } = props
 
+  //會員狀態主要機制
+  //判斷登入
   useEffect(() => {
     if (!!localStorage.getItem('token') && !auth.auth) {
       verifyMemberData()
@@ -24,7 +42,7 @@ const NavBar = (props) => {
       setAuth(false)
     }
   }, [])
-
+  //會員後端認證
   async function verifyMemberData() {
     const token = localStorage.getItem('token')
 
@@ -39,7 +57,7 @@ const NavBar = (props) => {
         // console.log(data.bearer)
         console.log(data)
         setMemberData({
-          login:true,
+          login: true,
           email: data.email,
           nickname: data.nickname,
           avatar: data.avatar,
@@ -52,32 +70,26 @@ const NavBar = (props) => {
   useEffect(() => {
     setAuth(memberData)
   }, [memberData])
+  //設定NAV隱藏機制
+  let lastScroll = 0
 
-  useEffect(() => {}, [])
-  //設定Navbar-icon
-  // 可以在各自的link中修改
-  const items = [
-    { item: '找用品', link: '/product', icon: 'product' },
-    { item: '找場地', link: '/place', icon: 'event' },
-    { item: '找活動', link: '/event', icon: 'place' },
-    {
-      item: '找靈感',
-      link: '/member/session',
-      icon: 'idea',
-    },
-  ]
-  //  TODO:
-  //  1.JQ 設定NAV效果
-  //  2.購物車?
-  // href="javascript:void(0)"
-  // eventKey={li.link}
+  $(window).scroll(function () {
+    const scrollNow = $(this).scrollTop()
+
+    if (lastScroll < scrollNow) {
+      $('.nav-bg').addClass('hide')
+    } else {
+      $('.nav-bg').removeClass('hide')
+    }
+    lastScroll = scrollNow
+  })
 
   return (
     <>
       <Navbar
         collapseOnSelect
         expand="lg"
-        fluid
+        fluid="true"
         className="nav-bg"
         variant="dark"
         sticky="top"
@@ -95,31 +107,31 @@ const NavBar = (props) => {
         >
           <img className="nav-logo" src={MainLogo} alt="" />
         </Navbar.Brand>
-        <button
-          onClick={() => {
-            console.log(auth)
-          }}
-        >
-          console.log(auth)
-        </button>
-        {/* {auth.avatar} */}
-        {/* {auth.avatar} */}
-        {/* <button
-          onClick={() => {
-            verifyMemberData()
-          }}
-        >
-          verifyMemberData
-        </button> */}
-        {/* 購物車Button */}
+        {/* 購物車Button (包含購物車元件)*/}
         <Nav className="order-lg-3 order-0">
-          <Nav.Item className="nav-cart">
-            <NavIcon
-              className="cartico"
-              item="cart"
-              iconstyle="navcart"
+          <Nav.Link
+            as={Link}
+            to="/cart"
+            className="nav-cart hovertest1"
+          >
+            <Nav.Item>
+              {/*ZZ檔案差異點*/}
+              <NavIcon
+                className="cartico"
+                item="cart"
+                iconstyle="navcart"
+              />
+              {getSession?.length > 0 && (
+                <div className="nav-counter nav-counter-blue">
+                  {getSession.length}
+                </div>
+              )}
+            </Nav.Item>
+            <CartHover123
+              className="hovertest"
+              getSession={getSession}
             />
-          </Nav.Item>
+          </Nav.Link>
         </Nav>
         {/* 開合選單 */}
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -128,9 +140,9 @@ const NavBar = (props) => {
             <div className="member">
               <Image
                 className="nav-profile-default"
-                style={{width:"50px"}}
+                style={{ width: '50px' }}
                 src={
-                  auth
+                  auth.login
                     ? auth.avatar
                       ? avatarPath + auth.avatar
                       : Profile
@@ -140,7 +152,7 @@ const NavBar = (props) => {
                 roundedCircle
               />
               <div className="d-flex flex-sm-row flex-lg-column">
-                { !auth.login ? (
+                {!auth.login ? (
                   <>
                     <div>
                       <Link to="/login">
@@ -169,8 +181,8 @@ const NavBar = (props) => {
                 <Nav.Link
                   as={Link}
                   to={li.link}
-                  key={li.id}
-                  className="nav-item"
+                  key={i}
+                  className="nav-item nav-main-btn"
                 >
                   <NavIcon item={li.icon} iconstyle="nav" />
                   <span className="navon">{li.item}</span>

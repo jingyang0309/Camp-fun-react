@@ -1,0 +1,51 @@
+.chk-board {
+  margin-top: -50px;
+  background-color: #145041;
+  color: #fff;
+  height: calc(100vh - 60px);
+  margin-bottom: 50px;
+}
+.chk-board-logo {
+  width: 250px;
+  margin: 10px auto;
+}
+.chk-board-login {
+  padding-top: 100px;
+  /* height: calc(100vh - 60px); */
+  position: relative;
+}
+.chk-board-title {
+  /* display: none !important; */
+  background-color: #145041;
+}
+
+.chk-board-form {
+  display: flex;
+  line-height: 50px;
+  /* text-align: center; */
+  align-items: center;
+  justify-content: center;
+}
+.chk-board-form label {
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+}
+.chk-board-form input {
+  margin: 5px;
+  height: 60px;
+  width: 300px;
+}
+.chk-board-submit {
+  text-align: center;
+}
+.chk-go-btn {
+  width: 100px;
+  height: 60px;
+  background-color: #fb0;
+  margin-bottom: 10px;
+}
+.errorMsg {
+  font-size: 25px;
+  color: rgb(255, 94, 0);
+}
